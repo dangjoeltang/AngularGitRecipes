@@ -7,7 +7,9 @@ import { JwtService } from './jwt.service';
 import { User } from '../models/user.model';
 import { map, distinctUntilChanged } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+	providedIn: 'root',
+})
 export class UserAuthService {
 	private currentUserSubject = new BehaviorSubject<User>({} as User);
 	public currentUser = this.currentUserSubject
@@ -58,16 +60,13 @@ export class UserAuthService {
 		this.isAuthenticatedSubject.next(false);
 	}
 
-	attemptAuth(type, credentials): Observable<User> {
-		const route = type === 'login' ? '/login' : '';
-		return this.apiService
-			.post('/users' + route, { user: credentials })
-			.pipe(
-				map(data => {
-					this.setAuth(data.user);
-					return data;
-				})
-			);
+	attemptAuth(credentials): Observable<User> {
+		return this.apiService.post('token/', { user: credentials }).pipe(
+			map(data => {
+				this.setAuth(data.user);
+				return data;
+			})
+		);
 	}
 
 	getCurrentUser(): User {

@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	api_url: 'https://gitrecipes.herokuapp.com/api',
+	api_url: 'https://gitrecipes.herokuapp.com/api/',
 };
 
 /*
