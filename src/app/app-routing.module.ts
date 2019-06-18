@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { LandingPageComponent } from './shared/components/landing-page/landing-page.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 const routes: Routes = [
 	{
 		path: '',
-		component: NavbarComponent,
+		component: LandingPageComponent,
 	},
 	{
 		path: 'auth',
 		loadChildren: './auth/auth.module#AuthModule',
 	},
+	{
+		path: '**',
+		component: NotFoundComponent,
+	}
 ];
 
 @NgModule({

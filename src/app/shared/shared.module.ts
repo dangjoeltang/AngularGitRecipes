@@ -6,10 +6,21 @@ import { RouterModule, Router } from '@angular/router';
 
 // Third Party Modules
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AlertBannerComponent } from './components/alert-banner/alert-banner.component';
+
 
 @NgModule({
-	declarations: [NavbarComponent],
+	declarations: [
+		NavbarComponent,
+		NotFoundComponent,
+		LandingPageComponent,
+		FooterComponent,
+		AlertBannerComponent,
+	],
 	imports: [
 		CommonModule,
 		FormsModule,
@@ -23,7 +34,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 		ReactiveFormsModule,
 		HttpClientModule,
 		RouterModule,
+		NgbModule,
 		NavbarComponent,
+		NotFoundComponent,
+		LandingPageComponent,
+		FooterComponent,
+		AlertBannerComponent,
 	],
 })
 export class SharedModule {}

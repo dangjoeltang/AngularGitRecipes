@@ -4,7 +4,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { AuthModule } from './auth/auth.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
