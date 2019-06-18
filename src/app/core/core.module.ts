@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpTokenInterceptor } from './interceptors/http-token.interceptor';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AlertService } from './services/alert.service';
 
 
 
@@ -12,7 +13,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 	providers: [
 		{ provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true },
 		{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-		JwtHelperService
+		JwtHelperService,
+		AlertService,
 	]
 })
 export class CoreModule {}
