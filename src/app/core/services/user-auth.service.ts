@@ -61,7 +61,7 @@ export class UserAuthService {
 	}
 
 	attemptAuth(credentials): Observable<User> {
-		return this.apiService.post('token/', { user: credentials }).pipe(
+		return this.apiService.post('token/', credentials).pipe(
 			map(data => {
 				this.setAuth(data.user);
 				return data;
