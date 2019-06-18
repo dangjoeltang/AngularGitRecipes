@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 		private router: Router,
 		private userAuthService: UserAuthService,
 		private fb: FormBuilder,
-		private alertService: AlertService,
+		private alertService: AlertService
 	) {}
 
 	ngOnInit() {
@@ -49,8 +49,7 @@ export class LoginComponent implements OnInit {
 				this.router.navigateByUrl('/');
 			},
 			err => {
-				console.log(err)
-				this.alertService.error(err.detail)
+				this.alertService.error(err.detail);
 				this.errors = err;
 				this.isSubmitted = false;
 			}
