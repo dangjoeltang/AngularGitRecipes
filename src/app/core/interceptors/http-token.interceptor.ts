@@ -8,10 +8,13 @@ import {
 import { Observable } from 'rxjs';
 
 import { JwtService } from '../services/jwt.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
+import { UserAuthService } from '../services/user-auth.service';
 
 @Injectable()
 export class HttpTokenInterceptor implements HttpInterceptor {
-	constructor(private jwtService: JwtService) {}
+	constructor(private jwtService: JwtService, private jwtHelper: JwtHelperService, private router: Router, private userService: UserAuthService) {}
 
 	intercept(
 		req: HttpRequest<any>,
@@ -19,15 +22,19 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 	): Observable<HttpEvent<any>> {
 		const headersConfig = {
 			'Content-Type': 'application/json',
-			Accept: 'application/json',
+			'Accept': 'application/json',
 		};
 
 		const token = this.jwtService.getToken();
 
 		if (token) {
-			headersConfig['Authorization'] = `Token ${token}`;
+			if (this.jwtHelper.isTokenExpired(token)){
+				console.log('jwt expired, redirecting');
+				this.userService.purgeAuth();
+				this.router.navigateByUrl('/auth');
+			}
+			headersConfig['Authorization'] = `Bearer ${token}`;
 		}
-
 		const request = req.clone({ setHeaders: headersConfig });
 		return next.handle(request);
 	}
