@@ -19,8 +19,6 @@ export class UserAuthService {
 	private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
 	public isAuthenticated = this.isAuthenticatedSubject.asObservable();
 
-
-
 	constructor(
 		private apiService: ApiService,
 		private jwtService: JwtService,
@@ -45,10 +43,14 @@ export class UserAuthService {
 	}
 
 	setAuth(token) {
-		const payload = this.jwtHelper.decodeToken(token)
+		const payload = this.jwtHelper.decodeToken(token);
 		// Save JWT sent from server in localstorage
 		this.jwtService.saveToken(token);
+
+		// let user
+
 		localStorage.setItem('user', JSON.stringify(payload));
+
 		// Set current user data into observable
 		this.currentUserSubject.next(payload);
 		// Set isAuthenticated to true
@@ -65,7 +67,6 @@ export class UserAuthService {
 		this.isAuthenticatedSubject.next(false);
 	}
 
-
 	attemptAuth(credentials): Observable<User> {
 		return this.apiService.post('token/', credentials).pipe(
 			map(data => {
@@ -74,7 +75,6 @@ export class UserAuthService {
 			})
 		);
 	}
-
 
 	public get currentUserValue(): User {
 		return this.currentUserSubject.value;

@@ -6,12 +6,15 @@ import { RouterModule, Router } from '@angular/router';
 
 // Third Party Modules
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+// My Components
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertBannerComponent } from './components/alert-banner/alert-banner.component';
-
+import { ShowAuthedDirective } from './show-authed.directive';
+import { ShowIfAuthDirective } from './show-if-auth.directive';
 
 @NgModule({
 	declarations: [
@@ -20,6 +23,8 @@ import { AlertBannerComponent } from './components/alert-banner/alert-banner.com
 		LandingPageComponent,
 		FooterComponent,
 		AlertBannerComponent,
+		ShowAuthedDirective,
+		ShowIfAuthDirective,
 	],
 	imports: [
 		CommonModule,
@@ -40,6 +45,8 @@ import { AlertBannerComponent } from './components/alert-banner/alert-banner.com
 		LandingPageComponent,
 		FooterComponent,
 		AlertBannerComponent,
+		ShowAuthedDirective,
+		ShowIfAuthDirective,
 	],
 })
 export class SharedModule {}
