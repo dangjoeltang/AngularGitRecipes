@@ -28,14 +28,17 @@ export class UserAuthService {
 	// Verify JWT in localstorage with server & load user's info.
 	// This runs once on application startup.
 	populate() {
+		let token = this.jwtService.getToken();
 		// If JWT detected, attempt to get & store user's info
-		if (this.jwtService.getToken()) {
-			this.apiService
-				.get('/user')
-				.subscribe(
-					data => this.setAuth(data.user),
-					err => this.purgeAuth()
-				);
+		if (token) {
+			this.apiService.get('user').subscribe(
+				data => {
+					this.setAuth(token);
+				},
+				err => {
+					this.purgeAuth();
+				}
+			);
 		} else {
 			// Remove any potential remnants of previous auth states
 			this.purgeAuth();
@@ -46,8 +49,6 @@ export class UserAuthService {
 		const payload = this.jwtHelper.decodeToken(token);
 		// Save JWT sent from server in localstorage
 		this.jwtService.saveToken(token);
-
-		// let user
 
 		localStorage.setItem('user', JSON.stringify(payload));
 

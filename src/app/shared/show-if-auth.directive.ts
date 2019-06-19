@@ -24,7 +24,7 @@ export class ShowIfAuthDirective implements OnInit {
 
 	ngOnInit() {
 		this.userService.isAuthenticated.subscribe(authed => {
-			if ((authed && this.condition) || (!authed && this.condition)) {
+			if ((authed && this.condition) || (!authed && !this.condition)) {
 				this.viewContainer.createEmbeddedView(this.templateRef);
 			} else {
 				this.viewContainer.clear();
