@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LandingPageComponent } from './shared/components/landing-page/landing-page.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { AuthModule } from './auth/auth.module';
+import { ProfileModule } from './profile/profile.module';
 
 const routes: Routes = [
 	{
@@ -10,11 +12,11 @@ const routes: Routes = [
 	},
 	{
 		path: 'auth',
-		loadChildren: './auth/auth.module#AuthModule',
+		loadChildren: () => AuthModule,
 	},
 	{
 		path: 'profile',
-		loadChildren: './profile/profile.module#ProfileModule',
+		loadChildren: () => ProfileModule,
 	},
 	{
 		path: '**',
