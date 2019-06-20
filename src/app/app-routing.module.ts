@@ -13,9 +13,13 @@ const routes: Routes = [
 		loadChildren: './auth/auth.module#AuthModule',
 	},
 	{
+		path: 'profile',
+		loadChildren: './profile/profile.module#ProfileModule',
+	},
+	{
 		path: '**',
 		component: NotFoundComponent,
-	}
+	},
 ];
 
 @NgModule({
