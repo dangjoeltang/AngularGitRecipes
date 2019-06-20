@@ -15,6 +15,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertBannerComponent } from './components/alert-banner/alert-banner.component';
 import { ShowIfAuthDirective } from './directives/show-if-auth.directive';
+import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 
 @NgModule({
 	declarations: [
@@ -24,6 +25,7 @@ import { ShowIfAuthDirective } from './directives/show-if-auth.directive';
 		FooterComponent,
 		AlertBannerComponent,
 		ShowIfAuthDirective,
+		RecipeCardComponent,
 	],
 	imports: [
 		CommonModule,

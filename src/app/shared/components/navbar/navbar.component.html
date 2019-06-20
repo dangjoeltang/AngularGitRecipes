@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-sm navbar-light container-nav-sub">
     <div>
-        <a class="navbar-brand" href="#">GitRecipes</a>
+        <a class="navbar-brand" routerLink="/">GitRecipes</a>
     </div>
 
     <div class="nav-sub-user">
@@ -21,7 +21,7 @@
             </ul>
 
             <ul *showIfAuth="true" class="navbar-nav mr-auto pull-xs-right">    
-                <li class="nav-link">
+                <li class="nav-username">
                     {{ currentUser.username }}
                 </li>
 

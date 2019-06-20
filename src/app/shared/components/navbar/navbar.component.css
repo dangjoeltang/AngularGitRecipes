@@ -3,6 +3,12 @@
     justify-content: space-between;
 }
 
-.nav-sub-user {
+.nav-sub-user .nav-item {
+    font-weight: bold;
+}
 
+.nav-username {
+    padding: 0.5rem 1rem;
+    color: rgba(0,0,0,0.5);
+    font-style: italic;
 }
