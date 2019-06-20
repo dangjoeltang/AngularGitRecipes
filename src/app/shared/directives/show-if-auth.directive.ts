@@ -5,7 +5,7 @@ import {
 	OnInit,
 	Input,
 } from '@angular/core';
-import { UserAuthService } from '../core/services/user-auth.service';
+import { UserAuthService } from '../../core/services/user-auth.service';
 
 @Directive({
 	selector: '[showIfAuth]',
