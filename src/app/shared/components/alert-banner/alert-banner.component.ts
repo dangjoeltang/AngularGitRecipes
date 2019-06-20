@@ -4,48 +4,50 @@ import { Alert, AlertType } from 'src/app/core/models';
 import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({
-  selector: 'app-alert-banner',
-  templateUrl: './alert-banner.component.html',
-  styleUrls: ['./alert-banner.component.css']
+	selector: 'app-alert-banner',
+	templateUrl: './alert-banner.component.html',
+	styleUrls: ['./alert-banner.component.css'],
 })
 export class AlertBannerComponent implements OnInit {
-    alerts: Alert[] = [];
+	alerts: Alert[] = [];
 
-    constructor(private alertService: AlertService) { }
+	constructor(private alertService: AlertService) {}
 
-    ngOnInit() {
-        this.alertService.getAlert().subscribe((alert: Alert) => {
-            if (!alert) {
-                // clear alerts when an empty alert is received
-                this.alerts = [];
-                return;
-            }
+	ngOnInit() {
+		this.alertService.getAlert().subscribe((alert: Alert) => {
+			if (!alert) {
+				// clear alerts when an empty alert is received
+				this.alerts = [];
+				return;
+			}
 
-            // add alert to array
-            this.alerts.push(alert);
-        });
-    }
+			// add alert to array
+			this.alerts.push(alert);
 
-    removeAlert(alert: Alert) {
-        this.alerts = this.alerts.filter(x => x !== alert);
-    }
+			// close alert after x milliseconds
+			setTimeout(() => this.removeAlert(alert), 3000);
+		});
+	}
 
-    cssClass(alert: Alert) {
-        if (!alert) {
-            return;
-        }
+	removeAlert(alert: Alert) {
+		this.alerts = this.alerts.filter(x => x !== alert);
+	}
 
-        // return css class based on alert type
-        switch (alert.type) {
-            case AlertType.Success:
-                return 'alert alert-success';
-            case AlertType.Error:
-                return 'alert alert-danger';
-            case AlertType.Info:
-                return 'alert alert-info';
-            case AlertType.Warning:
-                return 'alert alert-warning';
-        }
-    }
+	cssClass(alert: Alert) {
+		if (!alert) {
+			return;
+		}
 
+		// return css class based on alert type
+		switch (alert.type) {
+			case AlertType.Success:
+				return 'alert alert-success';
+			case AlertType.Error:
+				return 'alert alert-danger';
+			case AlertType.Info:
+				return 'alert alert-info';
+			case AlertType.Warning:
+				return 'alert alert-warning';
+		}
+	}
 }

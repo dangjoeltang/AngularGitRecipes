@@ -13,7 +13,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertBannerComponent } from './components/alert-banner/alert-banner.component';
-import { ShowIfAuthDirective } from './show-if-auth.directive';
+import { ShowIfAuthDirective } from './directives/show-if-auth.directive';
 
 @NgModule({
 	declarations: [
