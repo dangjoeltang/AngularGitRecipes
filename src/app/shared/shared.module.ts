@@ -6,6 +6,7 @@ import { RouterModule, Router } from '@angular/router';
 
 // Third Party Modules
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 // My Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -30,6 +31,7 @@ import { ShowIfAuthDirective } from './directives/show-if-auth.directive';
 		NgbModule,
 		HttpClientModule,
 		RouterModule,
+		NgxSpinnerModule,
 	],
 	exports: [
 		CommonModule,
@@ -38,6 +40,7 @@ import { ShowIfAuthDirective } from './directives/show-if-auth.directive';
 		HttpClientModule,
 		RouterModule,
 		NgbModule,
+		NgxSpinnerModule,
 		NavbarComponent,
 		NotFoundComponent,
 		LandingPageComponent,
