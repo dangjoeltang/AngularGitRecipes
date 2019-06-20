@@ -1,4 +1,9 @@
-<div class="jumbotron">
+<div class="jumbotron" *showIfAuth="false">
 	<h1 class="display-4">Welcome to GitRecipes</h1>
 	<p class="lead">This is the landing page.</p>
+</div>
+
+<div class="jumbotron" *showIfAuth="true">
+	<h1 class="display-4">Welcome, {{ currentUser.username }}</h1>
+	<p class="lead">What's cooking?</p>
 </div>
