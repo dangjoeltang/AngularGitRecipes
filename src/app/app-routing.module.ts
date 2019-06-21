@@ -4,6 +4,7 @@ import { LandingPageComponent } from './shared/components/landing-page/landing-p
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
+import { RecipeModule } from './recipe/recipe.module';
 
 const routes: Routes = [
 	{
@@ -17,6 +18,10 @@ const routes: Routes = [
 	{
 		path: 'profile',
 		loadChildren: () => ProfileModule,
+	},
+	{
+		path: 'recipes',
+		loadChildren: () => RecipeModule,
 	},
 	{
 		path: '**',
