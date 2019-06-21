@@ -1,0 +1,17 @@
+.container-content {
+    margin: 1rem;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+}
+
+app-recipe-card {
+    margin: 1rem;
+}
+
+h2 {
+    margin: 1rem;
+}

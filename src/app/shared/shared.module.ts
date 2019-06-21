@@ -24,8 +24,9 @@ import { RecipeCardComponent } from './components/recipe-card/recipe-card.compon
 		LandingPageComponent,
 		FooterComponent,
 		AlertBannerComponent,
-		ShowIfAuthDirective,
 		RecipeCardComponent,
+		// Directives
+		ShowIfAuthDirective,
 	],
 	imports: [
 		CommonModule,
@@ -43,11 +44,16 @@ import { RecipeCardComponent } from './components/recipe-card/recipe-card.compon
 		RouterModule,
 		NgbModule,
 		NgxSpinnerModule,
+
+		// Components
 		NavbarComponent,
 		NotFoundComponent,
 		LandingPageComponent,
 		FooterComponent,
 		AlertBannerComponent,
+		RecipeCardComponent,
+
+		// Directives
 		ShowIfAuthDirective,
 	],
 })

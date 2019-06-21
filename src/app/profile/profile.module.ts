@@ -4,9 +4,14 @@ import { ProfileLayoutComponent } from './profile-layout/profile-layout.componen
 import { SharedModule } from '../shared/shared.module';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileStoryComponent } from './profile-story/profile-story.component';
+import { ProfileContentComponent } from './profile-content/profile-content.component';
 
 @NgModule({
-	declarations: [ProfileLayoutComponent, ProfileStoryComponent],
+	declarations: [
+		ProfileLayoutComponent,
+		ProfileStoryComponent,
+		ProfileContentComponent,
+	],
 	imports: [SharedModule, CommonModule, ProfileRoutingModule],
 })
 export class ProfileModule {}

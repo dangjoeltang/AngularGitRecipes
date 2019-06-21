@@ -1,15 +1,13 @@
 .container-story {
-    width: 300px;
+    width: 250px;
     /* background: #313638; */
     /* text-align: center; */
-    padding: 25px auto;
+    margin: 1rem auto;
 }
 
 .story-item {
     display: inline-block;
-    margin: 25px 25px 0;
-    
-
+    margin: 1rem;
 }
 
 .profile-thumbnail {
@@ -18,8 +16,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     /* margin: 25px; */
 }

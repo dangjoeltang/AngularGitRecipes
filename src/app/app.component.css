@@ -21,7 +21,7 @@
 }
 
 .container-foot {
-    position: fixed;
+    position: relative;
     display: flex;
     left: 0;
     bottom: 0;
