@@ -1,27 +1,30 @@
-<div class="container-head">
-	<div class="navbar-top">
-		<app-navbar></app-navbar>
-	</div>
-</div>
-
-<ngx-spinner
-    bdOpacity = 0.5
-    bdColor = "#333"
-    size = "medium"
-    color = "#fff"
-    type = "square-jelly-box"
-    [fullScreen] = "false">
-<p style="color: white" > Loading... </p>
-</ngx-spinner>
-
-<div class="container-body">
-    <app-alert-banner></app-alert-banner>
-    <router-outlet></router-outlet>
-</div>
-
-<div class="container-foot">
-    <div class="footer">
-        <app-footer></app-footer>
+<div id="body-layout">
+    <div class="container-head">
+        <div class="header">
+            <app-navbar></app-navbar>
+        </div>
     </div>
-</div>
+    
+    <ngx-spinner
+        bdOpacity = 0.5
+        bdColor = "#333"
+        size = "medium"
+        color = "#fff"
+        type = "square-jelly-box"
+        [fullScreen] = "false">
+        <p style="color: white" > Loading... </p>
+    </ngx-spinner>
 
+    <div class="container-body">
+        <app-alert-banner></app-alert-banner>
+        <router-outlet></router-outlet>
+    </div>
+
+    <div class="container-foot">
+        <div class="footer">
+            <app-footer></app-footer>
+        </div>
+    </div>
+
+
+</div>
