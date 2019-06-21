@@ -12,3 +12,8 @@
     color: rgba(0,0,0,0.5);
     font-style: italic;
 }
+
+#brand-logo {
+    position: absolute;
+    width: 60px;
+}
