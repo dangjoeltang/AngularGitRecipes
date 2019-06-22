@@ -1,4 +1,22 @@
+Recipe ID: {{ recipe.pk }}
 <h3>
-    Recipe ID: {{ recipe_id }}
+    Title: {{ recipe.title }}
 </h3>
+<h5>
+    Author: {{ recipe.author }}
+</h5>
 
+<h5>
+    Ingredients:
+</h5>
+<ul>
+    <li *ngFor="let i of recipe.ingredients">
+        {{ i.ingredient.name }}: {{ i.quantity_amount }} {{ i.quantity_unit }}
+    </li>
+</ul>
+
+<p>
+    Created: {{ recipe.created_time }}
+    <br>
+    Modified: {{ recipe.modified_time }}
+</p>
