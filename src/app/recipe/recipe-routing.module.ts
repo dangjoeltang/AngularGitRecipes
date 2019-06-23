@@ -3,11 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeResolver } from './recipe-resolver.service';
+import { RecipeFormComponent } from '../shared/forms/recipe-form/recipe-form.component';
 
 const routes: Routes = [
 	{
 		path: 'browse',
 		component: RecipeListComponent,
+	},
+	{
+		path: 'new',
+		component: RecipeFormComponent,
 	},
 	{
 		path: ':recipe_id',

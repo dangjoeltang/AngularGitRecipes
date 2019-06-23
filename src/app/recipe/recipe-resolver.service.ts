@@ -7,7 +7,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { RecipeDetail } from 'src/app/core/models';
+import { RecipeDetail } from 'src/app/core/models/recipe.model';
 import { ApiService } from 'src/app/core/services/api.service';
 import { catchError } from 'rxjs/operators';
 
