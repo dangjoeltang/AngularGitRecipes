@@ -5,5 +5,7 @@
 
 <div class="jumbotron" *showIfAuth="true">
 	<h1 class="display-4">Welcome, {{ currentUser.username }}</h1>
-	<p class="lead">What's cooking?</p>
+    <p class="lead">What's cooking?</p>
+    <a class="btn btn-primary" routerLink="/recipes/new">New recipe</a>
+    <a class="btn btn-secondary" routerLink="/profile">Profile</a>
 </div>

@@ -27,7 +27,7 @@ export class FormlyChipsComponent extends FieldType
 	onDestroy$ = new Subject<void>();
 
 	itemControl = new FormControl();
-	selectable = true;
+	selectable = false;
 	removable = true;
 	addOnBlur = true;
 	separatorKeysCodes: number[] = [ENTER, COMMA];
