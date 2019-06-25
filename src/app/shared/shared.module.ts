@@ -25,6 +25,7 @@ import { ShowIfAuthDirective } from './directives/show-if-auth.directive';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
 import { FormlyChipsComponent } from './forms/recipe-chips/recipe-chips.component';
+import { RepeatTypeComponent } from './forms/recipe-form/repeat-section.type';
 
 @NgModule({
 	declarations: [
@@ -38,6 +39,7 @@ import { FormlyChipsComponent } from './forms/recipe-chips/recipe-chips.componen
 		ShowIfAuthDirective,
 		RecipeFormComponent,
 		FormlyChipsComponent,
+		RepeatTypeComponent,
 	],
 	imports: [
 		CommonModule,
@@ -62,6 +64,7 @@ import { FormlyChipsComponent } from './forms/recipe-chips/recipe-chips.componen
 						defaultValue: [],
 					},
 				},
+				{ name: 'repeat', component: RepeatTypeComponent },
 			],
 			validationMessages: [
 				{ name: 'required', message: 'This field is required' },

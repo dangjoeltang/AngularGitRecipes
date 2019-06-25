@@ -6,15 +6,35 @@ Recipe ID: {{ recipe.pk }}
     Author: {{ recipe.author }}
 </h5>
 
+<h6>Tags:</h6>
+<span *ngFor="let t of recipe.tags" class="btn btn-link">{{ t }} </span>
+
 <h5>
     Ingredients:
 </h5>
 <ul>
     <li *ngFor="let i of recipe.ingredients">
-        {{ i.ingredient.name }}: {{ i.quantity_amount }} {{ i.quantity_unit }}
+        {{ i.ingredient }} - {{ i.quantity_amount }} {{ i.quantity_unit }}
     </li>
 </ul>
 
+<h5>
+    Directions:
+</h5>
+<ol>
+    <li *ngFor="let i of recipe.steps">
+        {{ i.step_text }}
+    </li>
+</ol>
+
+<h5>
+    Notes:
+</h5>
+<ol>
+    <li *ngFor="let n of recipe.notes">
+        {{ n.note_text}}
+    </li>
+</ol>
 <p>
     Created: {{ recipe.created_time }}
     <br>

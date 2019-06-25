@@ -22,9 +22,6 @@ export class RecipeFormComponent implements OnInit {
 	) {}
 
 	fields: FormlyFieldConfig[] = [
-		// {
-		// 	key: 'recipe',
-		// 	fieldGroup: [
 		{
 			key: 'title',
 			type: 'input',
@@ -50,14 +47,102 @@ export class RecipeFormComponent implements OnInit {
 				required: false,
 			},
 		},
-		// 	],
-		// },
+		{
+			key: 'ingredients',
+			type: 'repeat',
+			fieldArray: {
+				fieldGroupClassName: 'row',
+				templateOptions: {
+					btnText: 'Add ingredient',
+				},
+				fieldGroup: [
+					{
+						className: 'col-sm-4',
+						type: 'input',
+						key: 'ingredient',
+						templateOptions: {
+							label: 'Ingredient',
+							required: true,
+						},
+					},
+					{
+						className: 'col-sm-4',
+						type: 'input',
+						key: 'quantity_amount',
+						templateOptions: {
+							label: 'Quantity Amount',
+							required: true,
+						},
+					},
+					{
+						className: 'col-sm-4',
+						type: 'input',
+						key: 'quantity_unit',
+						templateOptions: {
+							label: 'Unit',
+							required: true,
+						},
+					},
+				],
+			},
+		},
+		{
+			key: 'steps',
+			type: 'repeat',
+			fieldArray: {
+				fieldGroupClassName: 'row',
+				templateOptions: {
+					btnText: 'Add step',
+				},
+				fieldGroup: [
+					{
+						className: 'col-sm-4',
+						type: 'input',
+						key: 'step_number',
+						templateOptions: {
+							label: 'Step #',
+							required: true,
+						},
+					},
+					{
+						className: 'col-sm-4',
+						type: 'input',
+						key: 'step_text',
+						templateOptions: {
+							label: 'Step directions',
+							required: true,
+						},
+					},
+				],
+			},
+		},
+		{
+			key: 'notes',
+			type: 'repeat',
+			fieldArray: {
+				fieldGroupClassName: 'row',
+				templateOptions: {
+					btnText: 'Add note',
+				},
+				fieldGroup: [
+					{
+						className: 'col-sm-4',
+						type: 'input',
+						key: 'note_text',
+						templateOptions: {
+							label: 'Note',
+							required: true,
+						},
+					},
+				],
+			},
+		},
 	];
 
 	ngOnInit() {}
 
 	submit() {
-		console.log(JSON.stringify(this.model));
+		console.log(JSON.stringify(this.model.tags));
 		this.recipeService.createNewRecipe(this.model).subscribe(res => {
 			this.alertService.success(`Recipe ${res.title} created`, true);
 			this.router.navigateByUrl(`/recipes/${res.pk}`);

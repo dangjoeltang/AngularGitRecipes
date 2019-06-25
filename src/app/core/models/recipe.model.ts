@@ -1,40 +1,26 @@
 export interface RecipeDetail {
-	id: string;
+	pk: number;
 	title: string;
-	author: string;
-	ingredients: {
-		[key: string]: Ingredient;
-	};
-	tags: {
-		[key: string]: Tag;
-	};
-	steps: {
-		[key: string]: Step;
-	};
-	notes: {
-		[key: string]: Note;
-	};
+	author: number;
+	ingredients: Ingredient[];
+	tags: string[];
+	steps: Step[];
+	notes: Note[];
 	created_time: string;
 	modified_time: string;
 }
 
 export interface Ingredient {
-	id: string;
-	item: string;
-	amount: string;
-	unit: string;
-}
-
-export interface Tag {
-	id: string;
-	text: string;
+	ingredient: string;
+	quantity_amount: string;
+	quantity_unit: string;
 }
 
 export interface Step {
-	number: number;
-	text: string;
+	step_number: number;
+	step_text: string;
 }
 
 export interface Note {
-	text: string;
+	note_text: string;
 }
