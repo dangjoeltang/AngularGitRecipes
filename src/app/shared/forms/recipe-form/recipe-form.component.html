@@ -1,6 +1,44 @@
 <form [formGroup]="recipeForm" (ngSubmit)="submit()">
-    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="recipeForm">
-        <button type="submit" class="btn btn-primary submit-button">Submit</button>
-        <button type="button" class="btn btn-default" (click)="options.resetModel()">Reset</button>
-    </formly-form>
+    <h4>Title</h4>
+    <input class="form-control" formControlName="title" placeholder="Recipe title">
+    <!-- Add Tags -->
+    
+    <!-- Add Ingredients -->
+    <h4>
+        Ingredients
+    </h4>
+
+    <div class="recipe-subcontainer">
+        <div formArrayName="recipe_ingredients">
+            <div class="ing-items input-group" *ngFor="let ing of recipeIngredients.controls; let ingIndex=index"  [formGroupName]="ingIndex">
+                <input formControlName="ingredient" class="form-control" placeholder="Ingredient">
+                <input formControlName="quantity_amount" class="form-control" placeholder="Quantity">
+                <input formControlName="quantity_unit" class="form-control" placeholder="Unit">
+                <div class="input-group-append">
+                    <button class="btn btn-danger" type="button" (click)="deleteRecipeIngredient(ingIndex)">Delete</button>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="button" (click)="addRecipeIngredient()">Add Ingredient</button>
+        </div>
+    </div>
+
+    <!-- Add Steps -->
+    <h4>
+        Steps
+    </h4>
+    <div class="recipe-subcontainer">
+        <div formArrayName="recipe_steps">
+            <div class="step-items input-group" *ngFor="let step of recipeSteps.controls; let stepIndex=index" [formGroupName]="stepIndex">
+                <input type="number" class="form-control input-group-prepend" formControlName="step_number" placeholder="#">
+                <input type="text" formControlName="step_text" class="form-control" placeholder="Step directions...">
+                <div class="input-group-append">
+                        <button class="btn btn-danger" type="button" (click)="deleteRecipeStep(stepIndex)">Delete</button>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="button" (click)="addRecipeStep()">Add another step</button>
+        </div>
+    </div>
 </form>
+
+{{ this.recipeForm.value | json }}

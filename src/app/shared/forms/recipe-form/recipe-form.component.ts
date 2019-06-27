@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { RecipeService } from 'src/app/core/services/recipe.service';
+import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { RecipeDetail } from 'src/app/core/models';
+import { RecipeService } from 'src/app/core/services/recipe.service';
 import { AlertService } from 'src/app/core/services/alert.service';
 
 @Component({
@@ -11,141 +12,74 @@ import { AlertService } from 'src/app/core/services/alert.service';
 	styleUrls: ['./recipe-form.component.css'],
 })
 export class RecipeFormComponent implements OnInit {
-	recipeForm = new FormGroup({});
-	model: any = {};
-	options: FormlyFormOptions = {};
+	constructor(private fb: FormBuilder) {}
 
-	constructor(
-		private recipeService: RecipeService,
-		private router: Router,
-		private alertService: AlertService
-	) {}
+	recipeForm: FormGroup;
 
-	fields: FormlyFieldConfig[] = [
-		{
-			key: 'title',
-			type: 'input',
-			templateOptions: {
-				required: true,
-				label: 'Recipe Title',
-			},
-		},
-		{
-			key: 'author',
-			type: 'input',
-			defaultValue: 'defaultUser',
-			templateOptions: {
-				required: true,
-				label: 'Author',
-			},
-		},
-		{
-			key: 'tags',
-			type: 'chips',
-			templateOptions: {
-				label: 'Tags',
-				required: false,
-			},
-		},
-		{
-			key: 'ingredients',
-			type: 'repeat',
-			fieldArray: {
-				fieldGroupClassName: 'row',
-				templateOptions: {
-					btnText: 'Add ingredient',
-				},
-				fieldGroup: [
-					{
-						className: 'col-sm-4',
-						type: 'input',
-						key: 'ingredient',
-						templateOptions: {
-							label: 'Ingredient',
-							required: true,
-						},
-					},
-					{
-						className: 'col-sm-4',
-						type: 'input',
-						key: 'quantity_amount',
-						templateOptions: {
-							label: 'Quantity Amount',
-							required: true,
-						},
-					},
-					{
-						className: 'col-sm-4',
-						type: 'input',
-						key: 'quantity_unit',
-						templateOptions: {
-							label: 'Unit',
-							required: true,
-						},
-					},
-				],
-			},
-		},
-		{
-			key: 'steps',
-			type: 'repeat',
-			fieldArray: {
-				fieldGroupClassName: 'row',
-				templateOptions: {
-					btnText: 'Add step',
-				},
-				fieldGroup: [
-					{
-						className: 'col-sm-4',
-						type: 'input',
-						key: 'step_number',
-						templateOptions: {
-							label: 'Step #',
-							required: true,
-						},
-					},
-					{
-						className: 'col-sm-4',
-						type: 'input',
-						key: 'step_text',
-						templateOptions: {
-							label: 'Step directions',
-							required: true,
-						},
-					},
-				],
-			},
-		},
-		{
-			key: 'notes',
-			type: 'repeat',
-			fieldArray: {
-				fieldGroupClassName: 'row',
-				templateOptions: {
-					btnText: 'Add note',
-				},
-				fieldGroup: [
-					{
-						className: 'col-sm-4',
-						type: 'input',
-						key: 'note_text',
-						templateOptions: {
-							label: 'Note',
-							required: true,
-						},
-					},
-				],
-			},
-		},
-	];
+	ngOnInit() {
+		this.recipeForm = this.createRecipeForm();
+	}
 
-	ngOnInit() {}
-
-	submit() {
-		console.log(JSON.stringify(this.model.tags));
-		this.recipeService.createNewRecipe(this.model).subscribe(res => {
-			this.alertService.success(`Recipe ${res.title} created`, true);
-			this.router.navigateByUrl(`/recipes/${res.pk}`);
+	createRecipeForm() {
+		const form = this.fb.group({
+			title: [],
+			recipe_ingredients: this.fb.array([
+				this.fb.group({
+					ingredient: [],
+					quantity_amount: [],
+					quantity_unit: [],
+				}),
+			]),
+			recipe_steps: this.fb.array([
+				this.fb.group({
+					step_number: [],
+					step_text: [],
+				}),
+			]),
+			recipe_notes: this.fb.array([
+				this.fb.group({
+					note_text: [],
+				}),
+			]),
 		});
+
+		return form;
+	}
+
+	get recipeIngredients() {
+		return this.recipeForm.get('recipe_ingredients') as FormArray;
+	}
+	get recipeSteps() {
+		return this.recipeForm.get('recipe_steps') as FormArray;
+	}
+	get recipeNotes() {
+		return this.recipeForm.get('recipe_notes') as FormArray;
+	}
+
+	addRecipeIngredient() {
+		this.recipeIngredients.push(
+			this.fb.group({
+				ingredient: [],
+				quantity_amount: [],
+				quantity_unit: [],
+			})
+		);
+	}
+
+	addRecipeStep() {
+		this.recipeSteps.push(
+			this.fb.group({
+				step_number: [],
+				step_text: [],
+			})
+		);
+	}
+
+	deleteRecipeIngredient(index) {
+		this.recipeIngredients.removeAt(index);
+	}
+
+	deleteRecipeStep(index) {
+		this.recipeSteps.removeAt(index);
 	}
 }

@@ -1,0 +1,12 @@
+.recipe-subcontainer {
+    display: grid;
+    grid-template-areas:
+        "ing-header"
+        "ing-items";
+}
+
+
+.ing-items {
+    display: flex;
+    margin: 5px auto;
+}
