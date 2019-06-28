@@ -6,7 +6,8 @@
 }
 
 
-.ing-items {
-    display: flex;
+.input-group {
+    /* display: flex; */
     margin: 5px auto;
 }
+

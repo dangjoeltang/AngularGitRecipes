@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Router } from '@angular/router';
-// import { MatChipsModule } from '@angular/material/chips';
-// import { MatAutocompleteModule } from '@angular/material/autocomplete';
-// import { MatFormFieldModule } from '@angular/material/form-field';
-// import { MatIconModule } from '@angular/material/icon';
 
 // Third Party Modules
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { TagInputModule } from 'ngx-chips';
 
 // My Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -36,15 +33,13 @@ import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
 	],
 	imports: [
 		CommonModule,
+		FormsModule,
 		ReactiveFormsModule,
 		NgbModule,
 		HttpClientModule,
 		RouterModule,
 		NgxSpinnerModule,
-		// MatChipsModule,
-		// MatIconModule,
-		// MatAutocompleteModule,
-		// MatFormFieldModule,
+		TagInputModule,
 	],
 	exports: [
 		CommonModule,
@@ -53,6 +48,8 @@ import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
 		RouterModule,
 		NgbModule,
 		NgxSpinnerModule,
+		TagInputModule,
+		// BrowserAnimationsModule,
 
 		// Components
 		NavbarComponent,
@@ -62,6 +59,7 @@ import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
 		AlertBannerComponent,
 		RecipeCardComponent,
 		RecipeFormComponent,
+		// TagInputComponent,
 
 		// Directives
 		ShowIfAuthDirective,

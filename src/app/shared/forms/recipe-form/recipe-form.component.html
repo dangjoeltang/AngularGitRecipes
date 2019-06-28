@@ -1,25 +1,40 @@
-<form [formGroup]="recipeForm" (ngSubmit)="submit()">
+<form [formGroup]="recipeForm" (ngSubmit)="submitRecipe()">
     <h4>Title</h4>
     <input class="form-control" formControlName="title" placeholder="Recipe title">
+
+    <h4>
+        Author
+    </h4>
+    <input class="form-control" formControlName="author">
+
+
     <!-- Add Tags -->
-    
+    <h5>
+        Tags
+    </h5>
+    <tag-input formControlName="tags" [modelAsStrings]="true" theme='bootstrap'>
+    </tag-input>
+
     <!-- Add Ingredients -->
     <h4>
         Ingredients
     </h4>
 
     <div class="recipe-subcontainer">
-        <div formArrayName="recipe_ingredients">
-            <div class="ing-items input-group" *ngFor="let ing of recipeIngredients.controls; let ingIndex=index"  [formGroupName]="ingIndex">
+        <div formArrayName="ingredients">
+            <div class="ing-items input-group" *ngFor="let ing of recipeIngredients.controls; let ingIndex=index"
+                [formGroupName]="ingIndex">
                 <input formControlName="ingredient" class="form-control" placeholder="Ingredient">
-                <input formControlName="quantity_amount" class="form-control" placeholder="Quantity">
-                <input formControlName="quantity_unit" class="form-control" placeholder="Unit">
+                <input formControlName="quantity_amount" class="form-control col-2" placeholder="Quantity">
+                <input formControlName="quantity_unit" class="form-control col-2" placeholder="Unit">
                 <div class="input-group-append">
-                    <button class="btn btn-danger" type="button" (click)="deleteRecipeIngredient(ingIndex)">Delete</button>
+                    <button class="btn btn-danger" type="button" (click)="deleteRecipeIngredient(ingIndex)"><i
+                            class="fas fa-trash-alt"></i></button>
                 </div>
             </div>
 
-            <button class="btn btn-primary" type="button" (click)="addRecipeIngredient()">Add Ingredient</button>
+            <button class="btn btn-primary" type="button" (click)="addRecipeIngredient()"><i
+                    class="fas fa-plus"></i></button>
         </div>
     </div>
 
@@ -28,17 +43,35 @@
         Steps
     </h4>
     <div class="recipe-subcontainer">
-        <div formArrayName="recipe_steps">
-            <div class="step-items input-group" *ngFor="let step of recipeSteps.controls; let stepIndex=index" [formGroupName]="stepIndex">
-                <input type="number" class="form-control input-group-prepend" formControlName="step_number" placeholder="#">
+        <div formArrayName="steps">
+            <div class="step-items input-group row" *ngFor="let step of recipeSteps.controls; let stepIndex=index"
+                [formGroupName]="stepIndex">
+                <input type="number" class="form-control col-2 col-sm-1" formControlName="step_number" placeholder="#">
                 <input type="text" formControlName="step_text" class="form-control" placeholder="Step directions...">
                 <div class="input-group-append">
-                        <button class="btn btn-danger" type="button" (click)="deleteRecipeStep(stepIndex)">Delete</button>
+                    <button class="btn btn-danger" type="button" (click)="deleteRecipeStep(stepIndex)"><i
+                            class="fas fa-trash-alt"></i></button>
                 </div>
             </div>
-            <button class="btn btn-primary" type="button" (click)="addRecipeStep()">Add another step</button>
+            <button class="btn btn-primary" type="button" (click)="addRecipeStep()"><i class="fas fa-plus"></i></button>
         </div>
     </div>
+
+    <!-- Add notes -->
+    <h4>Notes</h4>
+    <div class="recipe-subcontainer">
+
+        <div formArrayName="notes">
+            <div class="note-items input-group" *ngFor="let note of recipeNotes.controls; let noteIndex=index"
+                [formGroupName]="noteIndex">
+                <textarea class="form-control" formControlName="note_text"
+                    placeholder="Enter any notes here..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <button class="btn btn-primary" type="submit">Create Recipe</button>
 </form>
 
 {{ this.recipeForm.value | json }}
