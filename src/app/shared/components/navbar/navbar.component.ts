@@ -23,7 +23,6 @@ export class NavbarComponent implements OnInit {
 	ngOnInit() {
 		this.userService.currentUser.subscribe(userData => {
 			this.currentUser = userData;
-			// console.log(this.currentUser);
 		});
 	}
 }
