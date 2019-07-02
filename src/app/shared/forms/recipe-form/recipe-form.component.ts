@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 
 import { RecipeDetail } from 'src/app/core/models';
@@ -14,12 +14,15 @@ import { UserAuthService } from 'src/app/core/services/user-auth.service';
 	styleUrls: ['./recipe-form.component.css'],
 })
 export class RecipeFormComponent implements OnInit {
+	@Input() recipe: RecipeDetail;
+
 	constructor(
 		private fb: FormBuilder,
 		private recipeService: RecipeService,
 		private alertService: AlertService,
 		private router: Router,
-		private userService: UserAuthService
+		private userService: UserAuthService,
+		private route: ActivatedRoute
 	) {}
 
 	recipeForm: FormGroup;
@@ -31,6 +34,46 @@ export class RecipeFormComponent implements OnInit {
 
 	ngOnInit() {
 		this.recipeForm = this.createRecipeForm();
+		if (this.recipe) {
+			// If recipe is passed as input, prefill the form
+			this.patchData(this.recipe);
+		}
+	}
+
+	patchData(recipe: RecipeDetail) {
+		this.recipeForm.patchValue({ title: recipe.title });
+		this.recipeForm.patchValue({ author: recipe.author });
+		this.recipeForm.patchValue({ tags: recipe.tags });
+
+		const faIngredients = <FormArray>this.recipeForm.controls.ingredients;
+		recipe.ingredients.forEach(ing => {
+			let temp: FormGroup = this.fb.group({
+				ingredient: [ing.ingredient],
+				quantity_amount: [ing.quantity_amount],
+				quantity_unit: [ing.quantity_unit],
+			});
+			temp.patchValue(ing);
+			faIngredients.push(temp);
+		});
+
+		const faSteps = <FormArray>this.recipeForm.controls.steps;
+		recipe.steps.forEach(step => {
+			let temp: FormGroup = this.fb.group({
+				step_number: [step.step_number],
+				step_text: [step.step_text],
+			});
+			temp.patchValue(step);
+			faSteps.push(temp);
+		});
+
+		const faNotes = <FormArray>this.recipeForm.controls.notes;
+		recipe.notes.forEach(note => {
+			let temp: FormGroup = this.fb.group({
+				note_text: [note.note_text],
+			});
+			temp.patchValue(note);
+			faNotes.push(temp);
+		});
 	}
 
 	createRecipeForm() {
@@ -39,22 +82,22 @@ export class RecipeFormComponent implements OnInit {
 			author: this.user.profile_id,
 			tags: [],
 			ingredients: this.fb.array([
-				this.fb.group({
-					ingredient: [],
-					quantity_amount: [],
-					quantity_unit: [],
-				}),
+				// this.fb.group({
+				// 	ingredient: [],
+				// 	quantity_amount: [],
+				// 	quantity_unit: [],
+				// }),
 			]),
 			steps: this.fb.array([
-				this.fb.group({
-					step_number: [],
-					step_text: [],
-				}),
+				// this.fb.group({
+				// 	step_number: [],
+				// 	step_text: [],
+				// }),
 			]),
 			notes: this.fb.array([
-				this.fb.group({
-					note_text: [],
-				}),
+				// this.fb.group({
+				// 	note_text: [],
+				// }),
 			]),
 		});
 
@@ -121,14 +164,39 @@ export class RecipeFormComponent implements OnInit {
 	// }
 
 	submitRecipe() {
-		const recipe: RecipeDetail = this.recipeForm.value;
-		// console.log(recipe);
-		this.recipeService.createNewRecipe(recipe).subscribe(res => {
-			this.alertService.success(
-				`${res.title} created successfully!`,
-				true
-			);
-			this.router.navigateByUrl(`/recipes/${res.pk}`);
+		this.route.params.subscribe(res => {
+			if (res.recipe_id) {
+				console.log('Updating recipe');
+				this.recipeForm.addControl(
+					'pk',
+					new FormControl(res.recipe_id)
+				);
+				const recipe: RecipeDetail = this.recipeForm.value;
+				console.log(recipe);
+				this.recipeService
+					.updateRecipe(res.recipe_id, recipe)
+					.subscribe(res => {
+						this.alertService.success(
+							`${res.title} updated!`,
+							true
+						);
+						this.router.navigateByUrl(`/recipes/${res.pk}`);
+					});
+			} else {
+				console.log('Creating new recipe');
+				const recipe: RecipeDetail = this.recipeForm.value;
+				this.recipeService.createNewRecipe(recipe).subscribe(res => {
+					this.alertService.success(
+						`${res.title} created successfully!`,
+						true
+					);
+					this.router.navigateByUrl(`/recipes/${res.pk}`);
+				});
+			}
 		});
 	}
+
+	createRecipe() {}
+
+	updateRecipe() {}
 }

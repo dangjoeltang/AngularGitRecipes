@@ -13,4 +13,8 @@ export class RecipeService {
 	createNewRecipe(recipe_data): Observable<any> {
 		return this.apiService.post('recipes/', recipe_data);
 	}
+
+	updateRecipe(recipe_pk, recipe_data): Observable<any> {
+		return this.apiService.put(`recipes/${recipe_pk}/`, recipe_data);
+	}
 }

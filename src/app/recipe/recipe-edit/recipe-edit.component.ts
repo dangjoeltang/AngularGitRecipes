@@ -3,12 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { RecipeDetail } from 'src/app/core/models';
 
 @Component({
-	selector: 'app-recipe-detail',
-	templateUrl: './recipe-detail.component.html',
-	styleUrls: ['./recipe-detail.component.css'],
+	selector: 'app-recipe-edit',
+	templateUrl: './recipe-edit.component.html',
+	styleUrls: ['./recipe-edit.component.css'],
 })
-export class RecipeDetailComponent implements OnInit {
-	private recipe_id;
+export class RecipeEditComponent implements OnInit {
 	private recipe: RecipeDetail;
 
 	constructor(private route: ActivatedRoute) {}
@@ -18,9 +17,5 @@ export class RecipeDetailComponent implements OnInit {
 			this.recipe = data.recipe;
 			// console.log(this.recipe);
 		});
-	}
-
-	editRecipe(recipe) {
-		console.log(this.recipe);
 	}
 }

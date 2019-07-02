@@ -1,4 +1,6 @@
 Recipe ID: {{ recipe.pk }}
+
+<a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-link">Edit Recipe</a>
 <h3>
     Title: {{ recipe.title }}
 </h3>
