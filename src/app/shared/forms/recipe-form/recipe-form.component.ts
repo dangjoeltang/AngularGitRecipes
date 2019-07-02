@@ -122,7 +122,7 @@ export class RecipeFormComponent implements OnInit {
 
 	submitRecipe() {
 		const recipe: RecipeDetail = this.recipeForm.value;
-		console.log(recipe);
+		// console.log(recipe);
 		this.recipeService.createNewRecipe(recipe).subscribe(res => {
 			this.alertService.success(
 				`${res.title} created successfully!`,

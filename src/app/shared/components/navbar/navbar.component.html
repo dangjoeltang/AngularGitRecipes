@@ -1,33 +1,35 @@
-
 <nav class="navbar navbar-expand-sm navbar-light container-nav-sub">
     <div>
         <!-- <img src="assets/images/mstile-150x150.png" id="brand-logo"> -->
         <a class="navbar-brand" routerLink="/">GitRecipes</a>
     </div>
 
-    <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button> -->
-    
-    <a class="btn btn-success" routerLink="/recipes/new">+New Recipe</a>
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+
+
 
     <div class="nav-sub-user">
 
-        <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
+            data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
-            
-            <ul *showIfAuth="false" class="navbar-nav mr-auto pull-xs-right">    
+            <a class="btn btn-success" routerLink="/recipes/new">+New Recipe</a>
+
+            <ul *showIfAuth="false" class="navbar-nav mr-auto pull-xs-right">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/auth/login">Login</a>
-                </li>    
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/auth/register">Signup</a>
                 </li>
             </ul>
 
-            <ul *showIfAuth="true" class="navbar-nav mr-auto pull-xs-right">    
+            <ul *showIfAuth="true" class="navbar-nav mr-auto pull-xs-right">
                 <li class="nav-username">
                     {{ currentUser.username }}
                 </li>
@@ -37,7 +39,7 @@
                     <a class="nav-link" routerLink="/profile">
                         Profile
                     </a>
-                </li>    
+                </li>
                 <li class="nav-item">
                     <!-- <button type="button" class="btn btn-link">Logout</button> -->
                     <a class="nav-link" routerLink="/auth/logout">Logout</a>
