@@ -1,5 +1,5 @@
 #body-layout {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     position: relative;
 }
 
@@ -7,7 +7,7 @@
     z-index: 10;
     position: relative;
     width: 100%;
-    box-shadow: 8px 6px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 5px 0px rgba(0,0,0,0.5);
     display: flex;
     justify-content: center;
     /* background: #BDD4E7; */
@@ -28,13 +28,14 @@
 }
 
 .container-foot {
-    position: absolute;
+    position: relative;
     display: flex;
     bottom: 0;
     width: 100%;
     height: 4rem;
     justify-content: center;
     background: #E4DFDA;
+    margin-top: 4rem;
 }
 
 .footer {

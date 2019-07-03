@@ -8,13 +8,18 @@
     /* background-position: center;  */
 }
 
-.landing-badge {
-    /* background-color: rgba(255, 255, 255, 0.7); */
-    background-color: rgba(189, 212, 231, 0.5);
+.landing-island {
+    background-color: rgba(255, 255, 255, 0.7);
+    /* background-color: rgba(189, 212, 231, 0.9); */
     padding: 2rem;
     max-width: 600px;
     box-shadow: 8px 6px 5px 0px rgba(0,0,0,0.5);
     color: #252323;
+}
+
+.landing-island a {
+    margin: 0.5rem;
+    width: 8rem;
 }
 
 @media (min-width: 800px) {
