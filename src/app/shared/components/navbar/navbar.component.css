@@ -17,3 +17,7 @@
     position: absolute;
     width: 60px;
 }
+
+#nav-search {
+    max-width: 500px;
+}

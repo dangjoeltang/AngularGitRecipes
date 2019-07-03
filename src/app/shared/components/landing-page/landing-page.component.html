@@ -1,11 +1,17 @@
 <div class="jumbotron" *showIfAuth="false">
-	<h1 class="display-4">Welcome to GitRecipes</h1>
-	<p class="lead">This is the landing page.</p>
+    <div class="container">
+        <h1 class="display-4">Welcome to GitRecipes</h1>
+        <p class="lead">This is the landing page.</p>
+    </div>
 </div>
 
-<div class="jumbotron" *showIfAuth="true">
-	<h1 class="display-4">Welcome, {{ currentUser.username }}</h1>
-    <p class="lead">What's cooking?</p>
-    <a class="btn btn-primary" routerLink="/recipes/new">New recipe</a>
-    <a class="btn btn-secondary" routerLink="/profile">Profile</a>
+<div class="jumbotron jumbotron-fluid" *showIfAuth="true">
+    <div class="container">
+        <div class="landing-badge">
+            <h1 class="display-4">Welcome, {{ currentUser.username }}</h1>
+            <p class="lead">What's cooking?</p>
+            <a class="btn btn-primary" routerLink="/recipes/new">New recipe</a>
+            <a class="btn btn-secondary" routerLink="/profile">Profile</a>
+        </div>
+    </div>
 </div>

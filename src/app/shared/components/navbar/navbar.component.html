@@ -4,8 +4,12 @@
         <a class="navbar-brand" routerLink="/">GitRecipes</a>
     </div>
 
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+    <div class="input-group input-group-sm">
+        <input class="form-control" id="nav-search" type="text" placeholder="Search">
+        <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
 
 
 
@@ -18,7 +22,7 @@
         </button>
 
         <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
-            <a class="btn btn-success" routerLink="/recipes/new">+New Recipe</a>
+
 
             <ul *showIfAuth="false" class="navbar-nav mr-auto pull-xs-right">
                 <li class="nav-item">

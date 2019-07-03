@@ -64,12 +64,17 @@
         <div formArrayName="notes">
             <div class="note-items input-group" *ngFor="let note of recipeNotes.controls; let noteIndex=index"
                 [formGroupName]="noteIndex">
-                <textarea class="form-control" formControlName="note_text"
-                    placeholder="Enter any notes here..."></textarea>
+                <input type="text" class="form-control" formControlName="note_text"
+                    placeholder="Enter any note here...">
+                <div class="input-group-append">
+                    <button class="btn btn-danger" type="button" (click)="deleteRecipeNote(noteIndex)"><i
+                            class="fas fa-trash-alt"></i></button>
+                </div>
             </div>
+            <button class="btn btn-primary" type="button" (click)="addRecipeNote()"><i class="fas fa-plus"></i></button>
         </div>
     </div>
-
+    <hr>
     <!-- Submit button -->
     <button class="btn btn-primary" type="submit">Create Recipe</button>
 </form>
