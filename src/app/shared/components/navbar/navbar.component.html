@@ -4,17 +4,19 @@
         <a class="navbar-brand" routerLink="/">GitRecipes</a>
     </div>
 
-    <div class="input-group input-group-sm">
+    
+    <div class="input-group input-group-sm mr-2">
         <input class="form-control" id="nav-search" type="text" placeholder="Search">
         <div class="input-group-append">
             <button class="btn btn-secondary" type="submit"><i class="fas fa-search"></i></button>
         </div>
     </div>
-    
+    <a class="btn btn-secondary btn-sm mr-2" routerLink="/explore">Explore</a>
     <!-- <i class="fas fa-plus"></i>  -->
     
     
-    <a *showIfAuth="true" class="btn btn-primary btn-sm" routerLink="/recipes/new">New recipe</a>
+    <a *showIfAuth="true" class="btn btn-primary btn-sm mr-2" routerLink="/recipes/new">New recipe</a>
+    
     <div class="nav-sub-user">
 
         <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
