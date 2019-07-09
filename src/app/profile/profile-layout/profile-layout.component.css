@@ -8,7 +8,7 @@
 
 .wrapper {
     display: grid;
-    /* grid-gap: 10px; */
+    grid-gap: 10px;
     grid-template-areas:
         "story"
         "content";

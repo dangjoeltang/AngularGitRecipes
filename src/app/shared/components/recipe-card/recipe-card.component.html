@@ -10,9 +10,7 @@
         
         <a [routerLink]="['/recipes', recipeId]" class="btn btn-primary">View Recipe</a>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-            <span *ngFor="let tag of recipeTags" class="badge badge-secondary badge-tags">{{ tag }}</span>
-        </li>
-    </ul>
+    <div class="card-footer">
+        <span *ngFor="let tag of recipeTags" class="badge badge-secondary badge-tags">{{ tag }}</span>
+    </div>
 </div>

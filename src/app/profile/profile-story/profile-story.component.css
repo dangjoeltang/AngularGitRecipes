@@ -3,6 +3,9 @@
     /* background: #313638; */
     /* text-align: center; */
     margin: 1rem auto;
+    background: #E4DFDA;
+    border-radius: 10px;
+    box-shadow: 8px 6px 5px 0px rgba(0,0,0,0.5);
 }
 
 .story-item {
