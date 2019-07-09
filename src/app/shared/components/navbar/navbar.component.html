@@ -10,9 +10,11 @@
             <button class="btn btn-secondary" type="submit"><i class="fas fa-search"></i></button>
         </div>
     </div>
-
-
-
+    
+    <!-- <i class="fas fa-plus"></i>  -->
+    
+    
+    <a *showIfAuth="true" class="btn btn-primary btn-sm" routerLink="/recipes/new">New recipe</a>
     <div class="nav-sub-user">
 
         <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
