@@ -5,6 +5,7 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 import { RecipeModule } from './recipe/recipe.module';
+import { ExploreModule } from './explore/explore.module';
 
 const routes: Routes = [
 	{
@@ -22,6 +23,10 @@ const routes: Routes = [
 	{
 		path: 'recipes',
 		loadChildren: () => RecipeModule,
+	},
+	{
+		path: 'explore',
+		loadChildren: () => ExploreModule,
 	},
 	{
 		path: '**',
