@@ -39,8 +39,10 @@
         </li>
     </ol>
     <p>
-        Created: {{ recipe.created_time }}
-        <br>
-        Modified: {{ recipe.modified_time }}
+        <small>
+            Last modified: {{ recipe.modified_time | date: 'medium' }}
+            <br>
+            Created: {{ recipe.created_time | date: 'medium' }}
+        </small>
     </p>
 </div>
