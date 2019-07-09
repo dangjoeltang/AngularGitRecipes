@@ -3,6 +3,7 @@
     background: url(/assets/images/avocado-toast.jpg);
     background-repeat: no-repeat;
     height: 100vh;
+    margin: 0;
     background-size: 800px;
     background-position-x: 40% 0%;
     /* background-position: center;  */
@@ -18,26 +19,19 @@
 }
 
 .landing-island a {
-    margin: 0.5rem;
     width: 8rem;
+    margin-top: 8px;
 }
 
 @media (min-width: 800px) {
     .jumbotron {
-        background: url(/assets/images/avocado-toast.jpg);
-        background-repeat: no-repeat;
-        height: 100vh;
         background-size: 1200px;
         /* background-position: center;  */
     }
-    
 }
 
 @media (min-width: 1200px) {
     .jumbotron {
-        background: url(/assets/images/avocado-toast.jpg);
-        background-repeat: no-repeat;
-        height: 100vh;
         background-size: 2000px;
         /* background-position: center;  */
     }
