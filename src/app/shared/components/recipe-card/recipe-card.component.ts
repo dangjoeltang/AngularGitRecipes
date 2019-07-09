@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class RecipeCardComponent implements OnInit {
 	@Input() recipeTitle: string;
 	@Input() recipeId: number;
+	@Input() recipeTags: string[];
+	@Input() recipeDescription: string;
 
 	constructor() {}
 

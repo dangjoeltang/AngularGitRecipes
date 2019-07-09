@@ -5,7 +5,9 @@
         <div class="card-wrapper" *ngFor="let recipe of recipeList">
             <app-recipe-card 
                 [recipeTitle]="recipe.title"
-                [recipeId]="recipe.pk">
+                [recipeId]="recipe.pk"
+                [recipeTags]="recipe.tags"
+                >
             </app-recipe-card>
         </div>
     </div>
