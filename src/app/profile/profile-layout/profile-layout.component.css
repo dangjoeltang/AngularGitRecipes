@@ -7,6 +7,7 @@
 }
 
 .wrapper {
+    margin: 1rem;
     display: grid;
     grid-gap: 10px;
     grid-template-areas:
