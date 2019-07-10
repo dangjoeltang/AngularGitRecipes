@@ -1,22 +1,16 @@
 <form [formGroup]="recipeForm" (ngSubmit)="submitRecipe()">
-    <h4>Title</h4>
-    <input class="form-control" formControlName="title" placeholder="Recipe title">
 
-    <h4>
-        Author
-    </h4>
-    <input class="form-control" readonly formControlName="author">
+    <input class="form-control form-control-lg my-3" formControlName="title" placeholder="Title">
 
+    <input class="form-control" readonly hidden formControlName="author">
 
     <!-- Add Tags -->
-    <h5>
-        Tags
-    </h5>
-    <tag-input formControlName="tags" [modelAsStrings]="true" theme='bootstrap'>
+    <tag-input formControlName="tags" [modelAsStrings]="true" theme="bootstrap">
     </tag-input>
 
     <!-- Add Ingredients -->
-    <h4>
+    <hr>
+    <h4 class="mt-3">
         Ingredients
     </h4>
 
@@ -25,21 +19,21 @@
             <div class="ing-items input-group" *ngFor="let ing of recipeIngredients.controls; let ingIndex=index"
                 [formGroupName]="ingIndex">
                 <input formControlName="ingredient" class="form-control" placeholder="Ingredient">
-                <input formControlName="quantity_amount" class="form-control col-2" placeholder="Quantity">
-                <input formControlName="quantity_unit" class="form-control col-2" placeholder="Unit">
+                <input formControlName="quantity_amount" class="form-control col-3" placeholder="Quantity">
+                <input formControlName="quantity_unit" class="form-control col-3" placeholder="Unit">
                 <div class="input-group-append">
                     <button class="btn btn-danger" type="button" (click)="deleteRecipeIngredient(ingIndex)"><i
                             class="fas fa-trash-alt"></i></button>
                 </div>
             </div>
 
-            <button class="btn btn-primary" type="button" (click)="addRecipeIngredient()"><i
-                    class="fas fa-plus"></i></button>
+            <button class="btn btn-primary btn-block" type="button" (click)="addRecipeIngredient()">Add ingredient</button>
         </div>
     </div>
 
     <!-- Add Steps -->
-    <h4>
+    <hr>
+    <h4 class="mt-3">
         Steps
     </h4>
     <div class="recipe-subcontainer">
@@ -53,12 +47,13 @@
                             class="fas fa-trash-alt"></i></button>
                 </div>
             </div>
-            <button class="btn btn-primary" type="button" (click)="addRecipeStep()"><i class="fas fa-plus"></i></button>
+            <button class="btn btn-primary btn-block" type="button" (click)="addRecipeStep()">Add step</button>
         </div>
     </div>
 
     <!-- Add notes -->
-    <h4>Notes</h4>
+    <hr>
+    <h4 class="mt-3">Notes</h4>
     <div class="recipe-subcontainer">
 
         <div formArrayName="notes">
@@ -71,9 +66,17 @@
                             class="fas fa-trash-alt"></i></button>
                 </div>
             </div>
-            <button class="btn btn-primary" type="button" (click)="addRecipeNote()"><i class="fas fa-plus"></i></button>
+            <button class="btn btn-primary btn-block" type="button" (click)="addRecipeNote()">Add note</button>
         </div>
     </div>
+
+    <!-- Add Images -->
+    <hr>
+    <h4 class="mt-3">
+        Images
+    </h4>
+
+
     <hr>
     <!-- Submit button -->
     <button class="btn btn-primary" type="submit">Create Recipe</button>

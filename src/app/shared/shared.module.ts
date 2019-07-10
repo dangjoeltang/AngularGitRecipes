@@ -49,7 +49,6 @@ import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
 		NgbModule,
 		NgxSpinnerModule,
 		TagInputModule,
-		// BrowserAnimationsModule,
 
 		// Components
 		NavbarComponent,
@@ -59,7 +58,6 @@ import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
 		AlertBannerComponent,
 		RecipeCardComponent,
 		RecipeFormComponent,
-		// TagInputComponent,
 
 		// Directives
 		ShowIfAuthDirective,
