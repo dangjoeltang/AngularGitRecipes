@@ -1,13 +1,9 @@
-<div class="wrapper container container-content">
+<div class="wrapper container-content">
     <h1 class="display-4">My Recipes</h1>
     <div class="recipe-thumb-container">
 
         <div class="card-wrapper" *ngFor="let recipe of recipeList">
-            <app-recipe-card 
-                [recipeTitle]="recipe.title"
-                [recipeId]="recipe.pk"
-                [recipeTags]="recipe.tags"
-                >
+            <app-recipe-card [recipeTitle]="recipe.title" [recipeId]="recipe.pk" [recipeTags]="recipe.tags">
             </app-recipe-card>
         </div>
     </div>

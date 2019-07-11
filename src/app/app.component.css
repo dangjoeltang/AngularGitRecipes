@@ -1,5 +1,5 @@
 #body-layout {
-    /* min-height: 100vh; */
+    height: 100vh;
     position: relative;
 }
 
@@ -7,6 +7,7 @@
     z-index: 10;
     position: relative;
     width: 100%;
+    
     box-shadow: 0 4px 5px 0px rgba(0,0,0,0.5);
     display: flex;
     justify-content: center;
@@ -16,6 +17,7 @@
 .header {
     max-width: 1260px;
     width: 100%;
+    
 }
 
 .container-body {

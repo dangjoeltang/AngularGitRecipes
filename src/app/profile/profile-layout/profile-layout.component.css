@@ -9,6 +9,7 @@
 .wrapper {
     margin: 1rem;
     display: grid;
+    height: calc(100vh - 10rem);
     grid-gap: 10px;
     grid-template-areas:
         "story"
@@ -17,7 +18,7 @@
 
 @media (min-width: 575px) {
     .wrapper {
-        grid-template-columns: 1fr 4fr;
+        grid-template-columns: 1fr 5fr;
         grid-template-areas: "story content"
     }
 }

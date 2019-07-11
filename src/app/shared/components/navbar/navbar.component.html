@@ -4,7 +4,7 @@
         <a class="navbar-brand" routerLink="/">GitRecipes</a>
     </div>
 
-    
+
     <div class="input-group input-group-sm mr-2">
         <input class="form-control" id="nav-search" type="text" placeholder="Search">
         <div class="input-group-append">
@@ -13,10 +13,10 @@
     </div>
     <a class="btn btn-secondary btn-sm mr-2" routerLink="/explore">Explore</a>
     <!-- <i class="fas fa-plus"></i>  -->
-    
-    
+
+
     <a *showIfAuth="true" class="btn btn-primary btn-sm mr-2" routerLink="/recipes/new">New recipe</a>
-    
+
     <div class="nav-sub-user">
 
         <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"
@@ -42,6 +42,12 @@
                     {{ currentUser.username }}
                 </li>
 
+                <li class="nav-item">
+                    <!-- <a class="nav-link" href="#">Profile</a> -->
+                    <a class="nav-link" routerLink="/">
+                        Home
+                    </a>
+                </li>
                 <li class="nav-item">
                     <!-- <a class="nav-link" href="#">Profile</a> -->
                     <a class="nav-link" routerLink="/profile">
