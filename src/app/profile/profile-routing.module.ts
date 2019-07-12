@@ -6,6 +6,12 @@ const routes: Routes = [
 	{
 		path: '',
 		component: ProfileLayoutComponent,
+		// children: [
+		//     {
+		//         path: '',
+		//         component: RecipeTilesComponent
+		//     }
+		// ]
 	},
 ];
 

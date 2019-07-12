@@ -1,48 +1,66 @@
-<div class="container">
-    Recipe ID: {{ recipe.pk }}
+<div class="main">
 
-    <a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-link">Edit Recipe</a>
-    <h3>
-        Title: {{ recipe.title }}
-    </h3>
-    <h5>
-        Author: {{ recipe.author }}
-    </h5>
-    
-    <h6>Tags:</h6>
-    <span *ngFor="let t of recipe.tags" class="btn btn-link">{{ t }} </span>
-    
-    <h5>
-        Ingredients:
-    </h5>
-    <ul>
-        <li *ngFor="let i of recipe.ingredients">
-            {{ i.ingredient }} - {{ i.quantity_amount }} {{ i.quantity_unit }}
-        </li>
-    </ul>
-    
-    <h5>
-        Directions:
-    </h5>
-    <ol>
-        <li *ngFor="let i of recipe.steps">
-            {{ i.step_text }}
-        </li>
-    </ol>
-    
-    <h5>
-        Notes:
-    </h5>
-    <ol>
-        <li *ngFor="let n of recipe.notes">
-            {{ n.note_text}}
-        </li>
-    </ol>
-    <p>
-        <small>
-            Last modified: {{ recipe.modified_time | date: 'medium' }}
-            <br>
-            Created: {{ recipe.created_time | date: 'medium' }}
-        </small>
-    </p>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <!-- <img src="https://via.placeholder.com/300x300" class="rounded" alt="..."> -->
+            <h3 class="display-4">
+                {{ recipe.title }}
+            </h3>
+            <span *ngFor="let t of recipe.tags" class="badge badge-info badge-tags mr-2">{{ t }} </span>
+            <p class="lead my-0">Author ID: {{ recipe.author }}</p>
+
+
+            <hr class="my-3">
+            <div>
+                <!-- Recipe ID: {{ recipe.pk }} -->
+                <!-- <a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-info">Edit Recipe</a> -->
+            </div>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit accumsan
+                augue, ac ultricies lorem vehicula id. Quisque placerat quam velit, non pharetra orci sodales euismod.
+                Aenean augue nisl, maximus eget erat sit amet, scelerisque porta elit. Mauris faucibus tortor non ligula
+                finibus, vitae malesuada orci eleifend.</p>
+            <a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-primary btn-sm mr-2" id="edit-recipe">Edit
+                Recipe</a>
+            <a href="#" class="btn btn-warning btn-sm">Clone Recipe</a>
+
+        </div>
+    </div>
+
+    <div class="container recipe-content">
+
+        <h5>
+            Ingredients:
+        </h5>
+        <ul>
+            <li *ngFor="let i of recipe.ingredients">
+                {{ i.ingredient }} - {{ i.quantity_amount }} {{ i.quantity_unit }}
+            </li>
+        </ul>
+
+        <h5>
+            Directions:
+        </h5>
+        <ol>
+            <li *ngFor="let i of recipe.steps">
+                {{ i.step_text }}
+            </li>
+        </ol>
+
+        <h5>
+            Notes:
+        </h5>
+        <ol>
+            <li *ngFor="let n of recipe.notes">
+                {{ n.note_text}}
+            </li>
+        </ol>
+        <p>
+            <small>
+                Last modified: {{ recipe.modified_time | date: 'medium' }}
+                <br>
+                Created: {{ recipe.created_time | date: 'medium' }}
+            </small>
+        </p>
+    </div>
 </div>

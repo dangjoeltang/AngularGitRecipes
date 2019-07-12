@@ -27,7 +27,8 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary btn-block" type="button" (click)="addRecipeIngredient()">Add ingredient</button>
+            <button class="btn btn-outline-primary btn-block" type="button" (click)="addRecipeIngredient()">Add
+                ingredient</button>
         </div>
     </div>
 
@@ -47,7 +48,7 @@
                             class="fas fa-trash-alt"></i></button>
                 </div>
             </div>
-            <button class="btn btn-primary btn-block" type="button" (click)="addRecipeStep()">Add step</button>
+            <button class="btn btn-outline-primary btn-block" type="button" (click)="addRecipeStep()">Add step</button>
         </div>
     </div>
 
@@ -66,7 +67,7 @@
                             class="fas fa-trash-alt"></i></button>
                 </div>
             </div>
-            <button class="btn btn-primary btn-block" type="button" (click)="addRecipeNote()">Add note</button>
+            <button class="btn btn-outline-primary btn-block" type="button" (click)="addRecipeNote()">Add note</button>
         </div>
     </div>
 
@@ -79,7 +80,7 @@
 
     <hr>
     <!-- Submit button -->
-    <button class="btn btn-primary" type="submit">Create Recipe</button>
+    <button class="btn btn-primary btn-block btn-lg" type="submit">Submit Recipe</button>
 </form>
 
 {{ this.recipeForm.value | json }}
