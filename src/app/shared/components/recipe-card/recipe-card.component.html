@@ -8,7 +8,7 @@
                 <h5 class="card-title">
                     {{ recipeTitle }}
                 </h5>
-                <i class="far fa-edit fa-lg" id="edit-icon"></i>
+                <a [routerLink]="['/recipes', recipeId, 'edit']"><i class="far fa-edit fa-lg" id="edit-icon"></i></a>
             </div>
             <p class="card-text">
                 Recipe Description
