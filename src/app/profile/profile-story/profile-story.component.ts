@@ -15,7 +15,5 @@ export class ProfileStoryComponent implements OnInit {
 	// Using placeholder data for now
 	constructor(private profileService: ProfileService) {}
 
-	ngOnInit() {
-		console.log(this.profile);
-	}
+	ngOnInit() {}
 }

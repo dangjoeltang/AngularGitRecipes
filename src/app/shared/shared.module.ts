@@ -18,6 +18,7 @@ import { AlertBannerComponent } from './components/alert-banner/alert-banner.com
 import { ShowIfAuthDirective } from './directives/show-if-auth.directive';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
 	declarations: [
@@ -30,6 +31,7 @@ import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
 		// Directives
 		ShowIfAuthDirective,
 		RecipeFormComponent,
+		ConfirmDialogComponent,
 	],
 	imports: [
 		CommonModule,

@@ -17,4 +17,8 @@ export class RecipeService {
 	updateRecipe(recipe_pk, recipe_data): Observable<any> {
 		return this.apiService.put(`recipes/${recipe_pk}/`, recipe_data);
 	}
+
+	deleteRecipe(recipe_pk): Observable<any> {
+		return this.apiService.delete(`recipes/${recipe_pk}/`);
+	}
 }
