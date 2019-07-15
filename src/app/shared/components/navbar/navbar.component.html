@@ -50,7 +50,7 @@
                 </li>
                 <li class="nav-item">
                     <!-- <a class="nav-link" href="#">Profile</a> -->
-                    <a class="nav-link" routerLink="/profile/2">
+                    <a class="nav-link" [routerLink]="['/profile', currentUser.profile_id]">
                         Profile
                     </a>
                 </li>
