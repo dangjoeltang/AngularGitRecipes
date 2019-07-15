@@ -5,11 +5,12 @@
         </div>
     </div>
 
-    <!-- <ngx-spinner bdOpacity=0.5 bdColor="#333" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="false">
-        <p style="color: white"> Loading... </p>
-    </ngx-spinner> -->
 
     <div class="container-body">
+        <ngx-spinner bdOpacity=0.5 bdColor="#333" size="medium" color="#fff" type="square-jelly-box" [fullScreen]=true>
+            <p style="color: white"> Loading... </p>
+        </ngx-spinner>
+
         <app-alert-banner></app-alert-banner>
         <router-outlet></router-outlet>
     </div>

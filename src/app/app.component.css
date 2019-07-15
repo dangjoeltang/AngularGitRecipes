@@ -8,7 +8,7 @@
     position: relative;
     width: 100%;
     
-    box-shadow: 0 4px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 3px rgba(0,0,0,.2);
     display: flex;
     justify-content: center;
     /* background: #BDD4E7; */
@@ -26,7 +26,8 @@
     /* max-width: 1260px; */
     /* padding-bottom: 4rem; */
     /* margin: 1rem auto 0; */
-    background: #fff;
+    background: #FEFDFC;
+    /* height: calc(100vh - 10rem); */
 }
 
 .container-foot {

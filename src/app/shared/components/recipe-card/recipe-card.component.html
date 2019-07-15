@@ -1,16 +1,25 @@
-<div class="card">
-    <img src="https://via.placeholder.com/250x150" alt="Recipe Card Image" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title">
-            {{ recipeTitle }}
-        </h5>
-        <p class="card-text">
-            Recipe Description
-        </p>
-        
-        <a [routerLink]="['/recipes', recipeId]" class="btn btn-primary">View Recipe</a>
-    </div>
-    <div class="card-footer">
-        <span *ngFor="let tag of recipeTags" class="badge badge-secondary badge-tags">{{ tag }}</span>
+<div class="wrapper">
+    <div class="card">
+        <img src="https://via.placeholder.com/250x150" alt="Recipe Card Image" class="card-img-top">
+
+
+        <div class="card-body">
+            <div class="card-body-head">
+                <h5 class="card-title">
+                    {{ recipeTitle }}
+                </h5>
+                <i class="far fa-edit fa-lg" id="edit-icon"></i>
+            </div>
+            <p class="card-text">
+                Recipe Description
+            </p>
+
+            <a [routerLink]="['/recipes', recipeId]" class="btn btn-primary">View Recipe</a>
+        </div>
+
+
+        <div class="card-footer">
+            <span *ngFor="let tag of recipeTags" class="badge badge-secondary mr-1">{{ tag }}</span>
+        </div>
     </div>
 </div>

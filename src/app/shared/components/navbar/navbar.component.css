@@ -14,6 +14,16 @@
     font-style: italic;
 }
 
+.btn-new-recipe {
+    background: #ED6A5A;
+    border: 1px solid #ED6A5A;
+    color: #FFFFFF;
+}
+
+.btn-explore {
+    background: #272838;
+}
+
 #brand-logo {
     position: absolute;
     width: 60px;
