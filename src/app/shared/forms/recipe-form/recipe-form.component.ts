@@ -1,5 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
+import {
+	FormGroup,
+	FormBuilder,
+	FormArray,
+	FormControl,
+	Validators,
+} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 
@@ -30,6 +36,7 @@ export class RecipeFormComponent implements OnInit {
 	readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
 	removable: boolean = true;
 	user = this.userService.currentUserValue;
+	submitted = false;
 
 	tags = [];
 
@@ -120,9 +127,9 @@ export class RecipeFormComponent implements OnInit {
 	addRecipeIngredient() {
 		this.recipeIngredients.push(
 			this.fb.group({
-				ingredient: [],
-				quantity_amount: [],
-				quantity_unit: [],
+				ingredient: ['', Validators.required],
+				quantity_amount: ['', Validators.required],
+				quantity_unit: ['', Validators.required],
 			})
 		);
 	}
@@ -130,8 +137,11 @@ export class RecipeFormComponent implements OnInit {
 	addRecipeStep() {
 		this.recipeSteps.push(
 			this.fb.group({
-				step_number: [this.form.value.steps.length + 1],
-				step_text: [],
+				step_number: [
+					this.form.value.steps.length + 1,
+					Validators.required,
+				],
+				step_text: ['', Validators.required],
 			})
 		);
 	}
@@ -170,6 +180,15 @@ export class RecipeFormComponent implements OnInit {
 	// }
 
 	submitRecipe() {
+		this.submitted = true;
+
+		if (this.recipeForm.invalid) {
+			this.alertService.error(
+				'Please double check to make sure no fields are empty.'
+			);
+			return;
+		}
+
 		this.route.params.subscribe(res => {
 			if (res.recipe_id) {
 				console.log('Updating recipe');
@@ -181,23 +200,33 @@ export class RecipeFormComponent implements OnInit {
 				console.log(recipe);
 				this.recipeService
 					.updateRecipe(res.recipe_id, recipe)
-					.subscribe(res => {
-						this.alertService.success(
-							`${res.title} updated!`,
-							true
-						);
-						this.router.navigateByUrl(`/recipes/${res.pk}`);
-					});
+					.subscribe(
+						res => {
+							this.alertService.success(
+								`${res.title} updated!`,
+								true
+							);
+							this.router.navigateByUrl(`/recipes/${res.pk}`);
+						},
+						err => {
+							this.alertService.error(err, true);
+						}
+					);
 			} else {
 				console.log('Creating new recipe');
 				const recipe: RecipeDetail = this.recipeForm.value;
-				this.recipeService.createNewRecipe(recipe).subscribe(res => {
-					this.alertService.success(
-						`${res.title} created successfully!`,
-						true
-					);
-					this.router.navigateByUrl(`/recipes/${res.pk}`);
-				});
+				this.recipeService.createNewRecipe(recipe).subscribe(
+					res => {
+						this.alertService.success(
+							`${res.title} created successfully!`,
+							true
+						);
+						this.router.navigateByUrl(`/recipes/${res.pk}`);
+					},
+					err => {
+						this.alertService.error(err, true);
+					}
+				);
 			}
 		});
 	}
