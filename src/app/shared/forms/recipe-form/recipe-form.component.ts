@@ -26,6 +26,7 @@ export class RecipeFormComponent implements OnInit {
 	) {}
 
 	recipeForm: FormGroup;
+	form;
 	readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
 	removable: boolean = true;
 	user = this.userService.currentUserValue;
@@ -38,6 +39,8 @@ export class RecipeFormComponent implements OnInit {
 			// If recipe is passed as input, prefill the form
 			this.patchData(this.recipe);
 		}
+		// const directions = this.recipeForm.get('steps');
+		// directions.valueChanges.subscribe(val => {})
 	}
 
 	patchData(recipe: RecipeDetail) {
@@ -77,7 +80,7 @@ export class RecipeFormComponent implements OnInit {
 	}
 
 	createRecipeForm() {
-		const form = this.fb.group({
+		this.form = this.fb.group({
 			title: [],
 			author: this.user.profile_id,
 			tags: [],
@@ -101,7 +104,7 @@ export class RecipeFormComponent implements OnInit {
 			]),
 		});
 
-		return form;
+		return this.form;
 	}
 
 	get recipeIngredients() {
@@ -127,7 +130,7 @@ export class RecipeFormComponent implements OnInit {
 	addRecipeStep() {
 		this.recipeSteps.push(
 			this.fb.group({
-				step_number: [],
+				step_number: [this.form.value.steps.length + 1],
 				step_text: [],
 			})
 		);
@@ -147,6 +150,9 @@ export class RecipeFormComponent implements OnInit {
 
 	deleteRecipeStep(index) {
 		this.recipeSteps.removeAt(index);
+		this.form.value.steps.forEach((step, i) => {
+			step.step_number = i + 1;
+		});
 	}
 
 	deleteRecipeNote(index) {

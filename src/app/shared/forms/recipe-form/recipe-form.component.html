@@ -41,7 +41,7 @@
         <div formArrayName="steps">
             <div class="step-items input-group row" *ngFor="let step of recipeSteps.controls; let stepIndex=index"
                 [formGroupName]="stepIndex">
-                <input type="number" class="form-control col-2 col-sm-1" formControlName="step_number" placeholder="#">
+                <input type="number" class="form-control col-2 col-sm-1" formControlName="step_number" placeholder="#" >
                 <input type="text" formControlName="step_text" class="form-control" placeholder="Step directions...">
                 <div class="input-group-append">
                     <button class="btn btn-danger" type="button" (click)="deleteRecipeStep(stepIndex)"><i
