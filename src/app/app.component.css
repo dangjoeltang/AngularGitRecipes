@@ -1,6 +1,6 @@
 #body-layout {
     height: 100vh;
-    position: relative;
+    /* position: relative; */
 }
 
 .container-head {
@@ -45,3 +45,7 @@
     max-width: 1260px;
     width: 100%;
 }
+
+/* ngx-spinner {
+    position: fixed;
+} */

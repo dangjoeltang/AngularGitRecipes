@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileLayoutComponent } from './profile-layout/profile-layout.component';
+import { ProfileResolver } from './profile-resolver.service';
 
 const routes: Routes = [
 	{
-		path: '',
+		path: ':profile_id',
 		component: ProfileLayoutComponent,
-		// children: [
-		//     {
-		//         path: '',
-		//         component: RecipeTilesComponent
-		//     }
-		// ]
+		resolve: {
+			profile: ProfileResolver,
+		},
 	},
 ];
 

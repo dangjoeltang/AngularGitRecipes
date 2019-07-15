@@ -5,12 +5,18 @@
         </div>
         
         <div class="card-body">
-            <h4 class="card-title">
-                Joel Tang
-            </h4>
-            <h6 class="card-subtitle text-muted mb-2">
-                Associate
-            </h6>
+            <div class="card-body-header">
+                <div class="card-name">
+                    <h4 class="card-title">
+                        {{ profile.first_name }} {{ profile.last_name }}
+                    </h4>
+                    <h6 class="card-subtitle text-muted mb-2">
+                        @{{ profile.user_account }}
+                    </h6>
+                </div>
+                <!-- <p><small>edit</small></p> -->
+                <a routerLink=""><i class="far fa-edit fa-lg" id="edit-icon"></i></a>
+            </div>
             <hr>
             <p>
                 Some quick example text to build on the card title and make up the bulk of the card's content.
@@ -18,12 +24,12 @@
         </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    Recipe count: {{ currentUser.recipe_count }}
+                    Recipe count: <span id="recipe-count">{{ profile.recipe_count }}</span>
                 </li>
                 <li class="list-group-item">
                     
-                    Date Joined: {{ currentUser.date_created}}
+                    <!-- Date Joined: {{ currentUser.date_created}} -->
                 </li>
             </ul>
-
+            
 </div>

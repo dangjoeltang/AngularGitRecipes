@@ -17,4 +17,8 @@ export class ProfileService {
 	getUserRecipes(profileId): Observable<any> {
 		return this.apiService.get(`recipes/?profile=${profileId}`);
 	}
+
+	getUserProfile(profileId): Observable<any> {
+		return this.apiService.get(`profiles/${profileId}`);
+	}
 }

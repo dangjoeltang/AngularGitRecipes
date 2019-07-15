@@ -33,3 +33,20 @@
     /* margin: 25px; */
 }
 
+.card-body-header {
+    display: flex;
+    align-items: baseline;
+}
+
+.card-name {
+    flex: 1;
+}
+
+#edit-icon {
+    color: #ED6A5A;
+}
+
+#recipe-count {
+    color: #ED6A5A;
+    font-weight: bold;
+}
