@@ -2,6 +2,8 @@ export interface RecipeDetail {
 	pk: number;
 	title: string;
 	author: number;
+	privacy: string;
+	photos: Photo[];
 	ingredients: Ingredient[];
 	tags: string[];
 	steps: Step[];
@@ -23,4 +25,9 @@ export interface Step {
 
 export interface Note {
 	note_text: string;
+}
+
+export interface Photo {
+	photo_text: string;
+	photo_file: any;
 }

@@ -39,6 +39,7 @@ export class RecipeFormComponent implements OnInit {
 	submitted = false;
 
 	tags = [];
+	privacies = ['public', 'private', 'secret'];
 
 	ngOnInit() {
 		this.recipeForm = this.createRecipeForm();
@@ -54,6 +55,7 @@ export class RecipeFormComponent implements OnInit {
 		this.recipeForm.patchValue({ title: recipe.title });
 		this.recipeForm.patchValue({ author: recipe.author });
 		this.recipeForm.patchValue({ tags: recipe.tags });
+		this.recipeForm.patchValue({ privacy: recipe.privacy });
 
 		const faIngredients = <FormArray>this.recipeForm.controls.ingredients;
 		recipe.ingredients.forEach(ing => {
@@ -91,6 +93,13 @@ export class RecipeFormComponent implements OnInit {
 			title: [],
 			author: this.user.profile_id,
 			tags: [],
+			privacy: [],
+			recipe_photos: this.fb.array([
+				// this.fb.group({
+				// 	photo_text: [],
+				// 	photo_file: [],
+				// }),
+			]),
 			ingredients: this.fb.array([
 				// this.fb.group({
 				// 	ingredient: [],
@@ -123,6 +132,9 @@ export class RecipeFormComponent implements OnInit {
 	get recipeNotes() {
 		return this.recipeForm.get('notes') as FormArray;
 	}
+	get recipePhotos() {
+		return this.recipeForm.get('recipe_photos') as FormArray;
+	}
 
 	addRecipeIngredient() {
 		this.recipeIngredients.push(
@@ -154,6 +166,15 @@ export class RecipeFormComponent implements OnInit {
 		);
 	}
 
+	addRecipePhoto() {
+		this.recipePhotos.push(
+			this.fb.group({
+				photo_text: [],
+				photo_file: [],
+			})
+		);
+	}
+
 	deleteRecipeIngredient(index) {
 		this.recipeIngredients.removeAt(index);
 	}
@@ -167,6 +188,10 @@ export class RecipeFormComponent implements OnInit {
 
 	deleteRecipeNote(index) {
 		this.recipeNotes.removeAt(index);
+	}
+
+	deleteRecipePhoto(index) {
+		this.recipePhotos.removeAt(index);
 	}
 
 	// onAdding(event) {
@@ -189,6 +214,11 @@ export class RecipeFormComponent implements OnInit {
 			return;
 		}
 
+		// this.recipeForm.value.tags.forEach(tag => {
+		// 	tag = tag.toLowerCase();
+		// 	console.log(tag);
+		// });
+
 		this.route.params.subscribe(res => {
 			if (res.recipe_id) {
 				console.log('Updating recipe');
@@ -210,10 +240,12 @@ export class RecipeFormComponent implements OnInit {
 						},
 						err => {
 							this.alertService.error(err, true);
+							console.log(err);
 						}
 					);
 			} else {
 				console.log('Creating new recipe');
+				console.log(this.recipeForm.value);
 				const recipe: RecipeDetail = this.recipeForm.value;
 				this.recipeService.createNewRecipe(recipe).subscribe(
 					res => {
@@ -225,6 +257,7 @@ export class RecipeFormComponent implements OnInit {
 					},
 					err => {
 						this.alertService.error(err, true);
+						console.log(err);
 					}
 				);
 			}

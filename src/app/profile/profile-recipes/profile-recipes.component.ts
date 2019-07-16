@@ -18,6 +18,8 @@ export class ProfileRecipesComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.profile.getAllRecipes().subscribe(res => (this.recipeList = res));
+		this.profile
+			.getUserRecipes(this.profileId)
+			.subscribe(res => (this.recipeList = res));
 	}
 }

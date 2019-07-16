@@ -8,11 +8,17 @@
     <tag-input formControlName="tags" [modelAsStrings]="true" theme="bootstrap">
     </tag-input>
 
+
+    <select id="privacy" formControlName="privacy">
+        <option *ngFor="let p of privacies" [ngValue]="p">{{ p }}</option>
+    </select>
+
     <!-- Add Ingredients -->
     <hr>
     <h4 class="mt-3">
         Ingredients
     </h4>
+
 
     <div class="recipe-subcontainer">
         <div formArrayName="ingredients">

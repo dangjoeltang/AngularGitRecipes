@@ -1,35 +1,36 @@
 <div class="container-story card">
 
-        <div class="profile-thumbnail story-item">
-            <!-- <img src="assets/images/profile-photo-placeholder.jpg" alt="Profile Pic" #profilepic> -->
-        </div>
-        
-        <div class="card-body">
-            <div class="card-body-header">
-                <div class="card-name">
-                    <h4 class="card-title">
-                        {{ profile.first_name }} {{ profile.last_name }}
-                    </h4>
-                    <h6 class="card-subtitle text-muted mb-2">
-                        @{{ profile.user_account }}
-                    </h6>
-                </div>
-                <!-- <p><small>edit</small></p> -->
-                <a routerLink=""><i class="far fa-edit fa-lg" id="edit-icon"></i></a>
+    <div class="profile-thumbnail story-item">
+        <!-- <img src="assets/images/profile-photo-placeholder.jpg" alt="Profile Pic" #profilepic> -->
+    </div>
+
+    <div class="card-body">
+        <div class="card-body-header">
+            <div class="card-name">
+                <h4 class="card-title">
+                    {{ profile.first_name }} {{ profile.last_name }}
+                </h4>
+                <h6 class="card-subtitle text-muted mb-2">
+                    @{{ profile.user_account }}
+                </h6>
             </div>
-            <hr>
-            <p>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
-            </p>
+            <!-- <p><small>edit</small></p> -->
+            <a routerLink=""><i class="far fa-edit fa-lg" id="edit-icon"></i></a>
         </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    Recipe count: <span id="recipe-count">{{ profile.recipe_count }}</span>
-                </li>
-                <li class="list-group-item">
-                    
-                    <!-- Date Joined: {{ currentUser.date_created}} -->
-                </li>
-            </ul>
-            
+        <hr>
+        <p>
+            {{ profile.short_bio }}
+        </p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            Recipe count: <span id="recipe-count">{{ profile.recipe_count }}</span>
+        </li>
+        <li class="list-group-item">
+            <small>
+                Date Joined: {{ profile.created_time | date: 'medium'}}
+            </small>
+        </li>
+    </ul>
+
 </div>
