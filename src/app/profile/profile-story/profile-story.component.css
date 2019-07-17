@@ -5,32 +5,8 @@
     /* margin: 1rem auto; */
     /* background: #E4DFDA; */
     /* border-radius: 10px; */
-    box-shadow: 8px 6px 5px 0px rgba(0,0,0,0.5);
-}
-
-.card {
-    /* border-top: 3px solid #ED6A5A; */
     box-shadow: 0 2px 3px rgba(0,0,0,.2);
-
 }
-
-.story-item {
-    display: inline-block;
-    margin: 1rem;
-}
-
-/* .profile-thumbnail {
-    position: relative;
-    background-image: url('/assets/images/profile-photo-placeholder.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    border: 3px solid #FEFDFC;
-    box-shadow: 0 0px 5px rgba(0,0,0,.2);
-} */
 
 .card-body-header {
     display: flex;
