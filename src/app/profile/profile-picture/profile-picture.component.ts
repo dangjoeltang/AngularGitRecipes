@@ -17,9 +17,9 @@ export class ProfilePictureComponent implements OnInit {
 
 	@Input()
 	set photoPath(path: string) {
-		console.log('got path: ', path);
+		// console.log('got path: ', path);
 		this._photoPath = `${this.mediaRoot}/${path}`;
-		console.log(this._photoPath);
+		// console.log(this._photoPath);
 	}
 
 	ngOnInit() {}

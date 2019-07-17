@@ -12,12 +12,9 @@ import { ProfileData } from 'src/app/core/models/profile.model';
 export class ProfileStoryComponent implements OnInit {
 	@Input() profile: ProfileData;
 
-	// private profilePhoto = this.profile.profile_photo;
-
-	// Using placeholder data for now
-	constructor(private profileService: ProfileService) {}
+	constructor() {}
 
 	ngOnInit() {
-		console.log(this.profile);
+		// console.log(this.profile);
 	}
 }
