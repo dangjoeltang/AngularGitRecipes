@@ -1,8 +1,8 @@
 <div class="container-story card">
 
-    <div class="profile-thumbnail story-item">
-        <!-- <img src="assets/images/profile-photo-placeholder.jpg" alt="Profile Pic" #profilepic> -->
-    </div>
+
+    <profile-picture [photoPath]="profile.profile_photo"></profile-picture>
+
 
     <div class="card-body">
         <div class="card-body-header">
@@ -19,7 +19,8 @@
         </div>
         <hr>
         <p>
-            {{ profile.short_bio }}
+            <!-- {{ profile.short_bio }} -->
+            {{ profile | json }}
         </p>
     </div>
     <ul class="list-group list-group-flush">
