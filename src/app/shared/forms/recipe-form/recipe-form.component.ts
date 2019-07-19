@@ -39,7 +39,7 @@ export class RecipeFormComponent implements OnInit {
 	submitted = false;
 
 	tags = [];
-	privacies = ['Public', 'Private', 'Secret'];
+	privacies = ['public', 'private', 'secret'];
 
 	ngOnInit() {
 		this.recipeForm = this.createRecipeForm();
