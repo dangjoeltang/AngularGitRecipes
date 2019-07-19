@@ -1,6 +1,22 @@
 <form [formGroup]="recipeForm" (ngSubmit)="submitRecipe()">
 
-    <input class="form-control form-control-lg my-3" formControlName="title" placeholder="Title">
+    <div class="row">
+        <div class="col">
+            <input class="form-control form-control-lg  my-3" formControlName="title" placeholder="Title">
+        </div>
+        <!-- <div class="col-md-1">
+            <label for="privacy">Visibility</label>
+        </div> -->
+        <div class="col-md-3">
+            <select id="privacy" formControlName="privacy" class="form-control form-control-lg  my-3">
+                <option *ngFor="let p of privacies" [ngValue]="p">{{ p }}</option>
+            </select>
+
+        </div>
+
+    </div>
+
+
 
     <input class="form-control" readonly hidden formControlName="author">
 
@@ -9,9 +25,6 @@
     </tag-input>
 
 
-    <select id="privacy" formControlName="privacy">
-        <option *ngFor="let p of privacies" [ngValue]="p">{{ p }}</option>
-    </select>
 
     <!-- Add Ingredients -->
     <hr>

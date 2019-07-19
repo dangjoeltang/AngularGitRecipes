@@ -39,7 +39,7 @@ export class RecipeFormComponent implements OnInit {
 	submitted = false;
 
 	tags = [];
-	privacies = ['public', 'private', 'secret'];
+	privacies = ['Public', 'Private', 'Secret'];
 
 	ngOnInit() {
 		this.recipeForm = this.createRecipeForm();
@@ -93,7 +93,7 @@ export class RecipeFormComponent implements OnInit {
 			title: [],
 			author: this.user.profile_id,
 			tags: [],
-			privacy: [],
+			privacy: [this.privacies[0]],
 			recipe_photos: this.fb.array([
 				// this.fb.group({
 				// 	photo_text: [],
