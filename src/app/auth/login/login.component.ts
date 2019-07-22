@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
 			},
 			err => {
 				this.alertService.error(err.detail);
+				console.log(err);
 				this.errors = err;
 				this.isSubmitted = false;
 			}

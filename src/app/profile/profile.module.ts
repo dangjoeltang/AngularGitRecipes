@@ -9,6 +9,7 @@ import { ProfileStoryComponent } from './profile-story/profile-story.component';
 import { ProfileContentComponent } from './profile-content/profile-content.component';
 import { ProfileRecipesComponent } from './profile-recipes/profile-recipes.component';
 import { ProfilePictureComponent } from './profile-picture/profile-picture.component';
+import { ProfilePicUploadComponent } from './profile-pic-upload/profile-pic-upload.component';
 
 @NgModule({
 	declarations: [
@@ -17,6 +18,7 @@ import { ProfilePictureComponent } from './profile-picture/profile-picture.compo
 		ProfileContentComponent,
 		ProfileRecipesComponent,
 		ProfilePictureComponent,
+		ProfilePicUploadComponent,
 	],
 	imports: [SharedModule, CommonModule, ProfileRoutingModule],
 })
