@@ -6,6 +6,8 @@ import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 import { RecipeModule } from './recipe/recipe.module';
 import { ExploreModule } from './explore/explore.module';
+import { MultiImgUploaderComponent } from './shared/components/multi-img-uploader/multi-img-uploader.component';
+import { SandboxComponent } from './shared/components/sandbox/sandbox.component';
 
 const routes: Routes = [
 	{
@@ -27,6 +29,10 @@ const routes: Routes = [
 	{
 		path: 'explore',
 		loadChildren: () => ExploreModule,
+	},
+	{
+		path: 'testing',
+		component: SandboxComponent,
 	},
 	{
 		path: '**',

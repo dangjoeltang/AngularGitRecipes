@@ -55,7 +55,7 @@ export class ProfilePicUploadComponent implements OnInit {
 		this.file = file.target.files[0];
 		const file_name = 'profile-photos/' + file.target.files[0].name;
 		const file_type = file.target.files[0].type;
-		// this.alertService.info(`${file_name} selected.`);
+		this.alertService.info(`${file_name} selected.`);
 
 		this.api
 			.post('sign_s3/', {
@@ -83,16 +83,26 @@ export class ProfilePicUploadComponent implements OnInit {
 		Object.keys(fields).forEach(key => formData.append(key, fields[key]));
 		formData.append('file', this.file);
 		// Post formdata with file and authorization to S3
-		return this.http.post(url, formData).subscribe(res => {
-			console.log(res);
-			// PATCH profile_photo path data to api
-			this.http
-				.patch(this.profileUrl, {
-					profile_photo: this.profilePhotoName,
-				})
-				.subscribe(res => {
-					console.log(res);
-				});
-		});
+		return this.http.post(url, formData).subscribe(
+			res => {
+				console.log(res);
+				// PATCH profile_photo path data to api
+				this.http
+					.patch(this.profileUrl, {
+						profile_photo: this.profilePhotoName,
+					})
+					.subscribe(
+						res => {
+							console.log(res);
+						},
+						err => {
+							console.log(err);
+						}
+					);
+			},
+			error => {
+				console.log(error);
+			}
+		);
 	}
 }

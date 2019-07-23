@@ -22,6 +22,8 @@ import { ShowIfAuthDirective } from './directives/show-if-auth.directive';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { MultiImgUploaderComponent } from './components/multi-img-uploader/multi-img-uploader.component';
+import { SandboxComponent } from './components/sandbox/sandbox.component';
 
 @NgModule({
 	declarations: [
@@ -35,6 +37,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 		ShowIfAuthDirective,
 		RecipeFormComponent,
 		ConfirmDialogComponent,
+		MultiImgUploaderComponent,
+		SandboxComponent,
 	],
 	imports: [
 		CommonModule,

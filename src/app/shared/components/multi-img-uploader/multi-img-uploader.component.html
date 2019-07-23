@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <!-- <form [formGroup]="photoForm">
+        <label for="new-image">Add Photo</label>
+        <input type="file" name="photo" id="new-image">
+        <div class="box-preview" (click)="addPhoto()">
+
+        </div>
+        <div *ngFor="let p of photosArray.controls; let i = index" class="box-preview">
+            <button (click)="removePhoto(i)">x</button>
+        </div>
+    </form> -->
+    
+    
+    <div class="dropzone" [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
+</div>
+
+
+
+{{ photoForm.value | json }}
