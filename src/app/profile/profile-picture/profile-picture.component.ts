@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Component({
 	selector: 'profile-picture',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProfilePictureComponent implements OnInit {
 	private _photoPath;
-	private mediaRoot = 'https://dcrfk60sixql7.cloudfront.net';
+	private mediaRoot = environment.media_url;
 
 	constructor() {}
 

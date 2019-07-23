@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+
+import { environment } from '../../../environments/environment';
 import { ApiService } from 'src/app/core/services/api.service';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { forEach } from '@angular/router/src/utils/collection';
 import { AlertService } from 'src/app/core/services/alert.service';
+import { ProfileData } from 'src/app/core/models/profile.model';
 
 @Component({
 	selector: 'app-profile-pic-upload',
@@ -11,10 +13,26 @@ import { AlertService } from 'src/app/core/services/alert.service';
 })
 export class ProfilePicUploadComponent implements OnInit {
 	@Input() imageSrc: string;
+
+	private apiUrl = environment.api_url;
+	private _profile: ProfileData;
+	private profileUrl: string;
 	private signedRes;
 	private file;
 	private profilePhotoUrl: string;
+	private profilePhotoName: string;
 	private isDisabled: boolean = true;
+
+	@Input()
+	set profile(profile: ProfileData) {
+		this._profile = profile;
+		this.profileUrl = `${this.apiUrl}profiles/${profile.id}/`;
+		console.log(this.profileUrl);
+	}
+
+	get profile(): ProfileData {
+		return this._profile;
+	}
 
 	constructor(
 		private api: ApiService,
@@ -49,7 +67,8 @@ export class ProfilePicUploadComponent implements OnInit {
 				this.isDisabled = false;
 				console.log(res);
 				this.profilePhotoUrl = res.url;
-				console.log(this.profilePhotoUrl);
+				this.profilePhotoName = res.path;
+				console.log();
 			});
 	}
 
@@ -66,6 +85,14 @@ export class ProfilePicUploadComponent implements OnInit {
 		// Post formdata with file and authorization to S3
 		return this.http.post(url, formData).subscribe(res => {
 			console.log(res);
+			// PATCH profile_photo path data to api
+			this.http
+				.patch(this.profileUrl, {
+					profile_photo: this.profilePhotoName,
+				})
+				.subscribe(res => {
+					console.log(res);
+				});
 		});
 	}
 }

@@ -6,10 +6,6 @@ import { ProfilePicUploadComponent } from './profile-pic-upload/profile-pic-uplo
 
 const routes: Routes = [
 	{
-		path: 'upload',
-		component: ProfilePicUploadComponent,
-	},
-	{
 		path: ':profile_id',
 		component: ProfileLayoutComponent,
 		resolve: {
