@@ -8,6 +8,9 @@ import { RouterModule, Router } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TagInputModule } from 'ngx-chips';
+import { DropzoneModule } from 'ngx-dropzone-wrapper';
+import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
+import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 // My Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -42,6 +45,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 		RouterModule,
 		NgxSpinnerModule,
 		TagInputModule,
+		DropzoneModule,
 	],
 	exports: [
 		CommonModule,

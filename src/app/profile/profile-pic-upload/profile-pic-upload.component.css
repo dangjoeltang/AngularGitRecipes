@@ -1,0 +1,12 @@
+.center-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+    min-height: 70vh;
+}
+
+.card {
+    min-width: 350px;
+}

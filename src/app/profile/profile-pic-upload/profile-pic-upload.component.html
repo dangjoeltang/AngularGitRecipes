@@ -1,14 +1,16 @@
-<!-- <form action="https://gitrecipes-media.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="key" value="765-default-avatar.png" />
-    <input type="hidden" name="AWSAccessKeyId" value="AKIA6J5IW4JQ5G3G7ERS" />
-    <input type="hidden" name="policy" value="eyJleHBpcmF0aW9uIjogIjIwMTktMDctMjJUMjE6MTM6MDdaIiwgImNvbmRpdGlvbnMiOiBbeyJDb250ZW50LVR5cGUiOiAiaW1hZ2UvcG5nIn0sIHsiYnVja2V0IjogImdpdHJlY2lwZXMtbWVkaWEifSwgeyJrZXkiOiAiNzY1LWRlZmF1bHQtYXZhdGFyLnBuZyJ9LCB7IngtYW16LWFsZ29yaXRobSI6ICJBV1M0LUhNQUMtU0hBMjU2In0sIHsieC1hbXotY3JlZGVudGlhbCI6ICJBS0lBNko1SVc0SlE1RzNHN0VSUy8yMDE5MDcyMi91cy1lYXN0LTIvczMvYXdzNF9yZXF1ZXN0In0sIHsieC1hbXotZGF0ZSI6ICIyMDE5MDcyMlQyMDEzMDdaIn1dfQ==" />
-    <input type="hidden" name="signature" value="1771e444464ed925da2bbc37a0bc5b31f11e2eef95c1bbcdad720f3cf0ecd043" />
-  File:
-    <input type="file" name="file" (change)="fileSelectEvent($event)" placeholder="Upload image..."/>
-    <br />
-    <input type="submit" name="submit" value="Upload to Amazon S3" />
-</form> -->
+<!-- <dropzone [message]="'Click or drag images here to upload'" (error)="onUploadError($event)"
+    (success)="onUploadSuccess($event)"></dropzone> -->
 
-<h1>upload</h1>
 
-<form action="URL_VALUE"></form>
+<div class="center-page">
+    <h1 class="display-4">Profile Photo</h1>
+    <div class="card card-block w-50 mx-auto">
+        <img [src]="imageSrc || 'https://via.placeholder.com/250x150'" alt="Recipe Card Image" class="card-img-top">
+        <div class="card-body">
+
+            <input #fileInput type="file" id="profile-pic" (change)="onFileSelect($event)">
+
+        </div>
+        <button class="btn btn-primary btn-block" (click)="uploadPhoto()" [disabled]="isDisabled">Save</button>
+    </div>
+</div>

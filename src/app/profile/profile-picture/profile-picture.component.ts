@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProfilePictureComponent implements OnInit {
 	private _photoPath;
-	private mediaRoot = 'https://dcrfk60sixql7.cloudfront.net/media';
+	private mediaRoot = 'https://dcrfk60sixql7.cloudfront.net';
 
 	constructor() {}
 
