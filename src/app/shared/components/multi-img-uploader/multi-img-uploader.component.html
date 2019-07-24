@@ -1,19 +1,22 @@
-<div class="wrapper">
-    <!-- <form [formGroup]="photoForm">
-        <label for="new-image">Add Photo</label>
-        <input type="file" name="photo" id="new-image">
-        <div class="box-preview" (click)="addPhoto()">
+<form [formGroup]="photoForm">
+    <div class="wrapper">
 
-        </div>
+        <label for="new-image">
+            <div class="box-preview" id="addPhoto">
+                <i class="fas fa-camera fa-5x"></i>
+            </div>
+        </label>
+
+        <input type="file" name="photos[]" id="new-image" (change)="onFileSelect($event)" />
         <div *ngFor="let p of photosArray.controls; let i = index" class="box-preview">
-            <button (click)="removePhoto(i)">x</button>
+            <!-- [ngStyle]="{'background': 'url(' + imageSrc[i] + ')'}" [style.background-size]="contain"> -->
+            <img [src]="imageSrc[i]" alt="">
+            <button id="removePhoto" (click)="removePhoto(i)">x</button>
         </div>
-    </form> -->
-    
-    
-    <div class="dropzone" [dropzone]="config" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></div>
-</div>
+    </div>
+</form>
 
 
 
-{{ photoForm.value | json }}
+
+<!-- {{ photoForm.value | json }} -->
