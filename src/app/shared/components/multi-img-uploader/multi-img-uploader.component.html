@@ -1,9 +1,12 @@
 <form [formGroup]="photoForm">
     <div class="wrapper">
 
+        <div class="box-preview">
+            <a id="uploadPhotos" (click)="uploadPhotos()"><i class="fas fa-cloud-upload-alt fa-5x"></i></a>
+        </div>
         <label for="new-image">
-            <div class="box-preview" id="addPhoto">
-                <i class="fas fa-camera fa-5x"></i>
+            <div class="box-preview">
+                <a id="addPhoto"><i class="fas fa-camera fa-5x"></i></a>
             </div>
         </label>
 
@@ -11,7 +14,7 @@
         <div *ngFor="let p of photosArray.controls; let i = index" class="box-preview">
             <!-- [ngStyle]="{'background': 'url(' + imageSrc[i] + ')'}" [style.background-size]="contain"> -->
             <img [src]="imageSrc[i]" alt="">
-            <button id="removePhoto" (click)="removePhoto(i)">x</button>
+            <a id="removePhoto" (click)="removePhoto(i)"><i class="fas fa-times-circle fa-5x"></i></a>
         </div>
     </div>
 </form>

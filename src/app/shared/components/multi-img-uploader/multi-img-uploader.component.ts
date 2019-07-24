@@ -77,10 +77,12 @@ export class MultiImgUploaderComponent implements OnInit {
 
 	private removePhoto(index) {
 		this.photosArray.removeAt(index);
+		this.imageSrc.splice(index, 1);
+		this.file = void 0;
+		console.log(this.file);
 	}
 
 	private onFileSelect(file) {
-		// this.addPhoto(file.target.files[0].name);
 		if (file.target.files && file.target.files[0]) {
 			let reader = new FileReader();
 			reader.onload = (event: any) => {
@@ -88,7 +90,6 @@ export class MultiImgUploaderComponent implements OnInit {
 			};
 			reader.readAsDataURL(file.target.files[0]);
 		}
-
 		this.file = file.target.files[0];
 		console.log(this.file);
 		console.log(this.imageSrc);

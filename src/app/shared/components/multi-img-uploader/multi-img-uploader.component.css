@@ -3,15 +3,39 @@ input {
 }
 
 #addPhoto {
-    padding-top: 40px;
-    opacity: 0.5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    opacity: 0.3;
+}
+
+#addPhoto:hover {
+    opacity: 0.8;
 }
 
 #removePhoto {
     position: absolute;
-    top: 0;
-    left: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    opacity: 0.3;
 }
+#removePhoto:hover {
+    opacity: 0.8;
+}
+
+#uploadPhotos {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    opacity: 0.3;
+}
+
 
 .wrapper {
     display: flex;
@@ -21,6 +45,7 @@ input {
 }
 
 .box-preview {
+    position: relative;
     width: 170px;
     height: 170px;
     background-color: white;
