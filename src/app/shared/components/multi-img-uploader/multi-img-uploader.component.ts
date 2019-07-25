@@ -109,15 +109,15 @@ export class MultiImgUploaderComponent implements OnInit {
 	}
 
 	private uploadPhoto(url, fields, file) {
-        console.log(url)
-        console.log(file)
+		console.log(url);
+		console.log(file);
 		let formData: FormData = new FormData();
 		Object.keys(fields).forEach(key => {
-            formData.append(key, fields[key]);
-            console.log(key, fields[key])
-        });
-        formData.append('file', file);
-        console.log(formData);
+			formData.append(key, fields[key]);
+			console.log(key, fields[key]);
+		});
+		formData.append('file', file);
+		console.log(formData);
 		// Post formdata with file and authorization to S3
 		return this.http.post(url, formData).subscribe(
 			res => {
