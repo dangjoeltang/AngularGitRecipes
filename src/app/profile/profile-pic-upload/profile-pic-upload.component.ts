@@ -75,13 +75,14 @@ export class ProfilePicUploadComponent implements OnInit {
 	uploadPhoto() {
 		const url = this.signedRes.data['url'];
 		const fields = this.signedRes.data['fields'];
-		const files = { file: this.file };
+		// const files = { file: this.file };
 
 		console.log(fields);
 		// upload file to S3
 		let formData: FormData = new FormData();
 		Object.keys(fields).forEach(key => formData.append(key, fields[key]));
-		formData.append('file', this.file);
+        formData.append('file', this.file);
+        console.log(formData);
 		// Post formdata with file and authorization to S3
 		return this.http.post(url, formData).subscribe(
 			res => {

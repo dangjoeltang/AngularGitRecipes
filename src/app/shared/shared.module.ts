@@ -11,7 +11,7 @@ import { TagInputModule } from 'ngx-chips';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
 import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
-import { FileUploadModule } from 'ng2-file-upload';
+// import { FileUploadModule } from 'ng2-file-upload';
 
 // My Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -51,7 +51,8 @@ import { SandboxComponent } from './components/sandbox/sandbox.component';
 		NgxSpinnerModule,
 		TagInputModule,
 		DropzoneModule,
-		FileUploadModule,
+        // FileUploadModule,
+        
 	],
 	exports: [
 		CommonModule,

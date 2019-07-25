@@ -1,18 +1,17 @@
 <form [formGroup]="photoForm">
-    <div class="wrapper">
+    <div class="wrapper container-fluid">
 
-        <div class="box-preview">
+        <!-- <div class="box-preview">
             <a id="uploadPhotos" (click)="uploadPhotos()"><i class="fas fa-cloud-upload-alt fa-5x"></i></a>
-        </div>
+        </div> -->
         <label for="new-image">
             <div class="box-preview">
                 <a id="addPhoto"><i class="fas fa-camera fa-5x"></i></a>
             </div>
         </label>
 
-        <input type="file" name="photos[]" id="new-image" (change)="onFileSelect($event)" />
+        <input type="file" name="photoInput" id="new-image" (change)="onFileSelect($event)" />
         <div *ngFor="let p of photosArray.controls; let i = index" class="box-preview">
-            <!-- [ngStyle]="{'background': 'url(' + imageSrc[i] + ')'}" [style.background-size]="contain"> -->
             <img [src]="imageSrc[i]" alt="">
             <a id="removePhoto" (click)="removePhoto(i)"><i class="fas fa-times-circle fa-5x"></i></a>
         </div>
