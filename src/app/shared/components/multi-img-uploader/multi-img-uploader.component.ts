@@ -13,8 +13,6 @@ import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { EventEmitter } from 'events';
 
-const URL = 'https://httpbin.org/post';
-
 @Component({
 	selector: 'app-multi-img-uploader',
 	templateUrl: './multi-img-uploader.component.html',
@@ -23,8 +21,12 @@ const URL = 'https://httpbin.org/post';
 export class MultiImgUploaderComponent implements OnInit {
 	// private apiUrl = environment.api_url;
 	// private photos = [];
-	// private profilePhotoUrl: string;
-	// private profilePhotoName: string;
+	private options = {
+		headers: new HttpHeaders().set('Content-Type', 'multipart/form-data'),
+	};
+	private profilePhotoUrl: string;
+	private profilePhotoName: string;
+	private fileFields: string;
 	private photoForm: FormGroup;
 	private form;
 	private file;
@@ -71,7 +73,7 @@ export class MultiImgUploaderComponent implements OnInit {
 	private removePhoto(index) {
 		this.photosArray.removeAt(index);
 		this.imageSrc.splice(index, 1);
-		this.file = void 0;
+		// this.file = void 0;
 		console.log(this.file);
 	}
 
@@ -86,6 +88,7 @@ export class MultiImgUploaderComponent implements OnInit {
 		this.file = file.target.files[0];
 		console.log('Selected file: ', this.file);
 		console.log('imageSrc[] (for previews): ', this.imageSrc);
+
 		const file_name = 'recipe-photos/' + file.target.files[0].name;
 		const file_type = file.target.files[0].type;
 		this.alertService.info(`${file_name} selected.`);
@@ -100,23 +103,28 @@ export class MultiImgUploaderComponent implements OnInit {
 
 				this.signedRes = res;
 				this.isDisabled = false;
-				// this.profilePhotoUrl = res.url;
-				// this.profilePhotoName = res.path;
+				// this.profilePhotoUrl = res.data.url;
+				// this.profilePhotoName = res.data.path;
+				// this.fileFields = res.data.fields;
 
 				this.addPhoto(res.path);
-				this.uploadPhoto(res.data.url, res.data['fields'], this.file);
+				this.uploadPhoto(
+					res.data['url'],
+					res.data['fields'],
+					this.file
+				);
 			});
 	}
 
-	private uploadPhoto(url, fields, file) {
+	private uploadPhoto(url: string, fields, file) {
 		console.log(url);
-		console.log(file);
+		console.log(file, this.file);
+		console.log(fields);
 		let formData: FormData = new FormData();
-		Object.keys(fields).forEach(key => {
-			formData.append(key, fields[key]);
-			console.log(key, fields[key]);
-		});
+		Object.keys(fields).forEach(key => formData.append(key, fields[key]));
 		formData.append('file', file);
+		// formData.append('Content-Type ', 'multipart/form-data');
+		// formData.append('Content-Type', file.type);
 		console.log(formData);
 		// Post formdata with file and authorization to S3
 		return this.http.post(url, formData).subscribe(

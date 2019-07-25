@@ -31,8 +31,8 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 		next: HttpHandler
 	): Observable<HttpEvent<any>> {
 		const headersConfig = {
-			'Content-Type': 'application/json',
-			Accept: 'application/json',
+			// 'Content-Type': 'application/json',
+			// Accept: 'application/json',
 		};
 
 		const token = this.jwtService.getToken();
@@ -45,7 +45,10 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 			}
 			headersConfig['Authorization'] = `Bearer ${token}`;
 		}
-		const request = req.clone({ setHeaders: headersConfig });
+		const request = req.clone({
+			// headers: req.headers.set('Content-Type'),
+			setHeaders: headersConfig,
+		});
 
 		this.showLoader();
 		return next.handle(request).pipe(

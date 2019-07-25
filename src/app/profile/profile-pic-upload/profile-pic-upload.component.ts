@@ -53,6 +53,7 @@ export class ProfilePicUploadComponent implements OnInit {
 		}
 
 		this.file = file.target.files[0];
+
 		const file_name = 'profile-photos/' + file.target.files[0].name;
 		const file_type = file.target.files[0].type;
 		this.alertService.info(`${file_name} selected.`);
@@ -68,7 +69,6 @@ export class ProfilePicUploadComponent implements OnInit {
 				console.log(res);
 				this.profilePhotoUrl = res.url;
 				this.profilePhotoName = res.path;
-				console.log();
 			});
 	}
 
@@ -81,8 +81,8 @@ export class ProfilePicUploadComponent implements OnInit {
 		// upload file to S3
 		let formData: FormData = new FormData();
 		Object.keys(fields).forEach(key => formData.append(key, fields[key]));
-        formData.append('file', this.file);
-        console.log(formData);
+		formData.append('file', this.file);
+		console.log(formData);
 		// Post formdata with file and authorization to S3
 		return this.http.post(url, formData).subscribe(
 			res => {
