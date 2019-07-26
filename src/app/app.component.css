@@ -4,7 +4,9 @@
 }
 
 #toast-container {
-    margin: 1rem;
+    position: relative;
+    left: 1rem;
+    top: 1rem;
 }
 
 .container-head {
