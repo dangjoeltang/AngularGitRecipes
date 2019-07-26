@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
 @Component({
 	selector: 'app-sandbox',

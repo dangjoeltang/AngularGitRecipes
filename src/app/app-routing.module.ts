@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { LandingPageComponent } from './shared/components/landing-page/landing-page.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 import { RecipeModule } from './recipe/recipe.module';
 import { ExploreModule } from './explore/explore.module';
-import { MultiImgUploaderComponent } from './shared/components/multi-img-uploader/multi-img-uploader.component';
-import { SandboxComponent } from './shared/components/sandbox/sandbox.component';
+import { SandboxModule } from './sandbox/sandbox.module';
 
 const routes: Routes = [
 	{
@@ -31,8 +31,8 @@ const routes: Routes = [
 		loadChildren: () => ExploreModule,
 	},
 	{
-		path: 'testing',
-		component: SandboxComponent,
+		path: 'sandbox',
+		loadChildren: () => SandboxModule,
 	},
 	{
 		path: '**',

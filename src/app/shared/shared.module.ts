@@ -9,8 +9,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TagInputModule } from 'ngx-chips';
 import { DropzoneModule } from 'ngx-dropzone-wrapper';
-import { DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
-import { DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 // import { FileUploadModule } from 'ng2-file-upload';
 
 // My Components
@@ -24,7 +22,6 @@ import { RecipeCardComponent } from './components/recipe-card/recipe-card.compon
 import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MultiImgUploaderComponent } from './components/multi-img-uploader/multi-img-uploader.component';
-import { SandboxComponent } from './components/sandbox/sandbox.component';
 
 @NgModule({
 	declarations: [
@@ -39,7 +36,6 @@ import { SandboxComponent } from './components/sandbox/sandbox.component';
 		RecipeFormComponent,
 		ConfirmDialogComponent,
 		MultiImgUploaderComponent,
-		SandboxComponent,
 	],
 	imports: [
 		CommonModule,
@@ -51,8 +47,7 @@ import { SandboxComponent } from './components/sandbox/sandbox.component';
 		NgxSpinnerModule,
 		TagInputModule,
 		DropzoneModule,
-        // FileUploadModule,
-        
+		// FileUploadModule,
 	],
 	exports: [
 		CommonModule,
@@ -71,6 +66,7 @@ import { SandboxComponent } from './components/sandbox/sandbox.component';
 		AlertBannerComponent,
 		RecipeCardComponent,
 		RecipeFormComponent,
+		MultiImgUploaderComponent,
 
 		// Directives
 		ShowIfAuthDirective,

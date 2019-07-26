@@ -21,9 +21,6 @@ import { EventEmitter } from 'events';
 export class MultiImgUploaderComponent implements OnInit {
 	// private apiUrl = environment.api_url;
 	// private photos = [];
-	private options = {
-		headers: new HttpHeaders().set('Content-Type', 'multipart/form-data'),
-	};
 	private profilePhotoUrl: string;
 	private profilePhotoName: string;
 	private fileFields: string;
@@ -67,7 +64,7 @@ export class MultiImgUploaderComponent implements OnInit {
 				photo_file: [photoName],
 			})
 		);
-		console.log('Photos array (for form output): ', this.photosArray.value);
+		// console.log('Photos array (for form output): ', this.photosArray.value);
 	}
 
 	private removePhoto(index) {
@@ -86,8 +83,8 @@ export class MultiImgUploaderComponent implements OnInit {
 			reader.readAsDataURL(file.target.files[0]);
 		}
 		this.file = file.target.files[0];
-		console.log('Selected file: ', this.file);
-		console.log('imageSrc[] (for previews): ', this.imageSrc);
+		// console.log('Selected file: ', this.file);
+		// console.log('imageSrc[] (for previews): ', this.imageSrc);
 
 		const file_name = 'recipe-photos/' + file.target.files[0].name;
 		const file_type = file.target.files[0].type;
@@ -99,7 +96,7 @@ export class MultiImgUploaderComponent implements OnInit {
 				file_type: file_type,
 			})
 			.subscribe(res => {
-				console.log('Presigned url data: ', res);
+				// console.log('Presigned url data: ', res);
 
 				this.signedRes = res;
 				this.isDisabled = false;
@@ -117,16 +114,11 @@ export class MultiImgUploaderComponent implements OnInit {
 	}
 
 	private uploadPhoto(url: string, fields, file) {
-		console.log(url);
-		console.log(file, this.file);
-		console.log(fields);
 		let formData: FormData = new FormData();
 		Object.keys(fields).forEach(key => formData.append(key, fields[key]));
 		formData.append('file', file);
-		// formData.append('Content-Type ', 'multipart/form-data');
-		// formData.append('Content-Type', file.type);
-		console.log(formData);
 		// Post formdata with file and authorization to S3
+
 		return this.http.post(url, formData).subscribe(
 			res => {
 				console.log('file posted to S3', file.name);
