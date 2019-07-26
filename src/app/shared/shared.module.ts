@@ -8,7 +8,8 @@ import { RouterModule, Router } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TagInputModule } from 'ngx-chips';
-import { DropzoneModule } from 'ngx-dropzone-wrapper';
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+// import { DropzoneModule } from 'ngx-dropzone-wrapper';
 // import { FileUploadModule } from 'ng2-file-upload';
 
 // My Components
@@ -46,7 +47,11 @@ import { MultiImgUploaderComponent } from './components/multi-img-uploader/multi
 		RouterModule,
 		NgxSpinnerModule,
 		TagInputModule,
-		DropzoneModule,
+		ToastrModule.forRoot({
+			positionClass: 'inline',
+		}),
+		ToastContainerModule,
+		// DropzoneModule,
 		// FileUploadModule,
 	],
 	exports: [
@@ -57,6 +62,8 @@ import { MultiImgUploaderComponent } from './components/multi-img-uploader/multi
 		NgbModule,
 		NgxSpinnerModule,
 		TagInputModule,
+		ToastrModule,
+		ToastContainerModule,
 
 		// Components
 		NavbarComponent,

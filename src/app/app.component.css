@@ -3,6 +3,10 @@
     /* position: relative; */
 }
 
+#toast-container {
+    margin: 1rem;
+}
+
 .container-head {
     z-index: 10;
     position: relative;
@@ -24,7 +28,7 @@
     position: relative;
     width: 100%;
     /* max-width: 1260px; */
-    /* padding-bottom: 4rem; */
+    /* padding: 1rem; */
     /* margin: 1rem auto 0; */
     background: #FEFDFC;
     /* height: calc(100vh - 10rem); */

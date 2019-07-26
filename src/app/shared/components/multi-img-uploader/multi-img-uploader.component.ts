@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { EventEmitter } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-multi-img-uploader',
@@ -22,7 +23,7 @@ export class MultiImgUploaderComponent implements OnInit {
 	constructor(
 		private api: ApiService,
 		private http: HttpClient,
-		private alertService: AlertService
+		private alertService: ToastrService
 	) {}
 
 	ngOnInit() {}
