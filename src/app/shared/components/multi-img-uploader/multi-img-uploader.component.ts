@@ -1,17 +1,10 @@
 import { Component, OnInit, Output } from '@angular/core';
-import {
-	FormGroup,
-	FormBuilder,
-	FormArray,
-	FormControl,
-	Validators,
-} from '@angular/forms';
-// import { FileUploader } from 'ng2-file-upload';
+
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/core/services/api.service';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { AlertService } from 'src/app/core/services/alert.service';
-import { EventEmitter } from 'events';
+import { EventEmitter } from '@angular/core';
 
 @Component({
 	selector: 'app-multi-img-uploader',
@@ -19,59 +12,32 @@ import { EventEmitter } from 'events';
 	styleUrls: ['./multi-img-uploader.component.css'],
 })
 export class MultiImgUploaderComponent implements OnInit {
-	// private apiUrl = environment.api_url;
-	// private photos = [];
-	private profilePhotoUrl: string;
-	private profilePhotoName: string;
-	private fileFields: string;
-	private photoForm: FormGroup;
-	private form;
-	private file;
-
-	private signedRes;
-	private imageSrc: string[] = [];
-	private presignedUrls = [];
-	private isDisabled: boolean = true;
-
 	@Output() valueChange = new EventEmitter();
 
+	// private apiUrl = environment.api_url;
+	private photosArray = [];
+	private imageSrc: string[] = [];
+	private isDisabled: boolean = true;
+
 	constructor(
-		private fb: FormBuilder,
 		private api: ApiService,
 		private http: HttpClient,
 		private alertService: AlertService
 	) {}
 
-	ngOnInit() {
-		this.photoForm = this.createPhotoForm();
-	}
-
-	createPhotoForm() {
-		this.form = this.fb.group({
-			photos: this.fb.array([]),
-		});
-
-		return this.form;
-	}
-
-	get photosArray() {
-		return this.photoForm.get('photos') as FormArray;
-	}
+	ngOnInit() {}
 
 	private addPhoto(photoName) {
-		this.photosArray.push(
-			this.fb.group({
-				photo_file: [photoName],
-			})
-		);
+		this.photosArray.push(photoName);
 		// console.log('Photos array (for form output): ', this.photosArray.value);
 	}
 
 	private removePhoto(index) {
-		this.photosArray.removeAt(index);
+		const removedPhoto = this.photosArray[index];
+		this.photosArray.splice(index, 1);
 		this.imageSrc.splice(index, 1);
-		// this.file = void 0;
-		console.log(this.file);
+		this.valueChange.emit(this.photosArray);
+		this.alertService.success(`Removed photo "${removedPhoto}"`);
 	}
 
 	private onFileSelect(file) {
@@ -82,7 +48,7 @@ export class MultiImgUploaderComponent implements OnInit {
 			};
 			reader.readAsDataURL(file.target.files[0]);
 		}
-		this.file = file.target.files[0];
+		let imgFile = file.target.files[0];
 		// console.log('Selected file: ', this.file);
 		// console.log('imageSrc[] (for previews): ', this.imageSrc);
 
@@ -96,20 +62,10 @@ export class MultiImgUploaderComponent implements OnInit {
 				file_type: file_type,
 			})
 			.subscribe(res => {
-				// console.log('Presigned url data: ', res);
-
-				this.signedRes = res;
 				this.isDisabled = false;
-				// this.profilePhotoUrl = res.data.url;
-				// this.profilePhotoName = res.data.path;
-				// this.fileFields = res.data.fields;
 
 				this.addPhoto(res.path);
-				this.uploadPhoto(
-					res.data['url'],
-					res.data['fields'],
-					this.file
-				);
+				this.uploadPhoto(res.data['url'], res.data['fields'], imgFile);
 			});
 	}
 
@@ -122,6 +78,7 @@ export class MultiImgUploaderComponent implements OnInit {
 		return this.http.post(url, formData).subscribe(
 			res => {
 				console.log('file posted to S3', file.name);
+				this.valueChange.emit(this.photosArray);
 				this.alertService.success(
 					`${file.name} uploaded successfully!`
 				);

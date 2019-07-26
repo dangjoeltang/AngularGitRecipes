@@ -9,4 +9,8 @@ export class SandboxComponent implements OnInit {
 	constructor() {}
 
 	ngOnInit() {}
+
+	updateArray(photoArray) {
+		console.log(photoArray);
+	}
 }

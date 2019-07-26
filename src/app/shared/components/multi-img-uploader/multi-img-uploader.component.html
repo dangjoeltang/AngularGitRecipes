@@ -1,24 +1,24 @@
-<form [formGroup]="photoForm">
-    <div class="wrapper container-fluid">
+<!-- <form [formGroup]="photoForm"> -->
+<div class="wrapper container-fluid">
 
-        <!-- <div class="box-preview">
+    <!-- <div class="box-preview">
             <a id="uploadPhotos" (click)="uploadPhotos()"><i class="fas fa-cloud-upload-alt fa-5x"></i></a>
         </div> -->
-        <label for="new-image">
-            <div class="box-preview">
-                <a id="addPhoto"><i class="fas fa-camera fa-5x"></i></a>
-            </div>
-        </label>
-
-        <input type="file" name="photoInput" id="new-image" (change)="onFileSelect($event)" />
-        <div *ngFor="let p of photosArray.controls; let i = index" class="box-preview">
-            <img [src]="imageSrc[i]" alt="">
-            <a id="removePhoto" (click)="removePhoto(i)"><i class="fas fa-times-circle fa-5x"></i></a>
+    <label for="new-image">
+        <div class="box-preview">
+            <a id="addPhoto"><i class="fas fa-camera fa-5x"></i></a>
         </div>
+    </label>
+
+    <input type="file" name="photoInput" id="new-image" (change)="onFileSelect($event)" />
+    <div *ngFor="let p of photosArray; let i = index" class="box-preview">
+        <img [src]="imageSrc[i]" alt="">
+        <a id="removePhoto" (click)="removePhoto(i)"><i class="fas fa-times-circle fa-5x"></i></a>
     </div>
-</form>
+</div>
+<!-- </form> -->
 
 
 
 
-<!-- {{ photoForm.value | json }} -->
+{{ photosArray.value }}
