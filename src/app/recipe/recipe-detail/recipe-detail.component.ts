@@ -6,6 +6,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { RecipeService } from 'src/app/core/services/recipe.service';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { UserAuthService } from 'src/app/core/services/user-auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
 	selector: 'app-recipe-detail',
@@ -17,6 +18,8 @@ export class RecipeDetailComponent implements OnInit {
 	private recipe: RecipeDetail;
 	private closeResult: string;
 	private currentUser: User;
+	private mediaUrl = environment.media_url;
+	private imageUrls: string[];
 
 	constructor(
 		private route: ActivatedRoute,
@@ -36,10 +39,9 @@ export class RecipeDetailComponent implements OnInit {
 		this.userService.currentUser.subscribe(userData => {
 			this.currentUser = userData;
 		});
-	}
-
-	editRecipe(recipe) {
-		console.log(this.recipe);
+		this.imageUrls = this.recipe.recipe_photos.map(
+			pName => `${this.mediaUrl}/${pName.photo_file}`
+		);
 	}
 
 	deleteRecipe() {

@@ -39,11 +39,8 @@ export class MultiImgUploaderComponent implements OnInit {
 	}
 
 	private populateImages(data) {
-		// console.log(data);
 		this.photosArray = data;
 		this.imageSrc = data.map(pName => `${this.mediaUrl}/${pName}`);
-		// console.log(this.imageSrc);
-		// this.imageSrc.push(`${this.mediaUrl}/${data}`);
 		this.valueChange.emit(this.photosArray);
 	}
 

@@ -1,18 +1,18 @@
 <div class="main">
 
-        <ng-template #content let-modal>
-            <div class="modal-header">
-                <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
-                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <p>Are you sure you want to delete this recipe?</p>
-                <button type="button" class="btn btn-danger mr-2" (click)="deleteRecipe()" >Delete</button>
-                <button type="button" class="btn btn-secondary mr-2" (click)="modal.dismiss('Cancel')">Cancel</button>
-            </div>
-        </ng-template>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Confirm Delete</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body text-center">
+            <p>Are you sure you want to delete this recipe?</p>
+            <button type="button" class="btn btn-danger mr-2" (click)="deleteRecipe()">Delete</button>
+            <button type="button" class="btn btn-secondary mr-2" (click)="modal.dismiss('Cancel')">Cancel</button>
+        </div>
+    </ng-template>
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
@@ -29,14 +29,12 @@
                 <!-- Recipe ID: {{ recipe.pk }} -->
                 <!-- <a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-info">Edit Recipe</a> -->
             </div>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit accumsan
-                augue, ac ultricies lorem vehicula id. Quisque placerat quam velit, non pharetra orci sodales euismod.
-                Aenean augue nisl, maximus eget erat sit amet, scelerisque porta elit. Mauris faucibus tortor non ligula
-                finibus, vitae malesuada orci eleifend.</p>
+            <p class="lead">{{ recipe.description }}</p>
             <a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-primary btn-sm mr-2" id="edit-recipe">Edit
                 Recipe</a>
             <a href="#" class="btn btn-warning btn-sm mr-2">Clone Recipe</a>
-            <button type="button" class="btn btn-danger btn-sm mr-2" id="delete-recipe" (click)="open(content)">Delete Recipe</button>
+            <button type="button" class="btn btn-danger btn-sm mr-2" id="delete-recipe" (click)="open(content)">Delete
+                Recipe</button>
 
         </div>
     </div>
