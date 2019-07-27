@@ -3,7 +3,8 @@ export interface RecipeDetail {
 	title: string;
 	author: number;
 	privacy: string;
-	photos: Photo[];
+	description: string;
+	recipe_photos: Photo[];
 	ingredients: Ingredient[];
 	tags: string[];
 	steps: Step[];

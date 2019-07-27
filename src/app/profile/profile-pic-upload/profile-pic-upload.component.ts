@@ -27,7 +27,6 @@ export class ProfilePicUploadComponent implements OnInit {
 	set profile(profile: ProfileData) {
 		this._profile = profile;
 		this.profileUrl = `${this.apiUrl}profiles/${profile.id}/`;
-		console.log(this.profileUrl);
 	}
 
 	get profile(): ProfileData {

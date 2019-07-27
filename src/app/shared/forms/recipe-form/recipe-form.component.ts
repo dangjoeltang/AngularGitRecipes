@@ -13,6 +13,8 @@ import { RecipeDetail } from 'src/app/core/models';
 import { RecipeService } from 'src/app/core/services/recipe.service';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { UserAuthService } from 'src/app/core/services/user-auth.service';
+import { environment } from 'src/environments/environment';
+import { Subject, ReplaySubject } from 'rxjs';
 
 @Component({
 	selector: 'app-recipe-form',
@@ -31,6 +33,11 @@ export class RecipeFormComponent implements OnInit {
 		private route: ActivatedRoute
 	) {}
 
+	// 'https://dcrfk60sixql7.cloudfront.net'
+	private mediaUrl = environment.media_url;
+
+	private photoEventsSubject = new ReplaySubject();
+
 	recipeForm: FormGroup;
 	form;
 	readonly separatorKeysCodes: number[] = [ENTER, COMMA, SPACE];
@@ -38,8 +45,11 @@ export class RecipeFormComponent implements OnInit {
 	user = this.userService.currentUserValue;
 	submitted = false;
 
+	private imageSrcP: string[] = [];
+	private photosArrayP: string[] = [];
+
 	tags = [];
-	privacies = ['public', 'private', 'secret'];
+	privacies = ['Public', 'Private', 'Secret'];
 
 	ngOnInit() {
 		this.recipeForm = this.createRecipeForm();
@@ -51,10 +61,15 @@ export class RecipeFormComponent implements OnInit {
 		// directions.valueChanges.subscribe(val => {})
 	}
 
+	emitEventToChild(data) {
+		this.photoEventsSubject.next(data);
+	}
+
 	patchData(recipe: RecipeDetail) {
 		this.recipeForm.patchValue({ title: recipe.title });
 		this.recipeForm.patchValue({ author: recipe.author });
 		this.recipeForm.patchValue({ tags: recipe.tags });
+		this.recipeForm.patchValue({ description: recipe.description });
 		this.recipeForm.patchValue({ privacy: recipe.privacy });
 
 		const faIngredients = <FormArray>this.recipeForm.controls.ingredients;
@@ -86,6 +101,9 @@ export class RecipeFormComponent implements OnInit {
 			temp.patchValue(note);
 			faNotes.push(temp);
 		});
+
+		let photoNames = recipe.recipe_photos.map(p => p.photo_file);
+		this.emitEventToChild(photoNames);
 	}
 
 	createRecipeForm() {
@@ -93,13 +111,9 @@ export class RecipeFormComponent implements OnInit {
 			title: [],
 			author: this.user.profile_id,
 			tags: [],
+			description: [],
 			privacy: [this.privacies[0]],
-			recipe_photos: this.fb.array([
-				// this.fb.group({
-				// 	photo_text: [],
-				// 	photo_file: [],
-				// }),
-			]),
+			recipe_photos: [],
 			ingredients: this.fb.array([
 				// this.fb.group({
 				// 	ingredient: [],
@@ -166,13 +180,16 @@ export class RecipeFormComponent implements OnInit {
 		);
 	}
 
-	addRecipePhoto() {
-		this.recipePhotos.push(
-			this.fb.group({
-				photo_text: [],
-				photo_file: [],
-			})
-		);
+	updatePhotos(event) {
+		let faPhotos = [];
+		event.forEach(photoName => {
+			let temp = {
+				photo_file: photoName,
+				photo_text: '',
+			};
+			faPhotos.push(temp);
+		});
+		this.recipeForm.patchValue({ recipe_photos: faPhotos });
 	}
 
 	deleteRecipeIngredient(index) {
@@ -193,16 +210,6 @@ export class RecipeFormComponent implements OnInit {
 	deleteRecipePhoto(index) {
 		this.recipePhotos.removeAt(index);
 	}
-
-	// onAdding(event) {
-	// 	const input = event.input;
-	// 	const value = event.value;
-	// 	if (value.trim() !== '') {
-	// 		this.tags.push(value);
-	// 		// this.recipeForm.controls['tags'].markAsDirty();
-	// 		input.value = '';
-	// 	}
-	// }
 
 	submitRecipe() {
 		this.submitted = true;

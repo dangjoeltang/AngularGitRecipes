@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/core/services/api.service';
@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { AlertService } from 'src/app/core/services/alert.service';
 import { EventEmitter } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 
 @Component({
 	selector: 'app-multi-img-uploader',
@@ -14,11 +15,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MultiImgUploaderComponent implements OnInit {
 	@Output() valueChange = new EventEmitter();
+	@Input() events: Observable<any>;
 
+	private eventsSubscription: any;
 	// private apiUrl = environment.api_url;
-	private photosArray = [];
-	private imageSrc: string[] = [];
+	imageSrc: string[] = [];
+	photosArray = [];
 	private isDisabled: boolean = true;
+
+	// 'https://dcrfk60sixql7.cloudfront.net'
+	private mediaUrl = environment.media_url;
 
 	constructor(
 		private api: ApiService,
@@ -26,17 +32,31 @@ export class MultiImgUploaderComponent implements OnInit {
 		private alertService: ToastrService
 	) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.eventsSubscription = this.events.subscribe(photoNames => {
+			this.populateImages(photoNames);
+		});
+	}
+
+	private populateImages(data) {
+		// console.log(data);
+		this.photosArray = data;
+		this.imageSrc = data.map(pName => `${this.mediaUrl}/${pName}`);
+		// console.log(this.imageSrc);
+		// this.imageSrc.push(`${this.mediaUrl}/${data}`);
+		this.valueChange.emit(this.photosArray);
+	}
 
 	private addPhoto(photoName) {
 		this.photosArray.push(photoName);
-		// console.log('Photos array (for form output): ', this.photosArray.value);
+		console.log('Photos array (for form output): ', this.photosArray);
 	}
 
 	private removePhoto(index) {
 		const removedPhoto = this.photosArray[index];
 		this.photosArray.splice(index, 1);
 		this.imageSrc.splice(index, 1);
+		console.log(this.photosArray, this.imageSrc);
 		this.valueChange.emit(this.photosArray);
 		this.alertService.success(`Removed photo "${removedPhoto}"`);
 	}
@@ -79,6 +99,7 @@ export class MultiImgUploaderComponent implements OnInit {
 		return this.http.post(url, formData).subscribe(
 			res => {
 				console.log('file posted to S3', file.name);
+				console.log(res);
 				this.valueChange.emit(this.photosArray);
 				this.alertService.success(
 					`${file.name} uploaded successfully!`
