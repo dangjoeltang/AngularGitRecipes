@@ -33,9 +33,17 @@ export class MultiImgUploaderComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.eventsSubscription = this.events.subscribe(photoNames => {
-			this.populateImages(photoNames);
-		});
+		try {
+			this.eventsSubscription = this.events.subscribe(photoNames => {
+				this.populateImages(photoNames);
+			});
+		} catch (error) {
+			if (error instanceof TypeError) {
+				console.log(
+					'Nothing to subscribe to. Are you playing in the sandbox?'
+				);
+			}
+		}
 	}
 
 	private populateImages(data) {

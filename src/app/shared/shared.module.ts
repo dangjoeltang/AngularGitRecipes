@@ -9,8 +9,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TagInputModule } from 'ngx-chips';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
-// import { DropzoneModule } from 'ngx-dropzone-wrapper';
-// import { FileUploadModule } from 'ng2-file-upload';
 
 // My Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -23,6 +21,7 @@ import { RecipeCardComponent } from './components/recipe-card/recipe-card.compon
 import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MultiImgUploaderComponent } from './components/multi-img-uploader/multi-img-uploader.component';
+import { LightboxComponent } from './components/lightbox/lightbox.component';
 
 @NgModule({
 	declarations: [
@@ -37,6 +36,7 @@ import { MultiImgUploaderComponent } from './components/multi-img-uploader/multi
 		RecipeFormComponent,
 		ConfirmDialogComponent,
 		MultiImgUploaderComponent,
+		LightboxComponent,
 	],
 	imports: [
 		CommonModule,
@@ -74,6 +74,7 @@ import { MultiImgUploaderComponent } from './components/multi-img-uploader/multi
 		RecipeCardComponent,
 		RecipeFormComponent,
 		MultiImgUploaderComponent,
+		LightboxComponent,
 
 		// Directives
 		ShowIfAuthDirective,
