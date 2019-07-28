@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main container">
 
     <ng-template #content let-modal>
         <div class="modal-header">
@@ -14,66 +14,87 @@
         </div>
     </ng-template>
 
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <!-- <img src="https://via.placeholder.com/300x300" class="rounded" alt="..."> -->
-            <h3 class="display-4">
-                {{ recipe.title }}
-            </h3>
-            <span *ngFor="let t of recipe.tags" class="badge badge-info badge-tags mr-2">{{ t }} </span>
-            <p class="lead my-0">Author ID: {{ recipe.author }}</p>
-
-
-            <hr class="my-3">
-            <div>
-                <!-- Recipe ID: {{ recipe.pk }} -->
-                <!-- <a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-info">Edit Recipe</a> -->
+    <div class="recipe-card">
+        <div class="card">
+            <img [src]="imageUrls[0]" class="card-img-top" id="main-recipe-img">
+            <div class="recipe-images">
+                <app-lightbox></app-lightbox>
             </div>
-            <p class="lead">{{ recipe.description }}</p>
-            <a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-primary btn-sm mr-2" id="edit-recipe">Edit
-                Recipe</a>
-            <a href="#" class="btn btn-warning btn-sm mr-2">Clone Recipe</a>
-            <button type="button" class="btn btn-danger btn-sm mr-2" id="delete-recipe" (click)="open(content)">Delete
-                Recipe</button>
 
+            <div class="recipe-header card-header">
+
+                <!-- <img src="https://via.placeholder.com/300x300" class="rounded" alt="..."> -->
+                <h3 class="display-4">
+                    {{ recipe.title }}
+                </h3>
+                <span *ngFor="let t of recipe.tags" class="badge badge-info badge-tags mr-2">{{ t }} </span>
+                <p class="lead my-0">Author ID: {{ recipe.author }}</p>
+
+
+                <hr class="my-3">
+                <div>
+                    <!-- Recipe ID: {{ recipe.pk }} -->
+                    <!-- <a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-info">Edit Recipe</a> -->
+                </div>
+                <p class="lead">{{ recipe.description }}</p>
+                <a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-primary btn-sm mr-2"
+                    id="edit-recipe">Edit
+                    Recipe</a>
+                <a href="#" class="btn btn-warning btn-sm mr-2">Clone Recipe</a>
+                <button type="button" class="btn btn-danger btn-sm mr-2" id="delete-recipe"
+                    (click)="open(content)">Delete
+                    Recipe</button>
+
+
+            </div>
+
+            <div class="recipe-content">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h5>
+                            Ingredients
+                        </h5>
+                        <ul>
+                            <li *ngFor="let i of recipe.ingredients">
+                                {{ i.ingredient }} - {{ i.quantity_amount }} {{ i.quantity_unit }}
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="list-group-item">
+                        <h5>
+                            Directions
+                        </h5>
+                        <ol>
+                            <li *ngFor="let i of recipe.steps">
+                                {{ i.step_text }}
+                            </li>
+                        </ol>
+                    </li>
+
+                    <li class="list-group-item">
+                        <h5>
+                            Notes
+                        </h5>
+                        <ol>
+                            <li *ngFor="let n of recipe.notes">
+                                {{ n.note_text}}
+                            </li>
+                        </ol>
+                    </li>
+
+                    <li class="list-group-item">
+                        <p>
+                            <small>
+                                Last modified: {{ recipe.modified_time | date: 'medium' }}
+                                <br>
+                                Created: {{ recipe.created_time | date: 'medium' }}
+                            </small>
+                        </p>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div class="container recipe-content">
-        <app-lightbox></app-lightbox>
-
-        <h5>
-            Ingredients:
-        </h5>
-        <ul>
-            <li *ngFor="let i of recipe.ingredients">
-                {{ i.ingredient }} - {{ i.quantity_amount }} {{ i.quantity_unit }}
-            </li>
-        </ul>
-
-        <h5>
-            Directions:
-        </h5>
-        <ol>
-            <li *ngFor="let i of recipe.steps">
-                {{ i.step_text }}
-            </li>
-        </ol>
-
-        <h5>
-            Notes:
-        </h5>
-        <ol>
-            <li *ngFor="let n of recipe.notes">
-                {{ n.note_text}}
-            </li>
-        </ol>
-        <p>
-            <small>
-                Last modified: {{ recipe.modified_time | date: 'medium' }}
-                <br>
-                Created: {{ recipe.created_time | date: 'medium' }}
-            </small>
-        </p>
-    </div>
 </div>

@@ -1,9 +1,19 @@
-.jumbotron {
-    background: #BDD4E7;
+#main-recipe-img {
+    object-fit: cover;
+    width: 100%;
+    max-height: 400px;
 }
 
-.recipe-header {
-    display: flex;
-    align-items: baseline;
+
+.main {
+    margin: 3rem auto;
+}
+
+.recipe-card {
+
+}
+
+.recipe-images {
+
 }
 

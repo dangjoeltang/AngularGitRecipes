@@ -42,6 +42,7 @@ export class RecipeDetailComponent implements OnInit {
 		this.imageUrls = this.recipe.recipe_photos.map(
 			pName => `${this.mediaUrl}/${pName.photo_file}`
 		);
+		console.log(this.imageUrls);
 	}
 
 	deleteRecipe() {

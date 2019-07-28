@@ -19,7 +19,6 @@ export class LightboxComponent implements OnInit {
 		'https://dcrfk60sixql7.cloudfront.net/recipe-photos/perm1.PNG',
 		'https://dcrfk60sixql7.cloudfront.net/recipe-photos/perm1.PNG',
 		'https://dcrfk60sixql7.cloudfront.net/recipe-photos/perm1.PNG',
-		'https://dcrfk60sixql7.cloudfront.net/recipe-photos/perm1.PNG',
 	];
 	constructor(private modalService: NgbModal) {}
 
