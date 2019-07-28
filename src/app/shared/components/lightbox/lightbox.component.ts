@@ -26,7 +26,7 @@ export class LightboxComponent implements OnInit {
 
 	openModal(content, data) {
 		const modalRef = this.modalService.open(content, {
-			// size: 'lg',
+			size: 'lg',
 		});
 		// const modalRef = this.modalService.open(ImgModalComponent, {
 		//     windowClass: 'center',
