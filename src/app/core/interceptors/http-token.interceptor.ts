@@ -50,6 +50,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 			// .set()
 			setHeaders: headersConfig,
 		});
+		console.log(request);
 
 		this.showLoader();
 		return next.handle(request).pipe(

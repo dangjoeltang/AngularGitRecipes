@@ -10,8 +10,6 @@ import { environment } from 'src/environments/environment';
 export class RecipeCardComponent implements OnInit {
 	@Input() recipe: RecipeDetail;
 
-	// @Input() recipePhoto: string = 'https://via.placeholder.com/150x100';
-
 	private mediaUrl = environment.media_url;
 	private imageUrls: string[];
 
