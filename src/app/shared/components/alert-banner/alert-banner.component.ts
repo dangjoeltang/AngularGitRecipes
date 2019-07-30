@@ -14,19 +14,17 @@ export class AlertBannerComponent implements OnInit {
 	constructor(private alertService: AlertService) {}
 
 	ngOnInit() {
-		this.alertService.getAlert().subscribe((alert: Alert) => {
-			if (!alert) {
-				// clear alerts when an empty alert is received
-				this.alerts = [];
-				return;
-			}
-
-			// add alert to array
-			this.alerts.push(alert);
-
-			// close alert after x milliseconds
-			setTimeout(() => this.removeAlert(alert), 3000);
-		});
+		// this.alertService.getAlert().subscribe((alert: Alert) => {
+		// 	if (!alert) {
+		// 		// clear alerts when an empty alert is received
+		// 		this.alerts = [];
+		// 		return;
+		// 	}
+		// 	// add alert to array
+		// 	this.alerts.push(alert);
+		// 	// close alert after x milliseconds
+		// 	setTimeout(() => this.removeAlert(alert), 3000);
+		// });
 	}
 
 	removeAlert(alert: Alert) {

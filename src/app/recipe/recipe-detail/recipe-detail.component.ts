@@ -4,9 +4,9 @@ import { RecipeDetail, User } from 'src/app/core/models';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { RecipeService } from 'src/app/core/services/recipe.service';
-import { AlertService } from 'src/app/core/services/alert.service';
 import { UserAuthService } from 'src/app/core/services/user-auth.service';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-recipe-detail',
@@ -26,7 +26,7 @@ export class RecipeDetailComponent implements OnInit {
 		private router: Router,
 		private modalService: NgbModal,
 		private recipeService: RecipeService,
-		private alertService: AlertService,
+		private alertService: ToastrService,
 		private userService: UserAuthService
 	) {}
 
@@ -47,7 +47,7 @@ export class RecipeDetailComponent implements OnInit {
 	deleteRecipe() {
 		this.recipeService.deleteRecipe(this.recipe.pk).subscribe(res => {
 			this.modalService.dismissAll();
-			this.alertService.success('Deleted recipe', true);
+			this.alertService.success('Deleted recipe');
 			this.router.navigate(['/profile', this.currentUser.profile_id]);
 		});
 	}

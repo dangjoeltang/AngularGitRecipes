@@ -15,7 +15,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AlertBannerComponent } from './components/alert-banner/alert-banner.component';
 import { ShowIfAuthDirective } from './directives/show-if-auth.directive';
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
@@ -31,7 +30,6 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 		NotFoundComponent,
 		LandingPageComponent,
 		FooterComponent,
-		AlertBannerComponent,
 		RecipeCardComponent,
 		RecipeFormComponent,
 		ConfirmDialogComponent,
@@ -55,8 +53,6 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 			positionClass: 'inline',
 		}),
 		ToastContainerModule,
-		// DropzoneModule,
-		// FileUploadModule,
 	],
 	exports: [
 		CommonModule,
@@ -74,7 +70,6 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 		NotFoundComponent,
 		LandingPageComponent,
 		FooterComponent,
-		AlertBannerComponent,
 		RecipeCardComponent,
 		RecipeFormComponent,
 		MultiImgUploaderComponent,

@@ -13,7 +13,7 @@ export class SandboxComponent implements OnInit {
 	ngOnInit() {}
 
 	updateArray(photoArray) {
-		console.log(photoArray);
+		// console.log(photoArray);
 	}
 
 	toast() {

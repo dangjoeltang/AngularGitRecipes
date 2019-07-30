@@ -1,10 +1,8 @@
 <div class="wrapper">
     <div class="center">
-
-            
-
-        <button (click)="toggleSpinner()">click for spinner <i *showLoadingSpinner="showSpinner" class="fas fa-spinner"></i></button>
-        <app-multi-img-uploader (valueChange)="updateArray($event)"></app-multi-img-uploader>
+        <button (click)="toggleSpinner()">Spinner</button>
+        <spinner  *showLoadingSpinner="showSpinner"></spinner>
+            <app-multi-img-uploader (valueChange)="updateArray($event)"></app-multi-img-uploader>
         <!-- <app-lightbox></app-lightbox> -->
     </div>
 </div>
