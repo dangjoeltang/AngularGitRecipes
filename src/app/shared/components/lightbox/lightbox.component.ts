@@ -12,14 +12,6 @@ export class LightboxComponent implements OnInit {
 	private closeResult: string;
 	private modalData;
 
-	private testImgArray = [
-		'https://dcrfk60sixql7.cloudfront.net/recipe-photos/perm1b.PNG',
-		'https://dcrfk60sixql7.cloudfront.net/recipe-photos/perm1.PNG',
-		'https://dcrfk60sixql7.cloudfront.net/recipe-photos/perm1.PNG',
-		'https://dcrfk60sixql7.cloudfront.net/recipe-photos/perm1.PNG',
-		'https://dcrfk60sixql7.cloudfront.net/recipe-photos/perm1.PNG',
-		'https://dcrfk60sixql7.cloudfront.net/recipe-photos/perm1.PNG',
-	];
 	constructor(private modalService: NgbModal) {}
 
 	ngOnInit() {}

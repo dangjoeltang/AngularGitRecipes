@@ -3,8 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { ApiService } from 'src/app/core/services/api.service';
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { AlertService } from 'src/app/core/services/alert.service';
 import { ProfileData } from 'src/app/core/models/profile.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-profile-pic-upload',
@@ -12,9 +12,10 @@ import { ProfileData } from 'src/app/core/models/profile.model';
 	styleUrls: ['./profile-pic-upload.component.css'],
 })
 export class ProfilePicUploadComponent implements OnInit {
-	@Input() imageSrc: string;
-
+	private mediaRoot = environment.media_url;
 	private apiUrl = environment.api_url;
+
+	private _photoPath: string;
 	private _profile: ProfileData;
 	private profileUrl: string;
 	private signedRes;
@@ -33,10 +34,21 @@ export class ProfilePicUploadComponent implements OnInit {
 		return this._profile;
 	}
 
+	@Input()
+	set photoPath(path: string) {
+		// console.log('got path: ', path);
+		this._photoPath = `${this.mediaRoot}/${path}`;
+		// console.log(this._photoPath);
+	}
+
+	get photoPath(): string {
+		return this._photoPath;
+	}
+
 	constructor(
 		private api: ApiService,
 		private http: HttpClient,
-		private alertService: AlertService
+		private alertService: ToastrService
 	) {}
 
 	ngOnInit() {}
@@ -46,7 +58,7 @@ export class ProfilePicUploadComponent implements OnInit {
 		if (file.target.files && file.target.files[0]) {
 			let reader = new FileReader();
 			reader.onload = (event: any) => {
-				this.imageSrc = event.target.result;
+				this._photoPath = event.target.result;
 			};
 			reader.readAsDataURL(file.target.files[0]);
 		}
@@ -71,38 +83,64 @@ export class ProfilePicUploadComponent implements OnInit {
 			});
 	}
 
-	uploadPhoto() {
+	onSubmit() {
 		const url = this.signedRes.data['url'];
 		const fields = this.signedRes.data['fields'];
 		// const files = { file: this.file };
 
-		console.log(fields);
+		// console.log(fields);
+
 		// upload file to S3
 		let formData: FormData = new FormData();
 		Object.keys(fields).forEach(key => formData.append(key, fields[key]));
 		formData.append('file', this.file);
-		console.log(JSON.stringify(formData));
+
+		// console.log(JSON.stringify(formData));
+
 		// Post formdata with file and authorization to S3
-		return this.http.post(url, formData).subscribe(
+		this.http.post(url, formData).subscribe(
 			res => {
-				console.log(res);
-				// PATCH profile_photo path data to api
-				this.http
-					.patch(this.profileUrl, {
-						profile_photo: this.profilePhotoName,
-					})
+				this._profile.profile_photo = this.profilePhotoName;
+				this.api
+					.put(`profiles/${this._profile.id}/`, this._profile)
+					// .patch(this.profileUrl, { profile_photo: this.profilePhotoName })
 					.subscribe(
 						res => {
-							console.log(res);
+							this.alertService.success(
+								'Successfully change profile picture!'
+							);
 						},
 						err => {
-							console.log(err);
+							this.alertService.error(err.error);
+							console.log(err.error);
 						}
 					);
 			},
 			error => {
-				console.log(error);
+				this.alertService.error(error.error.detail);
+				console.log(error.error.detail);
 			}
+		);
+	}
+
+	uploadPhoto() {
+		this._profile.profile_photo = this.profilePhotoName;
+
+		// PUT profile_photo path data to api
+		return (
+			this.api
+				.put(`profiles/${this._profile.id}/`, this._profile)
+				// .patch(this.profileUrl, { profile_photo: this.profilePhotoName })
+				.subscribe(
+					res => {
+						this.alertService.success('Success!');
+						console.log(res);
+					},
+					err => {
+						this.alertService.error(err.error);
+						console.log(err.error);
+					}
+				)
 		);
 	}
 }

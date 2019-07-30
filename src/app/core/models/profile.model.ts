@@ -3,7 +3,7 @@ export interface ProfileData {
 	user_account: string;
 	first_name: string;
 	last_name: string;
-	profile_photo: File;
+	profile_photo: string;
 	short_bio: string;
 	recipe_count: number;
 	author_recipes: string[];

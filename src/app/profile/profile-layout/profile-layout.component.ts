@@ -9,6 +9,7 @@ import { ProfileData } from 'src/app/core/models/profile.model';
 })
 export class ProfileLayoutComponent implements OnInit {
 	private profile: ProfileData;
+	private closeResult: string;
 
 	constructor(private route: ActivatedRoute) {}
 

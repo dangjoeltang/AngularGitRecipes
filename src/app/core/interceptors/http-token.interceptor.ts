@@ -7,7 +7,7 @@ import {
 	HttpResponse,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map, catchError } from 'rxjs/operators';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -15,6 +15,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { JwtService } from '../services/jwt.service';
 import { Router } from '@angular/router';
 import { UserAuthService } from '../services/user-auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class HttpTokenInterceptor implements HttpInterceptor {
@@ -23,7 +24,8 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 		private jwtHelper: JwtHelperService,
 		private router: Router,
 		private userService: UserAuthService,
-		private spinner: NgxSpinnerService
+		private spinner: NgxSpinnerService,
+		private toastrService: ToastrService
 	) {}
 
 	intercept(
@@ -46,34 +48,33 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 			headersConfig['Authorization'] = `Bearer ${token}`;
 		}
 		const request = req.clone({
-			// headers: req.headers.set('Content-Type', 'application/json')
-			// .set()
 			setHeaders: headersConfig,
 		});
-		console.log(request);
 
-		this.showLoader();
+		this.spinner.show();
+		// return next.handle(request).pipe(
+		// 	map(event => {
+		// 		if (event instanceof HttpResponse) {
+		// 			this.spinner.hide();
+		// 		}
+		// 		return event;
+		// 	}),
+		// 	catchError((err: any) => {
+		// 		this.spinner.hide();
+		// 		return Observable.throw(err);
+		// 	})
+		// );
 		return next.handle(request).pipe(
 			tap(
 				(event: HttpEvent<any>) => {
 					if (event instanceof HttpResponse) {
-						this.onEnd();
+						this.spinner.hide();
 					}
 				},
 				(err: any) => {
-					this.onEnd();
+					this.spinner.hide();
 				}
 			)
 		);
-	}
-
-	private onEnd(): void {
-		this.hideLoader();
-	}
-	private showLoader(): void {
-		this.spinner.show();
-	}
-	private hideLoader(): void {
-		this.spinner.hide();
 	}
 }

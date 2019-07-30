@@ -1,6 +1,6 @@
 <div class="container-story card">
 
-    <profile-picture [photoPath]="profile.profile_photo"></profile-picture>
+    <profile-picture [photoPath]="profile.profile_photo" (click)="openModal(content)"></profile-picture>
 
     <div class="card-body">
         <div class="card-body-header">
@@ -13,13 +13,13 @@
                 </h6>
             </div>
             <!-- <p><small>edit</small></p> -->
-            <a routerLink=""><i class="far fa-edit fa-lg" id="edit-icon"></i></a>
+            <i class="far fa-edit fa-lg" id="edit-icon"></i>
         </div>
     </div>
     <div class="card-append">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                    {{ profile.short_bio }}
+                {{ profile.short_bio }}
             </li>
             <li class="list-group-item">
                 Recipe count: <span id="recipe-count">{{ profile.recipe_count }}</span>
@@ -33,3 +33,8 @@
     </div>
 
 </div>
+
+
+<ng-template #content let-modal>
+    <app-profile-pic-upload [profile]="profile" [photoPath]="profile.profile_photo"></app-profile-pic-upload>
+</ng-template>

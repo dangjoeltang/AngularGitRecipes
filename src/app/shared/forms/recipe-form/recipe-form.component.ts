@@ -11,10 +11,10 @@ import { COMMA, ENTER, SPACE } from '@angular/cdk/keycodes';
 
 import { RecipeDetail } from 'src/app/core/models';
 import { RecipeService } from 'src/app/core/services/recipe.service';
-import { AlertService } from 'src/app/core/services/alert.service';
 import { UserAuthService } from 'src/app/core/services/user-auth.service';
 import { environment } from 'src/environments/environment';
 import { Subject, ReplaySubject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-recipe-form',
@@ -27,7 +27,7 @@ export class RecipeFormComponent implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private recipeService: RecipeService,
-		private alertService: AlertService,
+		private alertService: ToastrService,
 		private router: Router,
 		private userService: UserAuthService,
 		private route: ActivatedRoute
@@ -234,20 +234,15 @@ export class RecipeFormComponent implements OnInit {
 					new FormControl(res.recipe_id)
 				);
 				const recipe: RecipeDetail = this.recipeForm.value;
-				console.log(recipe);
 				this.recipeService
 					.updateRecipe(res.recipe_id, recipe)
 					.subscribe(
 						res => {
-							this.alertService.success(
-								`${res.title} updated!`,
-								true
-							);
+							this.alertService.success(`${res.title} updated!`);
 							this.router.navigateByUrl(`/recipes/${res.pk}`);
 						},
 						err => {
-							this.alertService.error(err, true);
-							console.log(err);
+							this.alertService.error(err);
 						}
 					);
 			} else {
@@ -257,14 +252,12 @@ export class RecipeFormComponent implements OnInit {
 				this.recipeService.createNewRecipe(recipe).subscribe(
 					res => {
 						this.alertService.success(
-							`${res.title} created successfully!`,
-							true
+							`${res.title} created successfully!`
 						);
 						this.router.navigateByUrl(`/recipes/${res.pk}`);
 					},
 					err => {
-						this.alertService.error(err, true);
-						console.log(err);
+						this.alertService.error(err);
 					}
 				);
 			}

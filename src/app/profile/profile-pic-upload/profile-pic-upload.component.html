@@ -1,12 +1,12 @@
 <div class="center-page">
     <h1 class="display-4">Profile Photo</h1>
     <div class="card card-block w-50 mx-auto">
-        <img [src]="imageSrc || 'https://via.placeholder.com/250x150'" alt="Recipe Card Image" class="card-img-top">
+        <img [src]="_photoPath || 'https://via.placeholder.com/250x150'" alt="Recipe Card Image" class="card-img-top">
         <div class="card-body">
 
             <input #fileInput type="file" id="profile-pic" (change)="onFileSelect($event)">
 
         </div>
-        <button class="btn btn-primary btn-block" (click)="uploadPhoto()" [disabled]="isDisabled">Save</button>
+        <button class="btn btn-primary btn-block" (click)="onSubmit()" [disabled]="isDisabled">Save</button>
     </div>
 </div>
