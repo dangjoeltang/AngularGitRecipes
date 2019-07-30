@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SandboxComponent implements OnInit {
 	constructor(private toastr: ToastrService) {}
+	private showSpinner: boolean = false;
 
 	ngOnInit() {}
 
@@ -17,5 +18,9 @@ export class SandboxComponent implements OnInit {
 
 	toast() {
 		this.toastr.success('Toast has been triggered!');
+	}
+
+	toggleSpinner() {
+		this.showSpinner = !this.showSpinner;
 	}
 }

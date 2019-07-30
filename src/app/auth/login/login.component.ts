@@ -50,8 +50,7 @@ export class LoginComponent implements OnInit {
 				this.router.navigateByUrl('/');
 			},
 			err => {
-				this.alertService.error(err);
-				console.log(err);
+				this.alertService.error(err.details);
 				this.errors = err;
 				this.isSubmitted = false;
 			}

@@ -22,6 +22,8 @@ import { RecipeFormComponent } from './forms/recipe-form/recipe-form.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MultiImgUploaderComponent } from './components/multi-img-uploader/multi-img-uploader.component';
 import { LightboxComponent } from './components/lightbox/lightbox.component';
+import { LoadingSpinnerDirective } from './directives/loading-spinner.directive';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
 	declarations: [
@@ -31,12 +33,14 @@ import { LightboxComponent } from './components/lightbox/lightbox.component';
 		FooterComponent,
 		AlertBannerComponent,
 		RecipeCardComponent,
-		// Directives
-		ShowIfAuthDirective,
 		RecipeFormComponent,
 		ConfirmDialogComponent,
 		MultiImgUploaderComponent,
 		LightboxComponent,
+		SpinnerComponent,
+		// Directives
+		ShowIfAuthDirective,
+		LoadingSpinnerDirective,
 	],
 	imports: [
 		CommonModule,
@@ -75,9 +79,12 @@ import { LightboxComponent } from './components/lightbox/lightbox.component';
 		RecipeFormComponent,
 		MultiImgUploaderComponent,
 		LightboxComponent,
+		SpinnerComponent,
 
 		// Directives
 		ShowIfAuthDirective,
+		LoadingSpinnerDirective,
 	],
+	entryComponents: [SpinnerComponent],
 })
 export class SharedModule {}

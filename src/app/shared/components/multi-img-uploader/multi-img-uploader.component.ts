@@ -54,14 +54,14 @@ export class MultiImgUploaderComponent implements OnInit {
 
 	private addPhoto(photoName) {
 		this.photosArray.push(photoName);
-		console.log('Photos array (for form output): ', this.photosArray);
+		// console.log('Photos array (for form output): ', this.photosArray);
 	}
 
 	private removePhoto(index) {
 		const removedPhoto = this.photosArray[index];
 		this.photosArray.splice(index, 1);
 		this.imageSrc.splice(index, 1);
-		console.log(this.photosArray, this.imageSrc);
+		// console.log(this.photosArray, this.imageSrc);
 		this.valueChange.emit(this.photosArray);
 		this.alertService.success(`Removed photo "${removedPhoto}"`);
 	}
@@ -103,15 +103,15 @@ export class MultiImgUploaderComponent implements OnInit {
 
 		return this.http.post(url, formData).subscribe(
 			res => {
-				console.log('file posted to S3', file.name);
-				console.log(res);
+				// console.log('file posted to S3', file.name);
+				// console.log(res);
 				this.valueChange.emit(this.photosArray);
 				this.alertService.success(
 					`${file.name} uploaded successfully!`
 				);
 			},
 			error => {
-				console.log('Something went wrong: ', error);
+				// console.log('Something went wrong: ', error);
 				this.alertService.error(
 					'Something went wrong with the upload.'
 				);
