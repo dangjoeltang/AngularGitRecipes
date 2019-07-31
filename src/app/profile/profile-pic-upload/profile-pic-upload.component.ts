@@ -15,15 +15,15 @@ export class ProfilePicUploadComponent implements OnInit {
 	private mediaRoot = environment.media_url;
 	private apiUrl = environment.api_url;
 
-	private _photoPath: string;
+	_photoPath: string;
 	private _profile: ProfileData;
 	private profileUrl: string;
 	private signedRes;
 	private file;
 	private profilePhotoUrl: string;
 	private profilePhotoName: string;
-	private isDisabled: boolean = true;
-	private showSpinner: boolean = false;
+	isDisabled: boolean = true;
+	showSpinner: boolean = false;
 
 	@Input()
 	set profile(profile: ProfileData) {
@@ -55,7 +55,7 @@ export class ProfilePicUploadComponent implements OnInit {
 	ngOnInit() {}
 
 	// Send metadata to signing service
-	private onFileSelect(file) {
+	onFileSelect(file) {
 		if (file.target.files && file.target.files[0]) {
 			let reader = new FileReader();
 			reader.onload = (event: any) => {

@@ -36,7 +36,7 @@ export class RecipeFormComponent implements OnInit {
 	// 'https://dcrfk60sixql7.cloudfront.net'
 	private mediaUrl = environment.media_url;
 
-	private photoEventsSubject = new ReplaySubject();
+	photoEventsSubject = new ReplaySubject();
 
 	recipeForm: FormGroup;
 	form;

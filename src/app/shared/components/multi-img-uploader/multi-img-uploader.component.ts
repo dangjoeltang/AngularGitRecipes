@@ -66,7 +66,7 @@ export class MultiImgUploaderComponent implements OnInit {
 		this.alertService.success(`Removed photo "${removedPhoto}"`);
 	}
 
-	private onFileSelect(file) {
+	onFileSelect(file) {
 		if (file.target.files && file.target.files[0]) {
 			let reader = new FileReader();
 			reader.onload = (event: any) => {

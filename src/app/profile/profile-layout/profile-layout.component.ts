@@ -8,7 +8,7 @@ import { ProfileData } from 'src/app/core/models/profile.model';
 	styleUrls: ['./profile-layout.component.css'],
 })
 export class ProfileLayoutComponent implements OnInit {
-	private profile: ProfileData;
+	profile: ProfileData;
 	private closeResult: string;
 
 	constructor(private route: ActivatedRoute) {}

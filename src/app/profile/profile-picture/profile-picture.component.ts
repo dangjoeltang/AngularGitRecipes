@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 	styleUrls: ['./profile-picture.component.css'],
 })
 export class ProfilePictureComponent implements OnInit {
-	private _photoPath;
+	_photoPath;
 	private mediaRoot = environment.media_url;
 
 	constructor() {}

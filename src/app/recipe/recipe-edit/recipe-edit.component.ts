@@ -8,7 +8,7 @@ import { RecipeDetail } from 'src/app/core/models';
 	styleUrls: ['./recipe-edit.component.css'],
 })
 export class RecipeEditComponent implements OnInit {
-	private recipe: RecipeDetail;
+	recipe: RecipeDetail;
 
 	constructor(private route: ActivatedRoute) {}
 

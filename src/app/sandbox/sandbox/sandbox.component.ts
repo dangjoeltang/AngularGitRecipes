@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SandboxComponent implements OnInit {
 	constructor(private toastr: ToastrService) {}
-	private showSpinner: boolean = false;
+	showSpinner: boolean = false;
 
 	ngOnInit() {}
 

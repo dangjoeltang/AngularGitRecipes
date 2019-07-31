@@ -11,7 +11,7 @@ export class RecipeCardComponent implements OnInit {
 	@Input() recipe: RecipeDetail;
 
 	private mediaUrl = environment.media_url;
-	private imageUrls: string[];
+	imageUrls: string[];
 
 	constructor() {}
 

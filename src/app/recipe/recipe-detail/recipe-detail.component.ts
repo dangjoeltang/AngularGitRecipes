@@ -15,11 +15,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RecipeDetailComponent implements OnInit {
 	private recipe_id;
-	private recipe: RecipeDetail;
+	recipe: RecipeDetail;
 	private closeResult: string;
 	private currentUser: User;
 	private mediaUrl = environment.media_url;
-	private imageUrls: string[];
+	imageUrls: string[];
 
 	constructor(
 		private route: ActivatedRoute,
