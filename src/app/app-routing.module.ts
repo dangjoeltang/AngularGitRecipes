@@ -16,23 +16,23 @@ const routes: Routes = [
 	},
 	{
 		path: 'auth',
-		loadChildren: () => AuthModule,
+		loadChildren: './auth/auth.module#AuthModule',
 	},
 	{
 		path: 'profile',
-		loadChildren: () => ProfileModule,
+		loadChildren: './profile/profile.module#ProfileModule',
 	},
 	{
 		path: 'recipes',
-		loadChildren: () => RecipeModule,
+		loadChildren: './recipe/recipe.module#RecipeModule',
 	},
 	{
 		path: 'explore',
-		loadChildren: () => ExploreModule,
+		loadChildren: './explore/explore.module#ExploreModule',
 	},
 	{
 		path: 'sandbox',
-		loadChildren: () => SandboxModule,
+		loadChildren: './sandbox/sandbox.module#SandboxModule',
 	},
 	{
 		path: '**',
