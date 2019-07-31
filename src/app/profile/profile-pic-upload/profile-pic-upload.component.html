@@ -7,6 +7,7 @@
             <input #fileInput type="file" id="profile-pic" (change)="onFileSelect($event)">
 
         </div>
-        <button class="btn btn-primary btn-block" (click)="onSubmit()" [disabled]="isDisabled">Save</button>
+        <button class="btn btn-primary btn-block" (click)="onSubmit()" [disabled]="isDisabled">Save <spinner
+                *showLoadingSpinner="showSpinner"></spinner></button>
     </div>
 </div>

@@ -23,6 +23,7 @@ export class ProfilePicUploadComponent implements OnInit {
 	private profilePhotoUrl: string;
 	private profilePhotoName: string;
 	private isDisabled: boolean = true;
+	private showSpinner: boolean = false;
 
 	@Input()
 	set profile(profile: ProfileData) {
@@ -86,7 +87,8 @@ export class ProfilePicUploadComponent implements OnInit {
 	onSubmit() {
 		const url = this.signedRes.data['url'];
 		const fields = this.signedRes.data['fields'];
-		// const files = { file: this.file };
+		this.showSpinner = true;
+		this.isDisabled = true;
 
 		// console.log(fields);
 
@@ -109,38 +111,43 @@ export class ProfilePicUploadComponent implements OnInit {
 							this.alertService.success(
 								'Successfully change profile picture!'
 							);
+							this.showSpinner = false;
+							// this.isDisabled = false;
 						},
 						err => {
 							this.alertService.error(err.error);
-							console.log(err.error);
+							this.showSpinner = false;
+							this.isDisabled = false;
 						}
 					);
 			},
 			error => {
 				this.alertService.error(error.error.detail);
+				this.showSpinner = false;
+				this.isDisabled = false;
 				console.log(error.error.detail);
 			}
 		);
 	}
 
-	uploadPhoto() {
-		this._profile.profile_photo = this.profilePhotoName;
+	// uploadPhoto() {
+	// 	this._profile.profile_photo = this.profilePhotoName;
 
-		// PUT profile_photo path data to api
-		return (
-			this.api
-				.put(`profiles/${this._profile.id}/`, this._profile)
-				// .patch(this.profileUrl, { profile_photo: this.profilePhotoName })
-				.subscribe(
-					res => {
-						this.alertService.success('Success!');
-						console.log(res);
-					},
-					err => {
-						this.alertService.error(err.error);
-						console.log(err.error);
-					}
-				)
-		);
-	}
+	// 	// PUT profile_photo path data to api
+	// 	return (
+	// 		this.api
+	// 			.put(`profiles/${this._profile.id}/`, this._profile)
+	// 			// .patch(this.profileUrl, { profile_photo: this.profilePhotoName })
+	// 			.subscribe(
+	// 				res => {
+	// 					this.alertService.success('Success!');
+	// 					console.log(res);
+	// 				},
+	// 				err => {
+	// 					this.alertService.error(err.error);
+	// 					console.log(err.error);
+	// 				}
+	// 			)
+	// 	);
+	// }
 }
