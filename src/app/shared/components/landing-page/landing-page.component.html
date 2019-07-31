@@ -1,20 +1,27 @@
-<div class="jumbotron" *showIfAuth="false">
-    <div class="container">
-        <div class="landing-island">
-            <h1 class="display-4">Welcome to GitRecipes</h1>
-            <p class="lead">This is the landing page.</p>
+<div class="wrapper">
+    <div class="center">
+        <div *showIfAuth="false">
+            <div class="container">
+                <div class="landing-island">
+                    <h1 class="display-4">Welcome to GitRecipes</h1>
+                    <p class="lead">This is the landing page.</p>
+                    <a class="btn btn-primary mr-2" routerLink="/auth/login">Login</a>
+                    <a class="btn btn-secondary mr-2" routerLink="/auth/register">Register</a>
+                    <!-- <a class="btn btn-danger btn-new-recipe mr-2" routerLink="/recipes/browse">Browse</a> -->
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<div class="jumbotron jumbotron-fluid" *showIfAuth="true">
-    <div class="container">
-        <div class="landing-island">
-            <h1 class="display-4">Welcome, {{ currentUser.username }}</h1>
-            <p class="lead">What's cooking?</p>
-            <a class="btn btn-secondary mr-2" [routerLink]="['/profile', currentUser.profile_id]">Profile</a>
-            <a class="btn btn-dark btn-explore mr-2" routerLink="/explore">Explore</a>
-            <a class="btn btn-danger btn-new-recipe mr-2" routerLink="/recipes/new">New recipe</a>
+        <div class="jumbotron" *showIfAuth="true">
+            <div class="container">
+                <div class="landing-island">
+                    <h1 class="display-4">Welcome, {{ currentUser.username }}</h1>
+                    <p class="lead">What's cooking?</p>
+                    <a class="btn btn-secondary mr-2" [routerLink]="['/profile', currentUser.profile_id]">Profile</a>
+                    <a class="btn btn-dark btn-explore mr-2" routerLink="/explore">Explore</a>
+                    <a class="btn btn-danger btn-new-recipe mr-2" routerLink="/recipes/new">New recipe</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

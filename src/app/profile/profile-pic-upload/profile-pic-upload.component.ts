@@ -78,7 +78,7 @@ export class ProfilePicUploadComponent implements OnInit {
 			.subscribe(res => {
 				this.signedRes = res;
 				this.isDisabled = false;
-				console.log(res);
+				// console.log(res);
 				this.profilePhotoUrl = res.url;
 				this.profilePhotoName = res.path;
 			});

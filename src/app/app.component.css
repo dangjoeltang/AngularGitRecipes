@@ -1,5 +1,7 @@
 #body-layout {
-    height: 100vh;
+    min-height: calc(100vh);
+    padding-top: 56px;
+    /* padding-bottom: 200px; */
     /* position: relative; */
 }
 
@@ -11,13 +13,13 @@
 
 .container-head {
     z-index: 10;
-    position: relative;
+    position: fixed;
     width: 100%;
-    
+    top: 0;
+    background: #FFFFFF;
     box-shadow: 0 2px 3px rgba(0,0,0,.2);
     display: flex;
     justify-content: center;
-    /* background: #BDD4E7; */
 }
 
 .header {
@@ -29,11 +31,7 @@
 .container-body {
     position: relative;
     width: 100%;
-    /* max-width: 1260px; */
-    padding: 1rem;
-    /* margin: 1rem auto 0; */
-    background: #FEFDFC;
-    /* height: calc(100vh - 10rem); */
+    height: 100%;
 }
 
 .container-foot {
@@ -44,14 +42,9 @@
     height: 4rem;
     justify-content: center;
     background: #F7F3E3;
-    /* margin-top: 4rem; */
 }
 
 .footer {
     max-width: 1260px;
     width: 100%;
 }
-
-/* ngx-spinner {
-    position: fixed;
-} */

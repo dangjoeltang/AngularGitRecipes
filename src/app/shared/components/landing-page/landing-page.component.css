@@ -1,17 +1,15 @@
-.jumbotron {
-    /* background: url(/assets/images/garlic.jpg); */
-    background: url(/assets/images/avocado-toast.jpg);
-    background-repeat: no-repeat;
-    height: 100vh;
-    margin: 0;
-    background-size: 800px;
-    background-position-x: 40% 0%;
-    /* background-position: center;  */
+.wrapper {
+    display: flex;
+    min-height: 80vh;
+}
+
+.center {
+    margin: auto;
+    /* width: 500px; */
 }
 
 .landing-island {
-    background-color: rgba(255, 255, 255, 0.7);
-    /* background-color: rgba(189, 212, 231, 0.9); */
+    background-color: rgba(255, 255, 255, 1);
     padding: 2rem;
     max-width: 600px;
     box-shadow: 8px 6px 5px 0px rgba(0,0,0,0.5);
@@ -34,16 +32,10 @@
 }
 
 @media (min-width: 800px) {
-    .jumbotron {
-        background-size: 1200px;
-        /* background-position: center;  */
-    }
+    
 }
 
 @media (min-width: 1200px) {
-    .jumbotron {
-        background-size: 2000px;
-        /* background-position: center;  */
-    }
+    
     
 }
