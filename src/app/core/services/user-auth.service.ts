@@ -77,6 +77,14 @@ export class UserAuthService {
 		);
 	}
 
+	registerAuth(userData): Observable<any> {
+		return this.apiService.post('register/', userData).pipe(
+			map(data => {
+				return data;
+			})
+		);
+	}
+
 	public get currentUserValue(): User {
 		return this.currentUserSubject.value;
 	}
