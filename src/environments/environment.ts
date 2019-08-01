@@ -4,8 +4,8 @@
 
 export const environment = {
 	production: false,
-	// api_url: 'http://localhost:8000/api/',
-	api_url: 'https://gitrecipes.herokuapp.com/api/',
+	api_url: 'http://localhost:8000/api/',
+	// api_url: 'https://gitrecipes.herokuapp.com/api/',
 
 	media_url: 'https://dcrfk60sixql7.cloudfront.net',
 	bucket_url: 'https://gitrecipes-media.s3.us-east-2.amazonaws.com/',
