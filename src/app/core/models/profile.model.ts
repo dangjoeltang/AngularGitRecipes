@@ -1,6 +1,7 @@
 export interface ProfileData {
 	id: number;
-	user_account: string;
+	user_account: number;
+	username: string;
 	first_name: string;
 	last_name: string;
 	profile_photo: string;

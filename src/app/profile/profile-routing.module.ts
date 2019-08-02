@@ -5,7 +5,7 @@ import { ProfileResolver } from './profile-resolver.service';
 
 const routes: Routes = [
 	{
-		path: ':profile_id',
+		path: ':username',
 		component: ProfileLayoutComponent,
 		resolve: {
 			profile: ProfileResolver,

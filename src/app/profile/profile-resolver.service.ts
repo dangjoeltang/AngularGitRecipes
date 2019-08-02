@@ -22,7 +22,7 @@ export class ProfileResolver implements Resolve<ProfileData> {
 		state: RouterStateSnapshot
 	): Observable<any> {
 		return this.api
-			.get(`profiles/${route.params['profile_id']}`)
+			.get(`profiles/${route.params['username']}`)
 			.pipe(catchError(err => this.router.navigateByUrl('/')));
 	}
 }

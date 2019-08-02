@@ -28,7 +28,7 @@ export class ProfilePicUploadComponent implements OnInit {
 	@Input()
 	set profile(profile: ProfileData) {
 		this._profile = profile;
-		this.profileUrl = `${this.apiUrl}profiles/${profile.id}/`;
+		this.profileUrl = `${this.apiUrl}profiles/${profile.username}/`;
 	}
 
 	get profile(): ProfileData {
@@ -104,7 +104,7 @@ export class ProfilePicUploadComponent implements OnInit {
 			res => {
 				this._profile.profile_photo = this.profilePhotoName;
 				this.api
-					.put(`profiles/${this._profile.id}/`, this._profile)
+					.put(`profiles/${this._profile.username}/`, this._profile)
 					// .patch(this.profileUrl, { profile_photo: this.profilePhotoName })
 					.subscribe(
 						res => {
