@@ -5,8 +5,9 @@ import {
 	HttpHandler,
 	HttpRequest,
 	HttpResponse,
+	HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -52,19 +53,22 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 		});
 
 		this.spinner.show();
-		// return next.handle(request).pipe(
-		// 	map(event => {
-		// 		if (event instanceof HttpResponse) {
-		// 			this.spinner.hide();
-		// 		}
-		// 		return event;
-		// 	}),
-		// 	catchError((err: any) => {
-		// 		this.spinner.hide();
-		// 		return Observable.throw(err);
-		// 	})
-		// );
+
 		return next.handle(request).pipe(
+			catchError((error: HttpErrorResponse) => {
+				let errorMessage = '';
+				if (error.error instanceof ErrorEvent) {
+					// client-side error
+					errorMessage = `Error: ${JSON.stringify(error.error)}`;
+				} else {
+					// server-side error
+					errorMessage = `Error: ${JSON.stringify(error.error)}`;
+					// errorMessage = `Error Code: ${error.status}\nMessage: ${
+					// 	error.message
+					// }\nError: ${JSON.stringify(error.error)}`;
+				}
+				return throwError(errorMessage);
+			}),
 			tap(
 				(event: HttpEvent<any>) => {
 					if (event instanceof HttpResponse) {

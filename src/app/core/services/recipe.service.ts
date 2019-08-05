@@ -10,6 +10,10 @@ import { ApiService } from './api.service';
 export class RecipeService {
 	constructor(private apiService: ApiService) {}
 
+	getAllRecipes(): Observable<any> {
+		return this.apiService.get(`recipes/`);
+	}
+
 	createNewRecipe(recipe_data): Observable<any> {
 		return this.apiService.post('recipes/', recipe_data);
 	}

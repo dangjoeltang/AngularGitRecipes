@@ -10,10 +10,6 @@ import { ApiService } from './api.service';
 export class ProfileService {
 	constructor(private apiService: ApiService) {}
 
-	getAllRecipes(): Observable<any> {
-		return this.apiService.get(`recipes/`);
-	}
-
 	getUserRecipes(profileId): Observable<any> {
 		return this.apiService.get(`recipes/?profile=${profileId}`);
 	}

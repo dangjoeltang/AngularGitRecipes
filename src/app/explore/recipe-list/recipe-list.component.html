@@ -1,0 +1,8 @@
+<h1 class="display-4">All Recipes</h1>
+<div class="recipe-thumb-container">
+
+    <div class="card-wrapper" *ngFor="let recipe of recipeList">
+        <app-recipe-card [recipe]="recipe">
+        </app-recipe-card>
+    </div>
+</div>
