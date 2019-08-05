@@ -57,6 +57,10 @@ export class RecipeFormComponent implements OnInit {
 			// If recipe is passed as input, prefill the form
 			this.patchData(this.recipe);
 		}
+
+		this.userService.currentUser.subscribe(res => {
+			this.recipeForm.controls.author.setValue(res.profile_id);
+		});
 		// const directions = this.recipeForm.get('steps');
 		// directions.valueChanges.subscribe(val => {})
 	}
@@ -246,8 +250,8 @@ export class RecipeFormComponent implements OnInit {
 						}
 					);
 			} else {
-				console.log('Creating new recipe');
-				console.log(this.recipeForm.value);
+				// console.log('Creating new recipe');
+				// console.log(this.recipeForm.value);
 				const recipe: RecipeDetail = this.recipeForm.value;
 				this.recipeService.createNewRecipe(recipe).subscribe(
 					res => {
@@ -264,8 +268,4 @@ export class RecipeFormComponent implements OnInit {
 			}
 		});
 	}
-
-	createRecipe() {}
-
-	updateRecipe() {}
 }
