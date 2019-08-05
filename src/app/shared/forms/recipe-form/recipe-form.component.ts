@@ -108,12 +108,12 @@ export class RecipeFormComponent implements OnInit {
 
 	createRecipeForm() {
 		this.form = this.fb.group({
-			title: [],
+			title: [''],
 			author: this.user.profile_id,
-			tags: [],
-			description: [],
+			tags: [[]],
+			description: [''],
 			privacy: [this.privacies[0]],
-			recipe_photos: [],
+			recipe_photos: [[]],
 			ingredients: this.fb.array([
 				// this.fb.group({
 				// 	ingredient: [],
@@ -258,6 +258,7 @@ export class RecipeFormComponent implements OnInit {
 					},
 					err => {
 						this.alertService.error(err);
+						console.log(err);
 					}
 				);
 			}
