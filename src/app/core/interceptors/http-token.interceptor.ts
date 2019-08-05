@@ -52,7 +52,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 			setHeaders: headersConfig,
 		});
 
-		// this.spinner.show();
+		this.spinner.show();
 
 		return next.handle(request).pipe(
 			catchError((error: HttpErrorResponse) => {
@@ -68,7 +68,17 @@ export class HttpTokenInterceptor implements HttpInterceptor {
 					// }\nError: ${JSON.stringify(error.error)}`;
 				}
 				return throwError(errorMessage);
-			})
+			}),
+			tap(
+				(event: HttpEvent<any>) => {
+					if (event instanceof HttpResponse) {
+						this.spinner.hide();
+					}
+				},
+				(err: any) => {
+					this.spinner.hide();
+				}
+			)
 		);
 	}
 }
