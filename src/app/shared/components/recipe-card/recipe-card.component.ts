@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class RecipeCardComponent implements OnInit {
 	@Input() recipe: RecipeDetail;
 
-	private currentUser;
+	currentUser;
 
 	private mediaUrl = environment.media_url;
 	imageUrls: string[];
