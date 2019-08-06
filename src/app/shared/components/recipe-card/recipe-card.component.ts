@@ -10,12 +10,15 @@ import { environment } from 'src/environments/environment';
 export class RecipeCardComponent implements OnInit {
 	@Input() recipe: RecipeDetail;
 
+	private currentUser;
+
 	private mediaUrl = environment.media_url;
 	imageUrls: string[];
 
 	constructor() {}
 
 	ngOnInit() {
+		this.currentUser = JSON.parse(localStorage.getItem('user'));
 		this.imageUrls = this.recipe.recipe_photos.map(
 			pName => `${this.mediaUrl}/${pName.photo_file}`
 		);

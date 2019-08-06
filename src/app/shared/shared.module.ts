@@ -23,6 +23,7 @@ import { MultiImgUploaderComponent } from './components/multi-img-uploader/multi
 import { LightboxComponent } from './components/lightbox/lightbox.component';
 import { LoadingSpinnerDirective } from './directives/loading-spinner.directive';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ShowEditDirective } from './directives/show-edit.directive';
 
 @NgModule({
 	declarations: [
@@ -39,6 +40,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 		// Directives
 		ShowIfAuthDirective,
 		LoadingSpinnerDirective,
+		ShowEditDirective,
 	],
 	imports: [
 		CommonModule,
@@ -79,6 +81,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 		// Directives
 		ShowIfAuthDirective,
 		LoadingSpinnerDirective,
+		ShowEditDirective,
 	],
 	entryComponents: [SpinnerComponent],
 })

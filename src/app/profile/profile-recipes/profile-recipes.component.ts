@@ -26,7 +26,7 @@ export class ProfileRecipesComponent implements OnInit {
 			this.profile = data.profile;
 		});
 		this.profileService
-			.getUserRecipes(this.profile.id)
+			.getUserRecipes(this.profile.username)
 			.subscribe(res => (this.recipeList = res));
 	}
 }

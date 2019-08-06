@@ -10,7 +10,7 @@
                 <h5 class="card-title">
                     {{ recipe.title }}
                 </h5>
-                <a [routerLink]="['/recipes', recipe.pk, 'edit']"><i class="far fa-edit fa-lg" id="edit-icon"></i></a>
+                <a *ngIf="currentUser && (currentUser['profile_id'] == recipe.author)" [routerLink]="['/recipes', recipe.pk, 'edit']"><i class="far fa-edit fa-lg" id="edit-icon"></i></a>
             </div>
             <p class="card-text">
                 {{ recipe.description }}
