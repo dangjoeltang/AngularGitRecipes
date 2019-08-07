@@ -1,4 +1,4 @@
-<div class="main container">
+<div class="recipe-detail container">
 
     <ng-template #content let-modal>
         <div class="modal-header">
@@ -16,12 +16,12 @@
 
     <div class="recipe-card">
         <div class="card">
-            <img [src]="imageUrls[0]" class="card-img-top" id="main-recipe-img">
-            <div class="recipe-images">
+            <div *ngIf="imageUrls[0]" class="recipe-images">
+                    <img [src]="imageUrls[0]" class="card-img-top" id="main-img">
                 <app-lightbox [photosArray]="imageUrls"></app-lightbox>
             </div>
 
-            <div class="recipe-header card-header">
+            <div class="recipe-header">
 
                 <!-- <img src="https://via.placeholder.com/300x300" class="rounded" alt="..."> -->
                 <h3 class="display-4">
@@ -34,18 +34,13 @@
                 <hr class="my-3">
                 <div>
                     <!-- Recipe ID: {{ recipe.pk }} -->
-                    <!-- <a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-info">Edit Recipe</a> -->
                 </div>
                 <p class="lead">{{ recipe.description }}</p>
                 <a [routerLink]="['/recipes', recipe.pk, 'edit']" class="btn btn-primary btn-sm mr-2"
-                    id="edit-recipe">Edit
-                    Recipe</a>
+                    id="edit-recipe">Edit Recipe</a>
                 <a href="#" class="btn btn-warning btn-sm mr-2">Clone Recipe</a>
                 <button type="button" class="btn btn-danger btn-sm mr-2" id="delete-recipe"
-                    (click)="open(content)">Delete
-                    Recipe</button>
-
-
+                    (click)="open(content)">Delete Recipe</button>
             </div>
 
             <div class="recipe-content">
@@ -82,17 +77,16 @@
                             </li>
                         </ol>
                     </li>
-
-                    <li class="list-group-item">
-                        <p>
-                            <small>
-                                Last modified: {{ recipe.modified_time | date: 'medium' }}
-                                <br>
-                                Created: {{ recipe.created_time | date: 'medium' }}
-                            </small>
-                        </p>
-                    </li>
                 </ul>
+            </div>
+            <div class="recipe-footer">
+                <p>
+                    <small>
+                        Last modified: {{ recipe.modified_time | date: 'medium' }}
+                        <br>
+                        Created: {{ recipe.created_time | date: 'medium' }}
+                    </small>
+                </p>
             </div>
         </div>
     </div>

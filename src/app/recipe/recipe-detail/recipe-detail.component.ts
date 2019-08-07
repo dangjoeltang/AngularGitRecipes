@@ -45,11 +45,19 @@ export class RecipeDetailComponent implements OnInit {
 	}
 
 	deleteRecipe() {
-		this.recipeService.deleteRecipe(this.recipe.pk).subscribe(res => {
-			this.modalService.dismissAll();
-			this.alertService.success('Deleted recipe');
-			this.router.navigate(['/profile', this.currentUser.profile_id]);
-		});
+		this.recipeService.deleteRecipe(this.recipe.pk).subscribe(
+			res => {
+				this.modalService.dismissAll();
+				this.alertService.success('Deleted recipe');
+				this.router.navigate(['/profile', this.currentUser.profile_id]);
+			},
+			err => {
+				this.modalService.dismissAll();
+				this.alertService.error(
+					'You do not have permission to do that.'
+				);
+			}
+		);
 	}
 
 	open(content) {
