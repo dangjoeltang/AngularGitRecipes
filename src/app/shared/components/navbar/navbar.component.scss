@@ -3,15 +3,20 @@
     justify-content: space-between;
 }
 
-.nav-sub-user .nav-item {
-    font-weight: bold;
-}
+.nav-sub-user {
+    & .nav-item {
+        font-weight: bold;
+    }
+    & .btn {
+        white-space: nowrap;
+    }
+    & .nav-username {
+        padding: 0.5rem 1rem;
+        color: rgba(0,0,0,0.5);
+        font-style: italic;
+    }
+} 
 
-.nav-username {
-    padding: 0.5rem 1rem;
-    color: rgba(0,0,0,0.5);
-    font-style: italic;
-}
 
 .btn-new-recipe {
     background: #ED6A5A;
@@ -30,5 +35,4 @@
 
 #nav-search {
     max-width: 500px;
-    /* min-width: 200px; */
 }
