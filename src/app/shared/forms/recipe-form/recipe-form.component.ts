@@ -19,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
 	selector: 'app-recipe-form',
 	templateUrl: './recipe-form.component.html',
-	styleUrls: ['./recipe-form.component.css'],
+	styleUrls: ['./recipe-form.component.scss'],
 })
 export class RecipeFormComponent implements OnInit {
 	@Input() recipe: RecipeDetail;

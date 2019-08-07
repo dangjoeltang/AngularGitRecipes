@@ -4,7 +4,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 @Component({
 	selector: 'app-lightbox',
 	templateUrl: './lightbox.component.html',
-	styleUrls: ['./lightbox.component.css'],
+	styleUrls: ['./lightbox.component.scss'],
 })
 export class LightboxComponent implements OnInit {
 	@Input() photosArray: string[];

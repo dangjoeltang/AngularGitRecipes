@@ -25,7 +25,7 @@
               "src/assets/images"
             ],
             "styles": [
-              "src/styles.css",
+              "src/styles.scss",
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [],
@@ -135,5 +135,10 @@
       }
     }
   },
-  "defaultProject": "AngularGitRecipes"
+  "defaultProject": "AngularGitRecipes",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

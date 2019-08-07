@@ -4,7 +4,7 @@ import { environment } from '../../../environments/environment';
 @Component({
 	selector: 'profile-picture',
 	templateUrl: './profile-picture.component.html',
-	styleUrls: ['./profile-picture.component.css'],
+	styleUrls: ['./profile-picture.component.scss'],
 })
 export class ProfilePictureComponent implements OnInit {
 	_photoPath;

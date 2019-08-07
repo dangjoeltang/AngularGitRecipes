@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 @Component({
 	selector: 'app-multi-img-uploader',
 	templateUrl: './multi-img-uploader.component.html',
-	styleUrls: ['./multi-img-uploader.component.css'],
+	styleUrls: ['./multi-img-uploader.component.scss'],
 })
 export class MultiImgUploaderComponent implements OnInit {
 	@Output() valueChange = new EventEmitter();

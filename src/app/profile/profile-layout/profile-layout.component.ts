@@ -5,7 +5,7 @@ import { ProfileData } from 'src/app/core/models/profile.model';
 @Component({
 	selector: 'app-profile-layout',
 	templateUrl: './profile-layout.component.html',
-	styleUrls: ['./profile-layout.component.css'],
+	styleUrls: ['./profile-layout.component.scss'],
 })
 export class ProfileLayoutComponent implements OnInit {
 	profile: ProfileData;

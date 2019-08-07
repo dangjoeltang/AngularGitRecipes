@@ -5,7 +5,7 @@ import { RecipeDetail } from 'src/app/core/models';
 @Component({
 	selector: 'app-recipe-edit',
 	templateUrl: './recipe-edit.component.html',
-	styleUrls: ['./recipe-edit.component.css'],
+	styleUrls: ['./recipe-edit.component.scss'],
 })
 export class RecipeEditComponent implements OnInit {
 	recipe: RecipeDetail;

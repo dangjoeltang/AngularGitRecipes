@@ -13,7 +13,7 @@ import {
 @Component({
 	selector: 'app-profile-story',
 	templateUrl: './profile-story.component.html',
-	styleUrls: ['./profile-story.component.css'],
+	styleUrls: ['./profile-story.component.scss'],
 })
 export class ProfileStoryComponent implements OnInit {
 	@Input() profile: ProfileData;

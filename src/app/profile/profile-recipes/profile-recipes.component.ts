@@ -8,7 +8,7 @@ import { ProfileData } from 'src/app/core/models/profile.model';
 @Component({
 	selector: 'app-profile-recipes',
 	templateUrl: './profile-recipes.component.html',
-	styleUrls: ['./profile-recipes.component.css'],
+	styleUrls: ['./profile-recipes.component.scss'],
 })
 export class ProfileRecipesComponent implements OnInit {
 	// profileId = this.userService.currentUserValue.profile_id;

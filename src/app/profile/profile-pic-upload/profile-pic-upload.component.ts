@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
 	selector: 'app-profile-pic-upload',
 	templateUrl: './profile-pic-upload.component.html',
-	styleUrls: ['./profile-pic-upload.component.css'],
+	styleUrls: ['./profile-pic-upload.component.scss'],
 })
 export class ProfilePicUploadComponent implements OnInit {
 	private mediaRoot = environment.media_url;

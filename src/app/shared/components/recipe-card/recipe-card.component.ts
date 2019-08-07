@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 @Component({
 	selector: 'app-recipe-card',
 	templateUrl: './recipe-card.component.html',
-	styleUrls: ['./recipe-card.component.css'],
+	styleUrls: ['./recipe-card.component.scss'],
 })
 export class RecipeCardComponent implements OnInit {
 	@Input() recipe: RecipeDetail;
