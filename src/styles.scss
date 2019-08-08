@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap');
 @import "./variables";
 @import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/ngx-toastr/toastr";
 /* You can add global styles to this file, and also import other style files */
 body {
     background: #e9ecef;

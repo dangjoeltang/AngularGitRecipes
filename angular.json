@@ -25,9 +25,7 @@
               "src/assets/images"
             ],
             "styles": [
-                "node_modules/bootstrap/scss/bootstrap.scss",
-                "src/styles.scss",
-                "node_modules/ngx-toastr/toastr.css"
+                "src/styles.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
